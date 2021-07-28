@@ -7,10 +7,23 @@
     <title></title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
+    <link rel="stylesheet" href="MasterStyle.css">
 </head>
-<body>
+<body dir="rtl">
     <form id="form1" runat="server">
         <div>
+            <header class="navbar">
+                <img class="logo" src="VIRTUARIA.svg" alt="logo" />
+                <nav>
+                    <ul class="links">
+                        <li><a href="#">בית</a></li>
+                        <li><a href="#">מידע</a></li>
+                        <li><a href="#">צור קשר</a></li>
+                    </ul>
+                </nav>
+                <a class="cta" href="#"><button>הזמנות</button></a>
+            </header>
+
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
         </div>

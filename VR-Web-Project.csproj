@@ -69,6 +69,7 @@
   <ItemGroup>
     <Content Include="Home.aspx" />
     <Content Include="HomeStyle.css" />
+    <Content Include="MasterStyle.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
