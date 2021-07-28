@@ -3,5 +3,7 @@
     <link rel="stylesheet" href="HomeStyle.css">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <h1 class="title">מציאות מדומה</h1>
+    <div class="text">
+        <h1 class="title">מציאות מדומה</h1>
+    </div>
 </asp:Content>
