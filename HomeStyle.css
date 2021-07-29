@@ -7,5 +7,10 @@ h1.title {
     font-family: 'Rubik', sans-serif;
     text-align: center;
     font-size: 50px;
-    color: #0c1e31;
+    color: #FFF;
+    text-shadow:
+   -1px -1px 0 #000,  
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+     1px 1px 0 #000;
 }

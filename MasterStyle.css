@@ -1,12 +1,17 @@
 ﻿@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap');
 
 header.navbar {
-    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
     margin: 0;
-    padding: 0;
-    background-color: rgba(37, 37, 42, 0.8);
     border-radius: 50px;
     padding-left: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10000;
 }
 
 li, a, button {
@@ -15,13 +20,6 @@ li, a, button {
     font-size: 16px;
     color: #edf0f1;
     text-decoration: none;
-}
-
-header {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    padding: 30px 10%;
 }
 
 .logo {
@@ -38,12 +36,16 @@ header {
     padding: 0px 20px;
 }
 
-.links li a{
+.links li a {
     transition: all 0.3s ease 0s;
+    padding: 5px 10px;
+    border-radius: 50px;
 }
 
 .links li a:hover {
-    color: rgb(0, 136, 169);
+    background: #fff;
+
+    color: rgb(0, 0, 0);
 }
 
 button {
@@ -55,12 +57,24 @@ button {
     transition: all 0.3s ease 0s;
 }
 
-    button:hover {
-        background-color: rgba(0, 136, 169, 0.8);
-    }
+button:hover {
+    background-color: rgba(0, 136, 169, 0.8);
+}
 
+section{
+    position:relative;
+    width: 100%;
+    height:100vh;
+}
+
+section img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width:100%;
+    height: 100%;
+    object-fit: cover;
+}
 
 body {
-    background: url('https://i.pinimg.com/originals/fe/2e/10/fe2e10d0a3dc6432eddfbe181cd58075.jpg') center fixed;
-    background-size: cover;
 }

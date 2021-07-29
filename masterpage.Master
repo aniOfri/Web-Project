@@ -23,6 +23,10 @@
                 </nav>
                 <a class="cta" href="#"><button>הזמנות</button></a>
             </header>
+            <section>
+                <img src="background.png" id="background"/>
+                <img src="person.png" id="person"/>
+            </section>
 
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
