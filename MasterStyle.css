@@ -1,10 +1,12 @@
 ﻿@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap');
 
+div.header {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+}
 header.navbar {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
     margin: 0;
     border-radius: 50px;
     padding-left: 20px;
@@ -65,16 +67,43 @@ section{
     position:relative;
     width: 100%;
     height:100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+    section::before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 100px;
+        background: linear-gradient(to top, #3c5470, transparent);
+        z-index: 1000;
+    }
 
 section img{
     position: absolute;
     top: 0;
     left: 0;
-    width:100%;
+    width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
+section img#person {
+    z-index:5;
+}
+
+
+div.text{
+    position: absolute;
+    color: #FFF;
+    white-space: nowrap;
+    z-index: 4;
+    transform: translateX(560px);
+}
 body {
+    min-height: 100vh;
+    background: linear-gradient(#080f1f, #3c5470);
 }

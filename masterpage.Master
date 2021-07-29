@@ -12,24 +12,30 @@
 <body dir="rtl">
     <form id="form1" runat="server">
         <div>
-            <header class="navbar">
-                <img class="logo" src="VIRTUARIA.svg" alt="logo" />
-                <nav>
-                    <ul class="links">
-                        <li><a href="#">בית</a></li>
-                        <li><a href="#">מידע</a></li>
-                        <li><a href="#">צור קשר</a></li>
-                    </ul>
-                </nav>
-                <a class="cta" href="#"><button>הזמנות</button></a>
-            </header>
+            <div class="header">
+                <header class="navbar">
+                    <img class="logo" src="VIRTUARIA.svg" alt="logo" />
+                    <nav>
+                        <ul class="links">
+                            <li><a href="#">בית</a></li>
+                            <li><a href="#">מידע</a></li>
+                            <li><a href="#">צור קשר</a></li>
+                        </ul>
+                    </nav>
+                    <a class="cta" href="#"><button>הזמנות</button></a>
+                </header>
+             </div>
             <section>
-                <img src="background.png" id="background"/>
+                <img src="stars.png" id="stars"/>
+                <div id="title">
+                    <asp:ContentPlaceHolder ID="TitlePlaceHolder" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
                 <img src="person.png" id="person"/>
             </section>
-
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
+
         </div>
     </form>
 </body>
