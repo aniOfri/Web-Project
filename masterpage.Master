@@ -17,8 +17,8 @@
                     <img class="logo" src="VIRTUARIA.svg" alt="logo" />
                     <nav>
                         <ul class="links">
-                            <li><a href="#">בית</a></li>
-                            <li><a href="#">מידע</a></li>
+                            <li><a href="Home.aspx">בית</a></li>
+                            <li><a href="#info">מידע</a></li>
                             <li><a href="#">צור קשר</a></li>
                         </ul>
                     </nav>
@@ -33,10 +33,21 @@
                 </div>
                 <img src="person.png" id="person"/>
             </section>
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-            </asp:ContentPlaceHolder>
-
+            <div class="sec">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
         </div>
     </form>
+    <script>
+        let title = document.getElementById('title');
+        title.style.transform = "translateX(" + (-35).toString() + "vh)  translateY(40px)"
+        window.addEventListener('scroll', function () {
+            let value = -350+window.scrollY;
+            console.log(value);
+            if (value < 600)
+                title.style.transform = "translateX(" + (value * 0.1).toString() +"vh)  translateY(40px)"
+        })
+    </script>
 </body>
 </html>

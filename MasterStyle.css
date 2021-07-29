@@ -3,17 +3,20 @@
 div.header {
     margin: auto;
     width: 50%;
-    padding: 10px;
+    padding: 1%;
+    z-index: 100000;
+    position: fixed;
 }
 header.navbar {
     position: absolute;
     margin: 0;
-    border-radius: 50px;
-    padding-left: 20px;
+    border-radius: 30px;
+    padding-left: 5%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 10000;
+    background: rgba(43, 49, 64, 0.5);
+
 }
 
 li, a, button {
@@ -72,38 +75,55 @@ section{
     align-items: center;
 }
 
-    section::before {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        height: 100px;
-        background: linear-gradient(to top, #3c5470, transparent);
-        z-index: 1000;
-    }
+section::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(to top, #3c5470, transparent);
+    z-index: 1000;
+}
 
 section img{
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 0%;
+    left: 0%;
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
 section img#person {
-    z-index:5;
+    z-index: 5;
 }
 
-
-div.text{
-    position: absolute;
+div.text {
     color: #FFF;
     white-space: nowrap;
     z-index: 4;
-    transform: translateX(560px);
+    transform: translateX(0vh) translateY(-200px);
 }
+
+.sec {
+    position: relative;
+    font-family: 'Rubik', sans-serif;
+    background: #3c5470;
+    color: #FFF;
+    padding: 150px 100px 20px 100px;
+}
+
+.sec h1{
+    font-size: 3em;
+    padding-bottom: 50px;
+}
+
+.sec p{
+    font-size: 2em;
+}
+
 body {
     min-height: 100vh;
     background: linear-gradient(#080f1f, #3c5470);
+    overflow-x: hidden;
 }
