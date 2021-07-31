@@ -108,9 +108,22 @@ div.text {
 .sec {
     position: relative;
     font-family: 'Rubik', sans-serif;
-    background: #3c5470;
+    background: linear-gradient(#3c5470, #080f1f);
     color: #FFF;
-    padding: 150px 100px 20px 100px;
+    padding: 25px 100px 10px 100px;
+}
+
+.sec img {
+    position:relative;
+    width: 100%;
+    object-fit: cover;
+}
+
+.secContent {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .sec h1{

@@ -26,7 +26,7 @@
                 </header>
              </div>
             <section>
-                <img src="stars.png" id="stars"/>
+                <img src="stars.png"/>
                 <div id="title">
                     <asp:ContentPlaceHolder ID="TitlePlaceHolder" runat="server">
                     </asp:ContentPlaceHolder>
@@ -34,8 +34,11 @@
                 <img src="person.png" id="person"/>
             </section>
             <div class="sec">
-                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-                </asp:ContentPlaceHolder>
+                <img src="stars.png"/>
+                <div class="secContent">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
             </div>
         </div>
     </form>
