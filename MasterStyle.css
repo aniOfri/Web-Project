@@ -66,78 +66,47 @@ button:hover {
     background-color: rgba(0, 136, 169, 0.8);
 }
 
-section{
-    position:relative;
-    width: 100%;
-    height:100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-section::before {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 100px;
-    background: linear-gradient(to top, #3c5470, transparent);
-    z-index: 1000;
-}
-
-section img{
-    position: absolute;
-    top: 0%;
-    left: 0%;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-section img#person {
-    z-index: 5;
-}
-
-div.text {
-    color: #FFF;
-    white-space: nowrap;
-    z-index: 4;
-    transform: translateX(0vh) translateY(-200px);
-}
-
-.sec {
-    position: relative;
-    font-family: 'Rubik', sans-serif;
-    background: linear-gradient(#3c5470, #080f1f);
-    color: #FFF;
-    padding: 25px 100px 10px 100px;
-}
-
-.sec img {
-    position:relative;
-    width: 100%;
-    object-fit: cover;
-}
-
-.secContent {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.sec h1{
-    font-size: 3em;
-    padding-bottom: 50px;
-}
-
-.sec p {
-    font-size: 2em;
-}
-
 
 body {
     min-height: 100vh;
     background: linear-gradient(#080f1f, #3c5470);
     overflow-x: hidden;
+}
+
+h1#contactNav {
+    margin: 2px;
+    font-family: 'Rubik', sans-serif;
+    text-align: center;
+    font-size: 25px;
+    color: #FFF;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+div.footerContact {
+    background: #080f1f;
+    text-align: center;
+}
+
+ul.footer {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-bottom: 20px;
+    padding-top: 10px;
+}
+
+.footer {
+    list-style: none;
+}
+
+.footer li {
+    display: inline-block;
+    padding: 0px 20px;
+}
+
+li, a {
+    font-family: 'Rubik', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: #edf0f1;
+    text-decoration: none;
 }

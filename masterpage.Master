@@ -18,27 +18,27 @@
                     <nav>
                         <ul class="links">
                             <li><a href="Home.aspx">בית</a></li>
-                            <li><a href="#info">מידע</a></li>
-                            <li><a href="#">צור קשר</a></li>
+                            <li><a href="#infoNav">מידע</a></li>
                         </ul>
                     </nav>
                     <a class="cta" href="#"><button>הזמנות</button></a>
                 </header>
              </div>
-            <section>
-                <img src="stars.png"/>
-                <div id="title">
-                    <asp:ContentPlaceHolder ID="TitlePlaceHolder" runat="server">
-                    </asp:ContentPlaceHolder>
-                </div>
-                <img src="person.png" id="person"/>
-            </section>
-            <div class="sec">
-                <img src="stars.png"/>
-                <div class="secContent">
-                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-                    </asp:ContentPlaceHolder>
-                </div>
+            <!--Title-->
+            <asp:ContentPlaceHolder ID="TitlePlaceHolder" runat="server">
+            </asp:ContentPlaceHolder>
+
+            <asp:ContentPlaceHolder ID="InfoPlaceHolder" runat="server">
+            </asp:ContentPlaceHolder>
+
+            <div class="footerContact">
+                <nav>
+                    <ul class="footer">
+                        <li><a>[אימייל]</a></li>
+                        <li><a">[מספר טלפון]</a></li>
+                        <li><a>[כתובת]</a></li>
+                    </ul>
+                </nav>
             </div>
         </div>
     </form>
