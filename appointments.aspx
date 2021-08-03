@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/masterpage.Master" AutoEventWireup="true" CodeBehind="Appointments.aspx.cs" Inherits="VR_Web_Project.appointments" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <title>הזמנות</title>
+    <link rel="stylesheet" href="AppointmentStyle.css"/>
 </asp:Content>
 <asp:Content ID="headerContent" ContentPlaceHolderID="headerPlaceHolder" runat="server">
     <nav>
@@ -11,10 +13,12 @@
     <a class="cta" href="Home.aspx">בית</a>
 </asp:Content>
 <asp:Content ID="pricesContent" ContentPlaceHolderID="TitlePlaceHolder" runat="server">
-    <div>
-        <h1>מחירון</h1>
+    
+    <img src="stars.png" class="stars"/>
+    <div class="title">
+        <h1 class="title">מחירון</h1>
         <ul>
-			<li><a>2 משתתפים - 140 ש"ח למשתתף</a></li>
+			<li><a>2 משתתפים - 140 ש"ח למשתתף </a></li>
 			<li><a>3 משתתפים - 120 ש"ח למשתתף</a></li>
 			<li><a>4 משתתפים - 120 ש"ח למשתתף</a></li>
 			<li><a>5 משתתפים - 115 ש"ח למשתתף</a></li>
