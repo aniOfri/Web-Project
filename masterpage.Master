@@ -4,7 +4,6 @@
 
 <html>
 <head runat="server">
-    <title></title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <link rel="stylesheet" href="MasterStyle.css">
@@ -15,13 +14,8 @@
             <div class="header">
                 <header class="navbar">
                     <img class="logo" src="VIRTUARIA.svg" alt="logo" />
-                    <nav>
-                        <ul class="links">
-                            <li><a href="Home.aspx">בית</a></li>
-                            <li><a href="#infoNav">מידע</a></li>
-                        </ul>
-                    </nav>
-                    <a class="cta" href="#"><button>הזמנות</button></a>
+                    <asp:ContentPlaceHolder ID="headerPlaceHolder" runat="server">
+                    </asp:ContentPlaceHolder>
                 </header>
              </div>
             <!--Title-->
@@ -42,15 +36,5 @@
             </div>
         </div>
     </form>
-    <script>
-        let title = document.getElementById('title');
-        title.style.transform = "translateX(" + (-35).toString() + "vh)  translateY(40px)"
-        window.addEventListener('scroll', function () {
-            let value = -350+window.scrollY;
-            console.log(value);
-            if (value < 600)
-                title.style.transform = "translateX(" + (value * 0.1).toString() +"vh)  translateY(40px)"
-        })
-    </script>
 </body>
 </html>
