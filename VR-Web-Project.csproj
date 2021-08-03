@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Appointments.aspx" />
+    <Content Include="AppointmentStyle.css" />
     <Content Include="Home.aspx" />
     <Content Include="HomeScript.js" />
     <Content Include="HomeStyle.css" />
