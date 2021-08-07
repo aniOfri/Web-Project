@@ -15,6 +15,7 @@ namespace VR_Web_Project
         }
         protected void DDL_part_SelectedIndexChanged(object sender, EventArgs e)
         {
+
         }
     }
 }

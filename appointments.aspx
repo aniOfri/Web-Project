@@ -34,8 +34,21 @@
          <asp:ListItem Text="ארבעה משתתפים" Value="4"></asp:ListItem>
          <asp:ListItem Text="חמישה משתתפים" Value="5"></asp:ListItem>
          <asp:ListItem Text="שישה משתתפים" Value="6"></asp:ListItem>
-        </asp:DropDownList>
-     </div>
+    </asp:DropDownList>
+    
+    <ul class="menu cf">
+        <li>
+            <h1 class="choose"><span>מספר משתתפים</span></h1>
+            <ul class="submenu">
+                <li class="option"><a>משתתף אחד</a></li>
+                <li class="option"><a>זוג משתתפים</a></li>
+                <li class="option"><a>שלושה משתתפים</a></li>
+                <li class="option"><a>ארבעה משתתפים</a></li>
+                <li class="option"><a>חמישה משתתפים</a></li>
+                <li class="option"><a>שישה משתתפים</a></li>
+            </ul>
+        </li>
+    </ul>
 
  </asp:Content>
 

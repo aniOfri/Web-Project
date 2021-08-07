@@ -39,3 +39,108 @@ div.footerContact {
 li{
     text-align:center;
 }
+
+
+
+h1.choose span {
+    background-color: #080f1f;
+    border-radius: 50px;
+    padding: 7px 15px 7px 15px;
+}
+
+.cf:before,
+.cf:after {
+    content: " ";
+    display: table;
+}
+
+.cf:after {
+    clear: both;
+}
+
+.cf {
+    *zoom: 1;
+}
+
+.menu,
+.submenu {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* Main level */
+.menu {
+    margin: 50px auto;
+    width: 800px;
+}
+
+.menu > li {
+    float: left;
+    position: relative;
+}
+
+.menu a {
+    display: block;
+    color: #fff;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-family: Arial, Helvetica;
+    font-size: 14px;
+    border-radius: 50px;
+}
+
+.menu li.option:hover {
+    background: #e74c3c;
+}
+
+.menu > li > a {
+    padding: 1em 2em;
+}
+
+/* Dropdown */
+.submenu {
+    position: absolute;
+    width: 200px;
+    left: 50%;
+    margin-left: -100px;
+    transform-origin: left top;
+}
+
+.submenu li {
+    background-color: #34495e;
+    position: relative;
+    border-radius: 50px;
+    overflow: hidden;
+    margin: 5px;
+}
+
+.submenu > li > a {
+    padding: 2px 5px;
+}
+
+.submenu > li::after {
+    content: '';
+    position: absolute;
+    top: -125%;
+    height: 100%;
+    width: 100%;
+}
+
+
+/* Show dropdown */
+.submenu,
+.submenu li {
+    opacity: 0;
+    visibility: hidden;
+}
+
+    .submenu li {
+        transition: .2s ease transform;
+    }
+
+.menu > li:hover .submenu,
+.menu > li:hover .submenu li {
+    opacity: 1;
+    visibility: visible;
+}
