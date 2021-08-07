@@ -10,12 +10,13 @@ div.title {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-
+    z-index: 10;
 }
 
 img.stars {
     position:absolute;
     object-fit: cover;
+    z-index: -1;
 }
 h1.title {
     padding-right: 25px;
@@ -33,4 +34,8 @@ ul {
 
 div.footerContact {
     bottom: 0;
+}
+
+li{
+    text-align:center;
 }
