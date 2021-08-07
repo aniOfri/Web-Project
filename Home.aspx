@@ -23,8 +23,7 @@
             </div>
         <img src="person.png" id="person"/>
      </section>
-</asp:Content>
-<asp:Content ID="info" ContentPlaceHolderID="InfoPlaceHolder" runat="server">
+
     <div class="sec">
         <img src="stars.png"/>
         <div class="secContent">
@@ -37,6 +36,8 @@
             </p>
         </div>
     </div>
+</asp:Content>
+<asp:Content ID="info" ContentPlaceHolderID="ScriptPlaceHolder" runat="server">
     <script src="HomeScript.js"></script>
 </asp:Content>
 

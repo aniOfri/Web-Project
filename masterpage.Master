@@ -18,11 +18,10 @@
                     </asp:ContentPlaceHolder>
                 </header>
              </div>
-            <!--Title-->
             <asp:ContentPlaceHolder ID="TitlePlaceHolder" runat="server">
             </asp:ContentPlaceHolder>
 
-            <asp:ContentPlaceHolder ID="InfoPlaceHolder" runat="server">
+            <asp:ContentPlaceHolder ID="ScriptPlaceHolder" runat="server">
             </asp:ContentPlaceHolder>
 
             <div class="footerContact">

@@ -51,12 +51,12 @@ namespace VR_Web_Project
         protected global::System.Web.UI.WebControls.ContentPlaceHolder TitlePlaceHolder;
 
         /// <summary>
-        /// InfoPlaceHolder control.
+        /// ScriptPlaceHolder control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder InfoPlaceHolder;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder ScriptPlaceHolder;
     }
 }

@@ -5,7 +5,7 @@ body {
 }
 
 
-div.title {
+div.prices {
     padding-top: 100px;
     display: flex;
     justify-content: space-between;
@@ -18,7 +18,7 @@ img.stars {
     object-fit: cover;
     z-index: -1;
 }
-h1.title {
+h1.prices {
     padding-right: 25px;
     font-family: 'Rubik', sans-serif;
     text-align: center;
