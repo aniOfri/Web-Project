@@ -17,6 +17,7 @@
     <div class="prices">
         <h1 class="prices">מחירון</h1>
         <ul>
+			<li><a>1 משתתפים - [מחיר] ש"ח למשתתף </a></li>
 			<li><a>2 משתתפים - [מחיר] ש"ח למשתתף </a></li>
 			<li><a>3 משתתפים - [מחיר אחר] ש"ח למשתתף</a></li>
 			<li><a>4 משתתפים - [מחיר אחר] ש"ח למשתתף</a></li>
@@ -26,29 +27,20 @@
     </div>
 
     <div class="purchase">
-        <asp:DropDownList ID="DDL_part" runat="server" AutoPostBack="true"
-         OnSelectedIndexChanged="DDL_part_SelectedIndexChanged">
-         <asp:ListItem Text="משתתף אחד" Value="1"></asp:ListItem>
-         <asp:ListItem Text="זוג משתתפים" Value="2"></asp:ListItem>
-         <asp:ListItem Text="שלושה משתתפים" Value="3"></asp:ListItem>
-         <asp:ListItem Text="ארבעה משתתפים" Value="4"></asp:ListItem>
-         <asp:ListItem Text="חמישה משתתפים" Value="5"></asp:ListItem>
-         <asp:ListItem Text="שישה משתתפים" Value="6"></asp:ListItem>
-    </asp:DropDownList>
-    
-    <ul class="menu cf">
-        <li>
-            <h1 class="choose"><span>מספר משתתפים</span></h1>
-            <ul class="submenu">
-                <li class="option"><a>משתתף אחד</a></li>
-                <li class="option"><a>זוג משתתפים</a></li>
-                <li class="option"><a>שלושה משתתפים</a></li>
-                <li class="option"><a>ארבעה משתתפים</a></li>
-                <li class="option"><a>חמישה משתתפים</a></li>
-                <li class="option"><a>שישה משתתפים</a></li>
-            </ul>
-        </li>
-    </ul>
+        <ul class="menu cf">
+            <li>
+                <h1 class="choose"><span>מספר משתתפים</span></h1>
+                <ul class="submenu">
+                    <li class="option"><asp:Button runat="server" text="משתתף אחד" CssClass="transparentButton"/></li>
+                    <li class="option"><asp:Button runat="server" text="זוג משתתפים" CssClass="transparentButton"/></li>
+                    <li class="option"><asp:Button runat="server" text="שלושה משתתפים" CssClass="transparentButton"/></li>
+                    <li class="option"><asp:Button runat="server" text="ארבעה משתתפים" CssClass="transparentButton"/></li>
+                    <li class="option"><asp:Button runat="server" text="חמישה משתתפים" CssClass="transparentButton"/></li>
+                    <li class="option"><asp:Button runat="server" text="שישה משתתפים" CssClass="transparentButton"/></li>
+                </ul>
+            </li>
+        </ul>
+   </div>
 
  </asp:Content>
 

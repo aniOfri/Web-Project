@@ -41,7 +41,6 @@ li{
 }
 
 
-
 h1.choose span {
     background-color: #080f1f;
     border-radius: 50px;
@@ -70,9 +69,12 @@ h1.choose span {
 }
 
 /* Main level */
-.menu {
-    margin: 50px auto;
-    width: 800px;
+ul.menu {
+    padding-top: 100px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    z-index: 10;
 }
 
 .menu > li {
@@ -92,6 +94,12 @@ h1.choose span {
 
 .menu li.option:hover {
     background: #e74c3c;
+}
+
+.menu li.option {
+    transition: all 0.3s ease 0s;
+}
+
 }
 
 .menu > li > a {
@@ -135,12 +143,14 @@ h1.choose span {
     visibility: hidden;
 }
 
-    .submenu li {
-        transition: .2s ease transform;
-    }
-
 .menu > li:hover .submenu,
 .menu > li:hover .submenu li {
     opacity: 1;
     visibility: visible;
+}
+
+.transparentButton {
+    background-color: transparent;
+    border: none;
+    color: #FFFFFF;
 }
