@@ -26,21 +26,19 @@
         </ul>
     </div>
 
-    <div class="purchase">
-        <ul class="menu cf">
-            <li>
-                <h1 class="choose"><span>מספר משתתפים</span></h1>
-                <ul class="submenu">
-                    <li class="option"><asp:Button runat="server" text="משתתף אחד" CssClass="transparentButton"/></li>
-                    <li class="option"><asp:Button runat="server" text="זוג משתתפים" CssClass="transparentButton"/></li>
-                    <li class="option"><asp:Button runat="server" text="שלושה משתתפים" CssClass="transparentButton"/></li>
-                    <li class="option"><asp:Button runat="server" text="ארבעה משתתפים" CssClass="transparentButton"/></li>
-                    <li class="option"><asp:Button runat="server" text="חמישה משתתפים" CssClass="transparentButton"/></li>
-                    <li class="option"><asp:Button runat="server" text="שישה משתתפים" CssClass="transparentButton"/></li>
-                </ul>
-            </li>
-        </ul>
-   </div>
+    <ul class="menu cf">
+        <li>
+            <h1 class="choose"><span><asp:Label runat="server" ID="label1" Text="בחר"></asp:Label></span></h1>
+            <ul class="submenu">
+                <li class="option"><asp:Button runat="server" text="משתתף אחד" CssClass="transparentButton" OnClick="One_Click"/></li>
+                <li class="option"><asp:Button runat="server" text="זוג משתתפים" CssClass="transparentButton" OnClick="Two_Click"/></li>
+                <li class="option"><asp:Button runat="server" text="שלושה משתתפים" CssClass="transparentButton" OnClick="Three_Click"/></li>
+                <li class="option"><asp:Button runat="server" text="ארבעה משתתפים" CssClass="transparentButton" OnClick="Four_Click"/></li>
+                <li class="option"><asp:Button runat="server" text="חמישה משתתפים" CssClass="transparentButton" OnClick="Five_Click"/></li>
+                <li class="option"><asp:Button runat="server" text="שישה משתתפים" CssClass="transparentButton" OnClick="Six_Click"/></li>
+            </ul>
+        </li>
+    </ul>
 
  </asp:Content>
 
