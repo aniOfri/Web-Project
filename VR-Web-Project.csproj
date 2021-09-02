@@ -69,11 +69,15 @@
   <ItemGroup>
     <Content Include="Appointments.aspx" />
     <Content Include="AppointmentStyle.css" />
+    <Content Include="App_Data\VirtuariaDB.mdf" />
+    <Content Include="App_Data\VirtuariaDB_log.ldf">
+      <DependentUpon>VirtuariaDB.mdf</DependentUpon>
+    </Content>
     <Content Include="Home.aspx" />
     <Content Include="HomeScript.js" />
     <Content Include="HomeStyle.css" />
     <Content Include="MasterStyle.css" />
-    <Content Include="Web.config" />
+    <Content Include="web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Appointments.aspx.cs">
@@ -102,11 +106,11 @@
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="masterpage.Master" />
-    <None Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
+    <None Include="web.Debug.config">
+      <DependentUpon>web.config</DependentUpon>
     </None>
-    <None Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
+    <None Include="web.Release.config">
+      <DependentUpon>web.config</DependentUpon>
     </None>
   </ItemGroup>
   <PropertyGroup>
