@@ -80,6 +80,7 @@
     <Content Include="web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Appointment.cs" />
     <Compile Include="Appointments.aspx.cs">
       <DependentUpon>Appointments.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -102,6 +103,8 @@
     <Compile Include="masterpage.Master.designer.cs">
       <DependentUpon>masterpage.Master</DependentUpon>
     </Compile>
+    <Compile Include="Receipt.cs" />
+    <Compile Include="User.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

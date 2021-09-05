@@ -13,8 +13,31 @@ namespace VR_Web_Project
         {
 
         }
-        protected void DDL_part_SelectedIndexChanged(object sender, EventArgs e)
+        protected void One_Click(object sender, EventArgs e)
         {
+
         }
+        protected void Two_Click(object sender, EventArgs e)
+        {
+
+        }
+        protected void Three_Click(object sender, EventArgs e)
+        {
+
+        }
+        protected void Four_Click(object sender, EventArgs e)
+        {
+
+        }
+        protected void Five_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void Six_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }
