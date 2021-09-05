@@ -60,6 +60,13 @@ h1.choose span {
     opacity: 0; 
 }
 
+.AspChoose span.span3 {
+    padding-top: 20px;
+    background-color: #e74c3c;
+    border-radius: 50px;
+    padding: 7px 15px 10px 15px;
+}
+
 .cf:before,
 .cf:after {
     content: " ";
