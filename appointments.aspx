@@ -25,30 +25,38 @@
 			<li><a>6 משתתפים - 100 ש"ח למשתתף</a></li>
         </ul>
 
+     <ul>
+        <li>
+            <asp:Label runat="server" CssClass="AspChoose"><asp:Label runat="server" id="label3" CssClass="span2"><asp:Button runat="server"  Text="הבא" CssClass="transparentButton2 transparentButton"  /></asp:Label></asp:Label>
+        </li>
+    </ul>
+        
     <div class="ddls">
+
     <ul class="menu cf">
         <li>
-            <h1 class="choose"><span><asp:Label runat="server" ID="label1" Text="בחר"></asp:Label></span></h1>
+            <h1 class="choose"><span><asp:Label runat="server" ID="label1" Text="מספר משתתפים"></asp:Label></span></h1>
             <ul class="submenu">
-                <li class="option"><asp:Button runat="server" text="משתתף אחד" CssClass="transparentButton" OnClick="One_Click"/></li>
-                <li class="option"><asp:Button runat="server" text="זוג משתתפים" CssClass="transparentButton" OnClick="Two_Click"/></li>
-                <li class="option"><asp:Button runat="server" text="שלושה משתתפים" CssClass="transparentButton" OnClick="Three_Click"/></li>
-                <li class="option"><asp:Button runat="server" text="ארבעה משתתפים" CssClass="transparentButton" OnClick="Four_Click"/></li>
-                <li class="option"><asp:Button runat="server" text="חמישה משתתפים" CssClass="transparentButton" OnClick="Five_Click"/></li>
-                <li class="option"><asp:Button runat="server" text="שישה משתתפים" CssClass="transparentButton" OnClick="Six_Click"/></li>
+                <li class="option"><asp:Button runat="server" CustomParameter="אחד" text="משתתף אחד" CssClass="transparentButton" OnClick="ParticipantsOrder"/></li>
+                <li class="option"><asp:Button runat="server" CustomParameter="זוג" text="זוג משתתפים" CssClass="transparentButton" OnClick="ParticipantsOrder"/></li>
+                <li class="option"><asp:Button runat="server" CustomParameter="שלושה" text="שלושה משתתפים" CssClass="transparentButton" OnClick="ParticipantsOrder"/></li>
+                <li class="option"><asp:Button runat="server" CustomParameter="ארבעה" text="ארבעה משתתפים" CssClass="transparentButton" OnClick="ParticipantsOrder"/></li>
+                <li class="option"><asp:Button runat="server" CustomParameter="חמישה" text="חמישה משתתפים" CssClass="transparentButton" OnClick="ParticipantsOrder"/></li>
+                <li class="option"><asp:Button runat="server" CustomParameter="שישה" text="שישה משתתפים" CssClass="transparentButton" OnClick="ParticipantsOrder"/></li>
             </ul>
         </li>
     </ul>
         <ul class="menu cf">
         <li>
-            <h1 class="choose"><span><asp:Label runat="server" ID="label2" Text="בחר"></asp:Label></span></h1>
+            <h1 class="choose"><span><asp:Label runat="server" ID="label2" Text="הזמנה מראש"></asp:Label></span></h1>
             <ul class="submenu">
-                <li class="option"><asp:Button runat="server" text="משתתף אחד" CssClass="transparentButton" OnClick="One_Click"/></li>
-                <li class="option"><asp:Button runat="server" text="זוג משתתפים" CssClass="transparentButton" OnClick="Two_Click"/></li>
-                <li class="option"><asp:Button runat="server" text="שלושה משתתפים" CssClass="transparentButton" OnClick="Three_Click"/></li>
-                <li class="option"><asp:Button runat="server" text="ארבעה משתתפים" CssClass="transparentButton" OnClick="Four_Click"/></li>
-                <li class="option"><asp:Button runat="server" text="חמישה משתתפים" CssClass="transparentButton" OnClick="Five_Click"/></li>
-                <li class="option"><asp:Button runat="server" text="שישה משתתפים" CssClass="transparentButton" OnClick="Six_Click"/></li>
+                <li class="option"><asp:Button runat="server" ID="date1" CustomParameter="1"  text="יום" CssClass="transparentButton" OnClick="DayOrder"/></li>
+                <li class="option"><asp:Button runat="server" ID="date2" CustomParameter="2"  text="יומיים" CssClass="transparentButton" OnClick="DayOrder"/></li>
+                <li class="option"><asp:Button runat="server" ID="date3" CustomParameter="3"  text="שלושה ימים" CssClass="transparentButton" OnClick="DayOrder"/></li>
+                <li class="option"><asp:Button runat="server" ID="date4" CustomParameter="4"  text="ארבעה ימים" CssClass="transparentButton" OnClick="DayOrder"/></li>
+                <li class="option"><asp:Button runat="server" ID="date5" CustomParameter="5"  text="חמישה ימים" CssClass="transparentButton" OnClick="DayOrder"/></li>
+                <li class="option"><asp:Button runat="server" ID="date6" CustomParameter="6"  text="שישה ימים" CssClass="transparentButton" OnClick="DayOrder"/></li>
+                <li class="option"><asp:Button runat="server" ID="date7" CustomParameter="7"  text="שבעה ימים" CssClass="transparentButton" OnClick="DayOrder"/></li>
             </ul>
         </li>
     </ul>
