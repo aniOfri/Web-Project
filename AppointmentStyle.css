@@ -141,9 +141,20 @@ ul.menu {
     margin: 5px;
 }
 
-.submenu > li > a {
-    padding: 2px 5px;
+
+.submenu li.noBackground{
+    background-color: transparent;
+    margin: 0px;
 }
+
+li.center{
+    display: inline-block;
+}
+
+ul.inline {
+    padding: 0 0 0 0;
+}
+
 
 .submenu > li::after {
     content: '';
