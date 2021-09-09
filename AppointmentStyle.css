@@ -39,7 +39,10 @@ div.footerContact {
 
 li{
     text-align:center;
-    padding: 3px;
+}
+
+li h1{
+    padding: 2px;
 }
 
 li a {
@@ -65,6 +68,7 @@ h1.choose span {
     background-color: #e74c3c;
     border-radius: 50px;
     padding: 7px 15px 10px 15px;
+    font-size: 40px;
 }
 
 .cf:before,
@@ -182,15 +186,16 @@ ul.inline {
     background-color: transparent;
     border: none;
     color: #FFFFFF;
+    font-size: 20px;
 }
 
 .transparentButton2 {
     padding-top: 2px;
-    font-size: 70%;
+    font-size: 80%;
     color: #FFFFFF;
 }
 
 div.ddls {
-    display: inline-flex;
-    margin: auto;
+    display: flex;
+    justify-content: center;
 }

@@ -17,15 +17,19 @@ namespace VR_Web_Project
             if(!Page.IsPostBack){
                 Session["chooseDay"] = false;
                 Session["choosePartic"] = false;
+                Session["chooseTime"] = false;
 
                 setDateTime();
 
                 createSchedule();
 
-                updateTimes(0);
+                //setOnGrid();
+
+                updateTimes(-1);
             }
         }
 
+        // Set the values of the next dates relative to today
         private void setDateTime()
         {
             DateTime today = DateTime.Today;
@@ -38,6 +42,7 @@ namespace VR_Web_Project
             date7.Text = today.AddDays(7).ToShortDateString();
         }
 
+        // Create a schedule using the SQL DB
         private void createSchedule()
         {
             string cmdString = "SELECT * FROM Appointment";
@@ -67,45 +72,52 @@ namespace VR_Web_Project
                     }
                 }
 
-                string[] daysValue = { "DAYS/TIMES", "Sunday " + Next(DayOfWeek.Sunday),
+                Session["Schedule"] = week;
+
+
+                reader.Close();
+            }
+        }
+        
+        private void setOnGrid()
+        {
+            string[][] week = (string[][])Session["Schedule"];
+
+            string[] daysValue = { "DAYS/TIMES", "Sunday " + Next(DayOfWeek.Sunday),
                                         "Monday " + Next(DayOfWeek.Monday),
                                         "Tuesday" + Next(DayOfWeek.Tuesday),
                                         "Wednesday" + Next(DayOfWeek.Wednesday),
                                         "Thursday" + Next(DayOfWeek.Thursday),
                                         "Friday" + Next(DayOfWeek.Friday),
                                         "Saturday" + Next(DayOfWeek.Saturday) };
-                
-                DataTable dt = new DataTable("Appointments");
 
-                dt.Columns.Add(new DataColumn(daysValue[0]));
-                dt.Columns.Add(new DataColumn(daysValue[1]));
-                dt.Columns.Add(new DataColumn(daysValue[2]));
-                dt.Columns.Add(new DataColumn(daysValue[3]));
-                dt.Columns.Add(new DataColumn(daysValue[4]));
-                dt.Columns.Add(new DataColumn(daysValue[5]));
-                dt.Columns.Add(new DataColumn(daysValue[6]));
-                dt.Columns.Add(new DataColumn(daysValue[7]));
+            DataTable dt = new DataTable("Appointments");
+
+            dt.Columns.Add(new DataColumn(daysValue[0]));
+            dt.Columns.Add(new DataColumn(daysValue[1]));
+            dt.Columns.Add(new DataColumn(daysValue[2]));
+            dt.Columns.Add(new DataColumn(daysValue[3]));
+            dt.Columns.Add(new DataColumn(daysValue[4]));
+            dt.Columns.Add(new DataColumn(daysValue[5]));
+            dt.Columns.Add(new DataColumn(daysValue[6]));
+            dt.Columns.Add(new DataColumn(daysValue[7]));
 
 
-                for (int i = 0; i < 14; i++)
+            for (int i = 0; i < 14; i++)
+            {
+                DataRow dr = dt.NewRow();
+                for (int j = 0; j < 8; j++)
                 {
-                    DataRow dr = dt.NewRow();
-                    for (int j = 0; j < 8; j++)
-                    {
-                        dr[daysValue[j]] = week[j][i];
-                    }
-                    dt.Rows.Add(dr);
+                    dr[daysValue[j]] = week[j][i];
                 }
-
-                grid.DataSource = dt;
-                grid.DataBind();
-
-
-                reader.Close();
+                dt.Rows.Add(dr);
             }
 
-            Session["Schedule"] = week;
+            grid.DataSource = dt;
+            grid.DataBind();
+
         }
+        // Get the date of the next /weekday/
         private string Next(DayOfWeek dayOfWeek)
         {
             DateTime from = DateTime.Today;
@@ -121,18 +133,21 @@ namespace VR_Web_Project
 
             return "\n (" + from.ToShortDateString() + ")";
         }
-
+        // Update time values for the time ddl
         private void updateTimes(int day)
         {
-            string[] currentDay = ((string[][])Session["Schedule"])[day+1];
+            string[][] week = (string[][])Session["Schedule"];
 
             string[] times = new string[14] { "08:00", "09:15", "10:30", "11:45", "12:00", "13:15", "14:30", "15:45", "16:00", "17:15", "18:30", "19:45", "20:00", "21:15"};
 
-            for (int i = 1; i < 8; i++)
+            if (day != -1)
             {
-                if (currentDay[i] != "0")
+                for (int i = 0; i < 13; i++)
                 {
-                    times[i - 1] = "לא זמין";
+                    if (week[day + 1][i] != "0")
+                    {
+                        times[i] = "לא זמין";
+                    }
                 }
             }
 
@@ -151,34 +166,52 @@ namespace VR_Web_Project
             time13.Text = times[12];
             time14.Text = times[13];
         }
+
+        // Button press for participants-related objects
         protected void ParticipantsOrder(object sender, EventArgs e)
         {
             Button btn = sender as Button;
             label1.Text = "מספר משתתפים נבחר: " + btn.Attributes["CustomParameter"].ToString();
             Session["choosePartic"] = true;
 
-            if ((bool)Session["choosePartic"] && (bool)Session["chooseDay"]) {
+            if ((bool)Session["choosePartic"] && (bool)Session["chooseDay"] && (bool)Session["chooseTime"])
+            {
                 label3.CssClass = "span3";
             }
         }
-
+        // Button press for date-related objects
         protected void DayOrder(object sender, EventArgs e)
         {
             Button btn = sender as Button;
             label2.Text = "תאריך נבחר: " + btn.Text;
             Session["chooseDay"] = true;
 
-            if ((bool)Session["choosePartic"] && (bool)Session["chooseDay"])
+            if ((bool)Session["choosePartic"] && (bool)Session["chooseDay"] && (bool)Session["chooseTime"])
             {
                 label3.CssClass = "span3";
             }
 
-            updateTimes((int)DateTime.Today.DayOfWeek);
+            label4.Text = "הזמנת זמן";
+            Session["chooseTime"] = false;
+
+            DateTime date = Convert.ToDateTime(btn.Text);
+            updateTimes((int)date.DayOfWeek);
         }
 
+        // Button press for time-related objects
         protected void TimeOrder(object sender, EventArgs e)
         {
+            Button btn = sender as Button;
+            if (btn.Text != "לא זמין")
+            {
+                label4.Text = "זמן נבחר: " + btn.Text;
+                Session["chooseTime"] = true;
 
+                if ((bool)Session["choosePartic"] && (bool)Session["chooseDay"] && (bool)Session["chooseTime"])
+                {
+                    label3.CssClass = "span3";
+                }
+            }
         }
         protected void Nextpage(object sender, EventArgs e)
         {
