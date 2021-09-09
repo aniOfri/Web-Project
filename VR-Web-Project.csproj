@@ -73,6 +73,7 @@
     <Content Include="App_Data\VirtuariaDB_log.ldf">
       <DependentUpon>VirtuariaDB.mdf</DependentUpon>
     </Content>
+    <Content Include="Global.asax" />
     <Content Include="Home.aspx" />
     <Content Include="HomeScript.js" />
     <Content Include="HomeStyle.css" />
@@ -87,6 +88,10 @@
     </Compile>
     <Compile Include="Appointments.aspx.designer.cs">
       <DependentUpon>Appointments.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DAL.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
