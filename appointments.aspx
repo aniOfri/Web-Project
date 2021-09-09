@@ -27,7 +27,7 @@
 
      <ul>
         <li>
-            <asp:Label runat="server" CssClass="AspChoose"><asp:Label runat="server" id="label3" CssClass="span2"><asp:Button runat="server"  Text="הבא" CssClass="transparentButton2 transparentButton" OnClick="Next" /></asp:Label></asp:Label>
+            <asp:Label runat="server" CssClass="AspChoose"><asp:Label runat="server" id="label3" CssClass="span2"><asp:Button runat="server"  Text="הבא" CssClass="transparentButton2 transparentButton" OnClick="Nextpage" /></asp:Label></asp:Label>
         </li>
     </ul>
         
@@ -46,7 +46,7 @@
             </ul>
         </li>
     </ul>
-        <ul class="menu cf">
+    <ul class="menu cf">
         <li>
             <h1 class="choose"><span><asp:Label runat="server" ID="label2" Text="הזמנה מראש"></asp:Label></span></h1>
             <ul class="submenu">
@@ -57,6 +57,20 @@
                 <li class="option"><asp:Button runat="server" ID="date5" CustomParameter="5"  text="חמישה ימים" CssClass="transparentButton" OnClick="DayOrder"/></li>
                 <li class="option"><asp:Button runat="server" ID="date6" CustomParameter="6"  text="שישה ימים" CssClass="transparentButton" OnClick="DayOrder"/></li>
                 <li class="option"><asp:Button runat="server" ID="date7" CustomParameter="7"  text="שבעה ימים" CssClass="transparentButton" OnClick="DayOrder"/></li>
+            </ul>
+        </li>
+    </ul>
+    <ul class="menu cf">
+        <li>
+            <h1 class="choose"><span><asp:Label runat="server" ID="label4" Text="הזמנה מראש"></asp:Label></span></h1>
+            <ul class="submenu">
+                <li class="option"><asp:Button runat="server" ID="Button1" CustomParameter="1"  text="" CssClass="transparentButton" OnClick="DayOrder"/></li>
+                <li class="option"><asp:Button runat="server" ID="Button2" CustomParameter="2"  text="" CssClass="transparentButton" OnClick="DayOrder"/></li>
+                <li class="option"><asp:Button runat="server" ID="Button3" CustomParameter="3"  text="" CssClass="transparentButton" OnClick="DayOrder"/></li>
+                <li class="option"><asp:Button runat="server" ID="Button4" CustomParameter="4"  text="" CssClass="transparentButton" OnClick="DayOrder"/></li>
+                <li class="option"><asp:Button runat="server" ID="Button5" CustomParameter="5"  text="" CssClass="transparentButton" OnClick="DayOrder"/></li>
+                <li class="option"><asp:Button runat="server" ID="Button6" CustomParameter="6"  text="" CssClass="transparentButton" OnClick="DayOrder"/></li>
+                <li class="option"><asp:Button runat="server" ID="Button7" CustomParameter="7"  text="" CssClass="transparentButton" OnClick="DayOrder"/></li>
             </ul>
         </li>
     </ul>

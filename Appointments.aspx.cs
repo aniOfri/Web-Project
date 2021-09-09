@@ -56,16 +56,22 @@ namespace VR_Web_Project
                 while (reader.Read())
                 {
                     DateTime date = (DateTime)reader["DateTime"];
-                    int days = (date - DateTime.Today).Days;
+                    int days = (date - DateTime.Today).Days + 1 + (int)DateTime.Today.DayOfWeek;
+                    if (days > 7) days = days - 7;
                     int hours = (date - DateTime.Today).Hours - 8;
                     if (days > 0)
                     {
                         week[days][hours] = ((int)reader["Participants"]).ToString();
                     }
-                    label1.Text = hours.ToString();
                 }
 
-                string[] daysValue = { "DAYS/TIMES", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" };
+                string[] daysValue = { "DAYS/TIMES", "Sunday " + Next(DayOfWeek.Sunday),
+                                        "Monday " + Next(DayOfWeek.Monday),
+                                        "Tuesday" + Next(DayOfWeek.Tuesday),
+                                        "Wednesday" + Next(DayOfWeek.Wednesday),
+                                        "Thursday" + Next(DayOfWeek.Thursday),
+                                        "Friday" + Next(DayOfWeek.Friday),
+                                        "Saturday" + Next(DayOfWeek.Saturday) };
                 
                 DataTable dt = new DataTable("Appointments");
 
@@ -90,15 +96,28 @@ namespace VR_Web_Project
                 }
 
                 grid.DataSource = dt;
-                grid.DataBind();
+                //grid.DataBind();
 
 
                 reader.Close();
             }
 
-
-
             Session["Schedule"] = week;
+        }
+        public static string Next(DayOfWeek dayOfWeek)
+        {
+            DateTime from = DateTime.Today;
+            if (from.DayOfWeek != dayOfWeek)
+            {
+                int start = (int)from.DayOfWeek;
+                int target = (int)dayOfWeek;
+                if (target <= start)
+                    target += 7;
+
+                from = from.AddDays(target - start);
+            }
+
+            return "\n (" + from.ToShortDateString() + ")";
         }
 
         protected void ParticipantsOrder(object sender, EventArgs e)
@@ -110,7 +129,6 @@ namespace VR_Web_Project
             if ((bool)Session["choosePartic"] && (bool)Session["chooseDay"]) {
                 label3.CssClass = "span3";
             }
-
         }
 
         protected void DayOrder(object sender, EventArgs e)
@@ -124,8 +142,7 @@ namespace VR_Web_Project
                 label3.CssClass = "span3";
             }
         }
-
-        protected void Next(object sender, EventArgs e)
+        protected void Nextpage(object sender, EventArgs e)
         {
 
         }
