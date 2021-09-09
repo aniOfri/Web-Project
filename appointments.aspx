@@ -27,12 +27,12 @@
 
      <ul>
         <li>
-            <asp:Label runat="server" CssClass="AspChoose"><asp:Label runat="server" id="label3" CssClass="span2"><asp:Button runat="server"  Text="הבא" CssClass="transparentButton2 transparentButton"  /></asp:Label></asp:Label>
+            <asp:Label runat="server" CssClass="AspChoose"><asp:Label runat="server" id="label3" CssClass="span2"><asp:Button runat="server"  Text="הבא" CssClass="transparentButton2 transparentButton" OnClick="Next" /></asp:Label></asp:Label>
         </li>
     </ul>
         
     <div class="ddls">
-
+    <asp:DataGrid ID="grid" runat="server" AutoGenerateColumns="true"></asp:DataGrid>
     <ul class="menu cf">
         <li>
             <h1 class="choose"><span><asp:Label runat="server" ID="label1" Text="מספר משתתפים"></asp:Label></span></h1>
