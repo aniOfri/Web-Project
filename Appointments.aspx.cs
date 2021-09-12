@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
@@ -33,20 +30,25 @@ namespace VR_Web_Project
         private void setDateTime()
         {
             DateTime today = DateTime.Today;
-            date1.Text = today.AddDays(1).ToShortDateString();
+            for (int i = 1; i < 8; i++)
+            {
+                Button l = (Button)Page.FindControl("date" + i);
+                l.Text = today.AddDays(i).ToShortDateString();
+            }
+
+            /*date1.Text = today.AddDays(1).ToShortDateString();
             date2.Text = today.AddDays(2).ToShortDateString();
             date3.Text = today.AddDays(3).ToShortDateString();
             date4.Text = today.AddDays(4).ToShortDateString();
             date5.Text = today.AddDays(5).ToShortDateString();
             date6.Text = today.AddDays(6).ToShortDateString();
-            date7.Text = today.AddDays(7).ToShortDateString();
+            date7.Text = today.AddDays(7).ToShortDateString();*/
         }
 
         // Create a schedule using the SQL DB
         private void createSchedule()
         {
-            string cmdString = "SELECT * FROM Appointment";
-            string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\VirtuariaDB.mdf;Integrated Security=True";
+            DAL DAL = new DAL();
 
             string[][] week = new string[8][];
             week[0] = new string[14] { "08:00", "09:15", "10:30", "11:45", "12:00", "13:15", "14:30", "15:45", "16:00", "17:15", "18:30", "19:45", "20:00", "21:15"};
@@ -55,30 +57,23 @@ namespace VR_Web_Project
                 week[i] = new string[14] { "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"};
             }
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            string cmdString = "SELECT * FROM Appointment";
+            SqlDataReader reader = DAL.GetReader(cmdString);
+            while (reader.Read())
             {
-                SqlCommand sqlCommand = new SqlCommand(cmdString, connection);
-                connection.Open();
-                SqlDataReader reader = sqlCommand.ExecuteReader();
-                while (reader.Read())
+                DateTime date = (DateTime)reader["DateTime"];
+                int days = (date - DateTime.Today).Days + 1 + (int)DateTime.Today.DayOfWeek;
+                if (days > 7) days = days - 7;
+                int hours = (date - DateTime.Today).Hours - 8;
+                if (days > 0)
                 {
-                    DateTime date = (DateTime)reader["DateTime"];
-                    int days = (date - DateTime.Today).Days + 1 + (int)DateTime.Today.DayOfWeek;
-                    if (days > 7) days = days - 7;
-                    int hours = (date - DateTime.Today).Hours - 8;
-                    if (days > 0)
-                    {
-                        week[days][hours] = ((int)reader["Participants"]).ToString();
-                    }
+                    week[days][hours] = ((int)reader["Participants"]).ToString();
                 }
-
-                Session["Schedule"] = week;
-
-
-                reader.Close();
             }
+            reader.Close();
+
+            Session["Schedule"] = week;
         }
-        
         private void setOnGrid()
         {
             string[][] week = (string[][])Session["Schedule"];
@@ -93,14 +88,8 @@ namespace VR_Web_Project
 
             DataTable dt = new DataTable("Appointments");
 
-            dt.Columns.Add(new DataColumn(daysValue[0]));
-            dt.Columns.Add(new DataColumn(daysValue[1]));
-            dt.Columns.Add(new DataColumn(daysValue[2]));
-            dt.Columns.Add(new DataColumn(daysValue[3]));
-            dt.Columns.Add(new DataColumn(daysValue[4]));
-            dt.Columns.Add(new DataColumn(daysValue[5]));
-            dt.Columns.Add(new DataColumn(daysValue[6]));
-            dt.Columns.Add(new DataColumn(daysValue[7]));
+            for (int i = 0; i < 8; i++)
+                dt.Columns.Add(new DataColumn(daysValue[i]));
 
 
             for (int i = 0; i < 14; i++)
@@ -151,7 +140,13 @@ namespace VR_Web_Project
                 }
             }
 
-            time1.Text = times[0];
+            for (int i = 0; i < 14; i++)
+            {
+                Label l = Page.FindControl("label" + (i + 1)) as Label;
+                l.Text = times[i];
+            }
+
+            /*time1.Text = times[0];
             time2.Text = times[1];
             time3.Text = times[2];
             time4.Text = times[3];
@@ -164,7 +159,7 @@ namespace VR_Web_Project
             time11.Text = times[10];
             time12.Text = times[11];
             time13.Text = times[12];
-            time14.Text = times[13];
+            time14.Text = times[13];*/
         }
 
         // Button press for participants-related objects
