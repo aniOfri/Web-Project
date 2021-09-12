@@ -32,17 +32,9 @@ namespace VR_Web_Project
             DateTime today = DateTime.Today;
             for (int i = 1; i < 8; i++)
             {
-                Button l = (Button)Page.FindControl("date" + i);
-                l.Text = today.AddDays(i).ToShortDateString();
+                Button btn =Master.FindControl("TitlePlaceHolder").FindControl("date"+1) as Button;
+                btn.Text = today.AddDays(i).ToShortDateString();
             }
-
-            /*date1.Text = today.AddDays(1).ToShortDateString();
-            date2.Text = today.AddDays(2).ToShortDateString();
-            date3.Text = today.AddDays(3).ToShortDateString();
-            date4.Text = today.AddDays(4).ToShortDateString();
-            date5.Text = today.AddDays(5).ToShortDateString();
-            date6.Text = today.AddDays(6).ToShortDateString();
-            date7.Text = today.AddDays(7).ToShortDateString();*/
         }
 
         // Create a schedule using the SQL DB
@@ -142,24 +134,10 @@ namespace VR_Web_Project
 
             for (int i = 0; i < 14; i++)
             {
-                Label l = Page.FindControl("label" + (i + 1)) as Label;
+                Button l = Master.FindControl("TitlePlaceHolder").FindControl("time" + 1) as Button;
                 l.Text = times[i];
             }
 
-            /*time1.Text = times[0];
-            time2.Text = times[1];
-            time3.Text = times[2];
-            time4.Text = times[3];
-            time5.Text = times[4];
-            time6.Text = times[5];
-            time7.Text = times[6];
-            time8.Text = times[7];
-            time9.Text = times[8];
-            time10.Text = times[9];
-            time11.Text = times[10];
-            time12.Text = times[11];
-            time13.Text = times[12];
-            time14.Text = times[13];*/
         }
 
         // Button press for participants-related objects
