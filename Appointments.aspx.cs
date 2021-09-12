@@ -32,7 +32,7 @@ namespace VR_Web_Project
             DateTime today = DateTime.Today;
             for (int i = 1; i < 8; i++)
             {
-                Button btn =Master.FindControl("TitlePlaceHolder").FindControl("date"+1) as Button;
+                Button btn =Master.FindControl("TitlePlaceHolder").FindControl("date"+i) as Button;
                 btn.Text = today.AddDays(i).ToShortDateString();
             }
         }
@@ -134,7 +134,7 @@ namespace VR_Web_Project
 
             for (int i = 0; i < 14; i++)
             {
-                Button l = Master.FindControl("TitlePlaceHolder").FindControl("time" + 1) as Button;
+                Button l = Master.FindControl("TitlePlaceHolder").FindControl("time" + (i + 1)) as Button;
                 l.Text = times[i];
             }
 

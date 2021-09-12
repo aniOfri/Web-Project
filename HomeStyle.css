@@ -7,7 +7,7 @@ h1.title {
     margin: 2px;
     font-family: 'Rubik', sans-serif;
     text-align: center;
-    font-size: 75px;
+    font-size: 60px;
     color: #FFF;
     text-shadow:
    -1px -1px 0 #000,  
@@ -72,15 +72,13 @@ section img#person {
 }
 
 .secContent {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    margin-top: -55%;
+    position: relative;
 }
 
 .sec h1 {
-    font-size: 3em;
-    padding-bottom: 50px;
+    font-size: 50px;
+    padding-bottom: 5%;
 }
 
 .sec p {
