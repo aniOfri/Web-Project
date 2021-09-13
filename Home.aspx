@@ -11,6 +11,7 @@
         </ul>
     </nav>
     <a class="cta" href="Appointments.aspx">הזמנות</a>
+    <a class="cta" href="Login.aspx">התחברות</a>
 </asp:Content>
 <asp:Content ID="titleContent" ContentPlaceHolderID="TitlePlaceHolder" runat="server">
     <section>

@@ -7,33 +7,32 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <link rel="stylesheet" href="MasterStyle.css">
+    <title></title>
 </head>
 <body dir="rtl">
-    <form id="form1" runat="server">
-        <div>
-            <div class="header">
-                <header class="navbar">
-                    <img class="logo" src="VIRTUARIA.svg" alt="logo" />
-                    <asp:ContentPlaceHolder ID="headerPlaceHolder" runat="server">
-                    </asp:ContentPlaceHolder>
-                </header>
-             </div>
-            <asp:ContentPlaceHolder ID="TitlePlaceHolder" runat="server">
-            </asp:ContentPlaceHolder>
-
-            <asp:ContentPlaceHolder ID="ScriptPlaceHolder" runat="server">
-            </asp:ContentPlaceHolder>
-
-            <div class="footerContact">
-                <nav>
-                    <ul class="footer">
-                        <li><a>[אימייל]</a></li>
-                        <li><a">[מספר טלפון]</a></li>
-                        <li><a>[כתובת]</a></li>
-                    </ul>
-                </nav>
+    <div>
+        <div class="header">
+            <header class="navbar">
+                <img class="logo" src="VIRTUARIA.svg" alt="logo" />
+                <asp:ContentPlaceHolder ID="headerPlaceHolder" runat="server">
+                </asp:ContentPlaceHolder>
+            </header>
             </div>
+        <asp:ContentPlaceHolder ID="TitlePlaceHolder" runat="server">
+        </asp:ContentPlaceHolder>
+
+        <asp:ContentPlaceHolder ID="ScriptPlaceHolder" runat="server">
+        </asp:ContentPlaceHolder>
+
+        <div class="footerContact">
+            <nav>
+                <ul class="footer">
+                    <li><a>[אימייל]</a></li>
+                    <li><a">[מספר טלפון]</a></li>
+                    <li><a>[כתובת]</a></li>
+                </ul>
+            </nav>
         </div>
-    </form>
+    </div>
 </body>
 </html>

@@ -11,8 +11,11 @@
         </ul>
     </nav>
     <a class="cta" href="Home.aspx">בית</a>
+    <a class="cta" href="Login.aspx">התחברות</a>
 </asp:Content>
 <asp:Content ID="pricesContent" ContentPlaceHolderID="TitlePlaceHolder" runat="server">
+    <form runat="server">
+
     <img src="stars.png" class="stars"/>
     <div class="prices">
         <h1 class="prices">מחירון</h1>
@@ -110,7 +113,7 @@
     </ul>
     </div>
     </div>
-
+    </form>
 
  </asp:Content>
 

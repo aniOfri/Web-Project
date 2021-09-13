@@ -43,7 +43,15 @@ namespace VR_Web_Project
             DAL DAL = new DAL();
 
             string[][] week = new string[8][];
-            week[0] = new string[14] { "08:00", "09:15", "10:30", "11:45", "12:00", "13:15", "14:30", "15:45", "16:00", "17:15", "18:30", "19:45", "20:00", "21:15"};
+            week[0] = new string[14];// { "08:00", "09:15", "10:30", "11:45", "12:00", "13:15", "14:30", "15:45", "16:00", "17:15", "18:30", "19:45", "20:00", "21:15"};
+
+            Time time = new Time(8, 0);
+            for (int i = 0; i < 14; i++)
+            {
+                week[0][i] = time.GetTime();
+                time.AddTime(1, 15);
+            }
+
             for (int i = 1; i < 8; i++)
             {
                 week[i] = new string[14] { "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"};
@@ -112,15 +120,22 @@ namespace VR_Web_Project
                 from = from.AddDays(target - start);
             }
 
-            return "\n (" + from.ToShortDateString() + ")";
+            return "(" + from.ToShortDateString() + ")";
         }
         // Update time values for the time ddl
         private void updateTimes(int day)
         {
             string[][] week = (string[][])Session["Schedule"];
 
-            string[] times = new string[14] { "08:00", "09:15", "10:30", "11:45", "12:00", "13:15", "14:30", "15:45", "16:00", "17:15", "18:30", "19:45", "20:00", "21:15"};
-
+            string[] times = new string[14]; //{ "08:00", "09:15", "10:30", "11:45", "13:00", "14:15", "15:30", "16:45", "18:00", "19:15", "20:30", "21:45", "23:00", "00:15"};
+            
+            Time time = new Time(8, 0);
+            for (int i = 0; i < 14; i++)
+            {
+                times[i] = time.GetTime();
+                time.AddTime(1, 15);
+            }
+            
             if (day != -1)
             {
                 for (int i = 0; i < 13; i++)
