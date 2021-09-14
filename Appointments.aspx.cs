@@ -43,7 +43,7 @@ namespace VR_Web_Project
             DAL DAL = new DAL();
 
             string[][] week = new string[8][];
-            week[0] = new string[14];// { "08:00", "09:15", "10:30", "11:45", "12:00", "13:15", "14:30", "15:45", "16:00", "17:15", "18:30", "19:45", "20:00", "21:15"};
+            week[0] = new string[14]; // { "08:00", "09:15", "10:30", "11:45", "12:00", "13:15", "14:30", "15:45", "16:00", "17:15", "18:30", "19:45", "20:00", "21:15"};
 
             Time time = new Time(8, 0);
             for (int i = 0; i < 14; i++)
@@ -54,7 +54,9 @@ namespace VR_Web_Project
 
             for (int i = 1; i < 8; i++)
             {
-                week[i] = new string[14] { "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"};
+                week[i] = new string[14]; //{ "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"};
+                for (int j = 0; j < 14; j++)
+                    week[i][j] = "0";
             }
 
             string cmdString = "SELECT * FROM Appointment";
@@ -78,13 +80,18 @@ namespace VR_Web_Project
         {
             string[][] week = (string[][])Session["Schedule"];
 
-            string[] daysValue = { "DAYS/TIMES", "Sunday " + Next(DayOfWeek.Sunday),
+            string[] daysValue = new string[8]; /*{ "DAYS/TIMES", "Sunday " + Next(DayOfWeek.Sunday),
                                         "Monday " + Next(DayOfWeek.Monday),
                                         "Tuesday" + Next(DayOfWeek.Tuesday),
                                         "Wednesday" + Next(DayOfWeek.Wednesday),
                                         "Thursday" + Next(DayOfWeek.Thursday),
                                         "Friday" + Next(DayOfWeek.Friday),
-                                        "Saturday" + Next(DayOfWeek.Saturday) };
+                                        "Saturday" + Next(DayOfWeek.Saturday) };*/
+
+            // Add the days and dates to the daysValue array by casting an integer to a "DayOfWeek" enum
+            daysValue[0] = "DAYS/TIMES";
+            for (int i = 1; i < 8; i++)
+                daysValue[i] = $"{((DayOfWeek)i)} {Next((DayOfWeek)i)}";
 
             DataTable dt = new DataTable("Appointments");
 
