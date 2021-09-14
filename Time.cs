@@ -28,9 +28,7 @@ namespace VR_Web_Project
             }
 
             if (this.Hour == 24)
-            {
                 this.Hour = 0;
-            }
         }
 
         public string GetTime()

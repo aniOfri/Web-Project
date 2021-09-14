@@ -20,7 +20,7 @@ namespace VR_Web_Project
 
                 createSchedule();
 
-                //setOnGrid();
+                setOnGrid();
 
                 updateTimes(-1);
             }
@@ -43,8 +43,13 @@ namespace VR_Web_Project
             DAL DAL = new DAL();
 
             string[][] week = new string[8][];
-            week[0] = new string[14]; // { "08:00", "09:15", "10:30", "11:45", "12:00", "13:15", "14:30", "15:45", "16:00", "17:15", "18:30", "19:45", "20:00", "21:15"};
+            week[0] = new string[14];
+            
 
+            /* Available times in the system:
+             "08:00", "09:15", "10:30", "11:45", "12:00",
+             "13:15", "14:30", "15:45", "16:00", "17:15",
+             "18:30", "19:45", "20:00", "21:15" */
             Time time = new Time(8, 0);
             for (int i = 0; i < 14; i++)
             {
@@ -54,7 +59,7 @@ namespace VR_Web_Project
 
             for (int i = 1; i < 8; i++)
             {
-                week[i] = new string[14]; //{ "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"};
+                week[i] = new string[14];
                 for (int j = 0; j < 14; j++)
                     week[i][j] = "0";
             }
@@ -80,18 +85,11 @@ namespace VR_Web_Project
         {
             string[][] week = (string[][])Session["Schedule"];
 
-            string[] daysValue = new string[8]; /*{ "DAYS/TIMES", "Sunday " + Next(DayOfWeek.Sunday),
-                                        "Monday " + Next(DayOfWeek.Monday),
-                                        "Tuesday" + Next(DayOfWeek.Tuesday),
-                                        "Wednesday" + Next(DayOfWeek.Wednesday),
-                                        "Thursday" + Next(DayOfWeek.Thursday),
-                                        "Friday" + Next(DayOfWeek.Friday),
-                                        "Saturday" + Next(DayOfWeek.Saturday) };*/
-
+            string[] daysValue = new string[8];
             // Add the days and dates to the daysValue array by casting an integer to a "DayOfWeek" enum
             daysValue[0] = "DAYS/TIMES";
-            for (int i = 1; i < 8; i++)
-                daysValue[i] = $"{((DayOfWeek)i)} {Next((DayOfWeek)i)}";
+            for (int i = 0; i < 7; i++)
+                daysValue[i+1] = $"{(DayOfWeek)i} {Next((DayOfWeek)i)}";
 
             DataTable dt = new DataTable("Appointments");
 
@@ -134,7 +132,7 @@ namespace VR_Web_Project
         {
             string[][] week = (string[][])Session["Schedule"];
 
-            string[] times = new string[14]; //{ "08:00", "09:15", "10:30", "11:45", "13:00", "14:15", "15:30", "16:45", "18:00", "19:15", "20:30", "21:45", "23:00", "00:15"};
+            string[] times = new string[14];
             
             Time time = new Time(8, 0);
             for (int i = 0; i < 14; i++)
@@ -159,7 +157,14 @@ namespace VR_Web_Project
                 Button l = Master.FindControl("TitlePlaceHolder").FindControl("time" + (i + 1)) as Button;
                 l.Text = times[i];
             }
+        }
 
+        // If all paramaters (time, date, and partc.) has been chosen, the function will return true
+        private bool allowToProceed()
+        {
+            return (bool)Session["choosePartic"] 
+                && (bool)Session["chooseDay"] 
+                && (bool)Session["chooseTime"];
         }
 
         // Button press for participants-related objects
@@ -169,7 +174,7 @@ namespace VR_Web_Project
             label1.Text = "מספר משתתפים נבחר: " + btn.Attributes["CustomParameter"].ToString();
             Session["choosePartic"] = true;
 
-            if ((bool)Session["choosePartic"] && (bool)Session["chooseDay"] && (bool)Session["chooseTime"])
+            if (allowToProceed())
             {
                 label3.CssClass = "span3";
             }
@@ -181,7 +186,7 @@ namespace VR_Web_Project
             label2.Text = "תאריך נבחר: " + btn.Text;
             Session["chooseDay"] = true;
 
-            if ((bool)Session["choosePartic"] && (bool)Session["chooseDay"] && (bool)Session["chooseTime"])
+            if (allowToProceed())
             {
                 label3.CssClass = "span3";
             }
@@ -202,7 +207,7 @@ namespace VR_Web_Project
                 label4.Text = "זמן נבחר: " + btn.Text;
                 Session["chooseTime"] = true;
 
-                if ((bool)Session["choosePartic"] && (bool)Session["chooseDay"] && (bool)Session["chooseTime"])
+                if (allowToProceed())
                 {
                     label3.CssClass = "span3";
                 }
