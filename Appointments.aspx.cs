@@ -20,7 +20,7 @@ namespace VR_Web_Project
 
                 createSchedule();
 
-                setOnGrid();
+                //setOnGrid();
 
                 updateTimes(-1);
             }
@@ -96,7 +96,6 @@ namespace VR_Web_Project
             for (int i = 0; i < 8; i++)
                 dt.Columns.Add(new DataColumn(daysValue[i]));
 
-
             for (int i = 0; i < 14; i++)
             {
                 DataRow dr = dt.NewRow();
@@ -146,9 +145,7 @@ namespace VR_Web_Project
                 for (int i = 0; i < 13; i++)
                 {
                     if (week[day + 1][i] != "0")
-                    {
                         times[i] = "לא זמין";
-                    }
                 }
             }
 
@@ -175,9 +172,7 @@ namespace VR_Web_Project
             Session["choosePartic"] = true;
 
             if (allowToProceed())
-            {
                 label3.CssClass = "span3";
-            }
         }
         // Button press for date-related objects
         protected void DayOrder(object sender, EventArgs e)
@@ -187,9 +182,7 @@ namespace VR_Web_Project
             Session["chooseDay"] = true;
 
             if (allowToProceed())
-            {
                 label3.CssClass = "span3";
-            }
 
             label4.Text = "הזמנת זמן";
             Session["chooseTime"] = false;
@@ -208,9 +201,7 @@ namespace VR_Web_Project
                 Session["chooseTime"] = true;
 
                 if (allowToProceed())
-                {
                     label3.CssClass = "span3";
-                }
             }
         }
         protected void Nextpage(object sender, EventArgs e)

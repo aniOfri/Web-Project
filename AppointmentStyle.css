@@ -6,7 +6,7 @@ body {
 
 
 div.prices {
-    padding-top: 5%;
+    padding-top: 8%;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
@@ -30,7 +30,7 @@ h1.prices {
 ul {
     list-style: none;
     margin: 0 auto;
-    padding-bottom: 2%;
+    padding-bottom: 0.5%;
 }
 
 div.footerContact {
@@ -121,7 +121,7 @@ ul.menu {
 }
 
 .menu li.option {
-    transition: all 0.3s ease 0s;
+    transition: all 0.5s cubic-bezier(.15,.40,.15,1) 0s;
 }
 
 .menu > li > a {
@@ -172,6 +172,7 @@ ul.inline {
 /* Show dropdown */
 .submenu,
 .submenu li {
+    transform: translateY(-50px);
     opacity: 0;
     visibility: hidden;
 }
@@ -179,6 +180,7 @@ ul.inline {
 .menu > li:hover .submenu,
 .menu > li:hover .submenu li {
     opacity: 1;
+    transform: translateY(0px);
     visibility: visible;
 }
 

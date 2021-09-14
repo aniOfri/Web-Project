@@ -1,6 +1,7 @@
 ﻿@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap');
 
 body {
+    overflow-y: hidden;
 }
 
 h1.title {
@@ -14,4 +15,75 @@ h1.title {
     1px -1px 0 #000,
     -1px 1px 0 #000,
      1px 1px 0 #000;
+    padding-bottom: 20px;
+}
+
+h2.subtitle {
+    padding-top: 25%;
+    font-family: 'Rubik', sans-serif;
+    text-align: center;
+    color: #FFF;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    transition: all 0.2s cubic-bezier(.60,-0.30,.15,1) 0s;
+    font-size: 20px;
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    transform: translate3d(50px, 0px, 0px);
+}
+
+h2.subtitle:hover {
+    font-size: 35px;
+    transform: translate3d(50px, -15px, 0px);
+    cursor: pointer;
+}
+
+
+img.stars {
+    position: absolute;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.formDiv {
+    display:table;
+    width: 100%;
+    margin:auto;
+    padding-top: 10%;
+    padding-bottom: 20%;
+}
+
+form {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+
+div.footerContact {
+    bottom: 0;
+}
+
+label {
+    font-family: 'Rubik', sans-serif;
+    color: white;
+}
+
+.transparentButton {
+    background-color: transparent;
+    border: none;
+    color: #FFFFFF;
+    font-size: 20px;
+}
+
+.backgroundButton {
+    background-color: #34495e;
+    border-radius: 50px;
+    margin: 5px;
+    width: 100px;
+}
+
+.center{
+    width: 100px;
+    margin: auto;
+    text-align: center;
 }
