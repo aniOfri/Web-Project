@@ -17,18 +17,23 @@
     <img src="stars.png" class="stars"/>
     <div class="formDiv">
         <form id="formLogin" onsubmit="return LogValid();" method="get">
-                <h1 class="title">התחברות</h1>
+            
+            <div class="sidebyside">
+                <div><h1 class="title">התחברות</h1></div>
+                <div><a href="Register.aspx"><h2>או הרשמה</h2></a></div>
+             </div>
+
             <label for="textLogin">שם משתמש:</label><br />
             <input id="textLogin" type="text" name="name" /><br />
-            <a class="errorMsgs" id="logTextError"></a><br /> <!--- Error msg -->
+            <a class="errorMsgs" id="logTextError"></a><br /><br /> <!--- Error msg -->
             
             <label for="passLogin">סיסמה:</label> <br />
             <input id="passLogin" type="password" name="password"/><br />
-            <a class="errorMsgs" id="logPassError"></a><br /><br /> <!--- Error msg -->
+            <a class="errorMsgs" id="logPassError"></a><br /> <!--- Error msg -->
             
+            <label><%=LogStatus%></label><br /><br />
             <div class="center">
                 <div class="backgroundButton"><input id="submitLogin" type="submit" name="submit" class="transparentButton" /></div>
-                <h2 class="subtitle">או הרשם</h2>
             </div>
         </form>
     </div>

@@ -36,7 +36,43 @@ namespace VR_Web_Project
             conn.Close();
             conn.Dispose();
         }
-        
+
+        // IsExist
+
+        public bool IsExist(string sql)
+        {
+            SqlConnection conn = ConnectToDb();
+            conn.Open();
+            SqlCommand com = new SqlCommand(sql, conn);
+            SqlDataReader data = com.ExecuteReader();
+            bool found;
+            found = (bool)data.Read();
+            conn.Close();
+            return found;
+        }
+
+        // DataTable
+        public DataTable ExecuteDataTable(string sql)
+        {
+            SqlConnection conn = ConnectToDb();
+            conn.Open();
+            SqlDataAdapter tableAdapter = new SqlDataAdapter(sql, conn);
+            DataTable dt = new DataTable();
+            tableAdapter.Fill(dt);
+            return dt;
+        }
+
+        // ExecuteScalar
+        public int ExecuteScalar(string sql)
+        {
+            SqlConnection conn = ConnectToDb();
+            conn.Open();
+            SqlCommand com = new SqlCommand(sql, conn);
+            int scalar = (int)com.ExecuteScalar();
+            return scalar;
+        }
+
+
         // GetReader
         public SqlDataReader GetReader(string sql)
         {

@@ -17,8 +17,8 @@
     <form runat="server">
     <img src="stars.png" class="stars"/>
     <div class="prices">
-        <h1 class="prices">מחירון</h1>
-        <ul>
+        <h1 class="prices pricelist">מחירון</h1>
+        <ul class="pricelist">
 			<li><a>1 משתתפים - 140 ש"ח למשתתף </a></li>
 			<li><a>2 משתתפים - 120 ש"ח למשתתף </a></li>
 			<li><a>3 משתתפים - 115 ש"ח למשתתף</a></li>

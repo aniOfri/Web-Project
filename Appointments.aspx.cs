@@ -77,6 +77,7 @@ namespace VR_Web_Project
                     week[days][hours] = ((int)reader["Participants"]).ToString();
                 }
             }
+
             reader.Close();
 
             Session["Schedule"] = week;

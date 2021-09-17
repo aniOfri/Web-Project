@@ -19,22 +19,13 @@ h1.title {
 }
 
 h2.subtitle {
-    padding-top: 25%;
     font-family: 'Rubik', sans-serif;
     text-align: center;
     color: #FFF;
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-    transition: all 0.2s cubic-bezier(.60,-0.30,.15,1) 0s;
+    transition: all 0.1s ease-in-out 0s;
     font-size: 20px;
-    width: 200px;
     margin-left: auto;
-    margin-right: auto;
-    transform: translate3d(50px, 0px, 0px);
-}
-
-h2.subtitle:hover {
-    font-size: 35px;
-    transform: translate3d(50px, -15px, 0px);
     cursor: pointer;
 }
 
@@ -59,8 +50,12 @@ form {
     vertical-align: middle;
 }
 
+ul.footer{
+    left:0;
+}
 div.footerContact {
     bottom: 0;
+    left:0;
 }
 
 label {
@@ -72,6 +67,7 @@ label {
     background-color: transparent;
     border: none;
     color: #FFFFFF;
+    cursor: pointer;
     font-size: 20px;
 }
 
@@ -80,10 +76,20 @@ label {
     border-radius: 50px;
     margin: 5px;
     width: 100px;
+    transition: all 0.2s ease-in-out 0s;
+}
+
+.backgroundButton:hover {
+    background-color: #34497f;
 }
 
 .center{
     width: 100px;
     margin: auto;
     text-align: center;
+}
+
+.sidebyside > div {
+    vertical-align: top;
+    display: inline-block;
 }

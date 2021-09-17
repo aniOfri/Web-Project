@@ -33,6 +33,10 @@ ul {
     padding-bottom: 0.5%;
 }
 
+.pricelist{
+    transform: translateX(15px)
+}
+
 div.footerContact {
     bottom: 0;
 }
