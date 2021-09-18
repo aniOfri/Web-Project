@@ -27,6 +27,7 @@
 			<li><a>6 משתתפים - 100 ש"ח למשתתף</a></li>
         </ul>
 
+        <br />
      <ul>
         <li>
             <asp:Label runat="server" CssClass="AspChoose"><asp:Label runat="server" id="label3" CssClass="span2"><asp:Button runat="server"  Text="הבא" CssClass="transparentButton2 transparentButton" OnClick="Nextpage" /></asp:Label></asp:Label>

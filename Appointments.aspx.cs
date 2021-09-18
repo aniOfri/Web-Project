@@ -72,7 +72,7 @@ namespace VR_Web_Project
                 int days = (date - DateTime.Today).Days + 1 + (int)DateTime.Today.DayOfWeek;
                 if (days > 7) days = days - 7;
                 int hours = (date - DateTime.Today).Hours - 8;
-                if (days > 0)
+                if (days > 0 && hours > 0)
                 {
                     week[days][hours] = ((int)reader["Participants"]).ToString();
                 }

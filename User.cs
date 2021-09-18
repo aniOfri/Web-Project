@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 
@@ -28,6 +29,19 @@ namespace VR_Web_Project
             return DAL.ExecuteScalar(sql);
         }
 
+        private void setId()
+        {
+            string selectQuery = "SELECT Id FROM Member";
+            selectQuery += " WHERE Username ='" + Username + "'";
+            selectQuery += " AND Password ='" + Password + "'";
+
+            SqlDataReader reader = DAL.GetReader(selectQuery);
+            if ((bool)reader.Read())
+                Id = (int)reader["Id"];
+
+            reader.Close();
+        }
+
         public bool Login()
         {
             string selectQuery = "SELECT Password FROM Member";
@@ -37,10 +51,28 @@ namespace VR_Web_Project
             {
                 DataTable dt = DAL.ExecuteDataTable(selectQuery);
                 string pass = dt.Rows[0]["password"].ToString().Replace(" ", "");
-                
-                return pass == Password;
+
+                if (pass == Password)
+                {
+                    setId();
+                    return true;
+                }
+                else return false;
             }
             return false;
+        }
+
+        public bool Register(string phoneNumber)
+        {
+            string sql = "INSERT INTO Member (Id, Username, PhoneNumber, Password, isManager) VALUES (\'";
+            sql += Id + "\', \'" + Username + "\', \'" + phoneNumber + "\', \'" + Password + "\', \'" + false + "\')";
+            try {
+                DAL.ExecNonQuery(sql);
+                return true;
+            }
+            catch {
+                return false;
+            }
         }
     }
 }
