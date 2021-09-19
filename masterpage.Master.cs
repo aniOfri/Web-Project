@@ -15,6 +15,7 @@ namespace VR_Web_Project
             {
                 loginNav.HRef = "Profile.aspx";
                 loginNav.InnerHtml = "פרופיל";
+                headerNav.Style["width"] = "75%";
 
                 logoutNav.Style["visibility"] = "visible";
                 logoutNav.Style["opacity"] = "1";

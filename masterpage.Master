@@ -11,7 +11,7 @@
 </head>
 <body dir="rtl">
     <div runat="server">
-        <div class="header" runat="server">
+        <div class="header" runat="server" id="headerNav">
             <header class="navbar" runat="server">
                 <img class="logo" src="VIRTUARIA.svg" alt="logo" />
                 <a class="cta logout" id="logoutNav" runat="server" href="Logout.aspx">התנתקות</a>

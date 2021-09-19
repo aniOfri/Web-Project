@@ -2,7 +2,7 @@
 
 div.header {
     margin: auto;
-    width: 75%;
+    width: 50%;
     padding: 1%;
     z-index: 100000;
     position: fixed;
@@ -116,7 +116,7 @@ li, a {
 }
 
 .logout{
-    display:inline;
+    display:none;
     visibility: hidden;
     opacity: 0;
     background-color: #d14b4b;
