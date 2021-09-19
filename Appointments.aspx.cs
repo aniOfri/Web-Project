@@ -69,7 +69,6 @@ namespace VR_Web_Project
 
             grid.DataSource = dt;
             grid.DataBind();
-
         }
         // Get the date of the next /weekday/
         private string Next(DayOfWeek dayOfWeek)
