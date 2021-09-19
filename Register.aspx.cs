@@ -19,7 +19,7 @@ namespace VR_Web_Project
                 if (RegStatus == "200")
                     RegStatus = "Successfully registered.";
                 else
-                    RegStatus = "Either the email or username already in use.";
+                    RegStatus = "מספר טלפון או שם משתמש נמצאים בשימוש";
             }
 
             if (Request["submit"] != null)

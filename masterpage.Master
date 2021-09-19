@@ -18,6 +18,8 @@
                 <asp:ContentPlaceHolder ID="headerPlaceHolder" runat="server">
                 </asp:ContentPlaceHolder>
                 <a class="cta" id="loginNav" runat="server" href="Login.aspx">התחברות</a>
+                <a class="cta manager" id="managerNav" runat="server" href="Manager.aspx">דף מנהל</a>
+
             </header>
             </div>
         <asp:ContentPlaceHolder ID="TitlePlaceHolder" runat="server">

@@ -18,13 +18,14 @@ namespace VR_Web_Project
 
                 logoutNav.Style["visibility"] = "visible";
                 logoutNav.Style["opacity"] = "1";
+                logoutNav.Style["display"] = "inline";
 
                 string sessionUsername = Session["User"].ToString();
                 if (sessionUsername == "Manager")
                 {
-                    /*heading.Style["background"] = "#f5316f";
-                    background = "background: linear-gradient(to right, #f5316f 50%, #f0004c 50%);";
-                    mangLink.Style["display"] = "inline-block";*/
+                    managerNav.Style["visibility"] = "visible";
+                    managerNav.Style["opacity"] = "1";
+                    managerNav.Style["display"] = "inline";
                 }
             }
         }

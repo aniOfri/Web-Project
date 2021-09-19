@@ -116,11 +116,18 @@ li, a {
 }
 
 .logout{
+    display:inline;
     visibility: hidden;
     opacity: 0;
     background-color: #d14b4b;
 }
 
 .logout:hover {
-    background-color: #b71b1b;
+    background-color: #b71b1b
+}
+
+.manager {
+    display: none;
+    visibility: hidden;
+    opacity: 0;
 }
