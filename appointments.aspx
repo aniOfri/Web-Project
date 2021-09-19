@@ -11,7 +11,6 @@
         </ul>
     </nav>
     <a class="cta" href="Home.aspx">בית</a>
-    <a class="cta" href="Login.aspx">התחברות</a>
 </asp:Content>
 <asp:Content ID="pricesContent" ContentPlaceHolderID="TitlePlaceHolder" runat="server">
     <form runat="server">

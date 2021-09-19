@@ -9,9 +9,10 @@ namespace VR_Web_Project
 {
     public class User
     {
-        private int Id { get; set; }
-        private string Username { get; set; }
-        private string Password { get; set; }
+        public int Id { get; set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
+        public bool IsManager { get; set; }
         //private bool IsManager { get; set; }
         private DAL DAL = new DAL();
 
@@ -20,6 +21,7 @@ namespace VR_Web_Project
             this.Id = countForId();
             this.Username = username;
             this.Password = password;
+            this.IsManager = false;
             //this.IsManager = isManager;
         }
 
@@ -42,6 +44,18 @@ namespace VR_Web_Project
             reader.Close();
         }
 
+        public bool setManager()
+        {
+            string selectQuery = "SELECT IsManager FROM Member";
+            selectQuery += " WHERE Id ='" + Id + "'";
+
+            SqlDataReader reader = DAL.GetReader(selectQuery);
+            if ((bool)reader.Read())
+                IsManager = (bool)reader["IsManager"];
+
+            return IsManager;
+        }
+
         public bool Login()
         {
             string selectQuery = "SELECT Password FROM Member";
@@ -55,6 +69,7 @@ namespace VR_Web_Project
                 if (pass == Password)
                 {
                     setId();
+                    setManager();
                     return true;
                 }
                 else return false;

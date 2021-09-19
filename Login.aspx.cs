@@ -17,7 +17,9 @@ namespace VR_Web_Project
                 {
                     LogStatus = "התחברת בהצלחה";
 
-                    Session["user"] = username;
+                    Session["User"] = username;
+                    Session["Manager"] = user.IsManager;
+
                     Response.Redirect("Home.aspx");
                     Response.End();
                 }

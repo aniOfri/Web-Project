@@ -24,6 +24,15 @@ namespace VR_Web_Project
         protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
 
         /// <summary>
+        /// logoutNav control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor logoutNav;
+
+        /// <summary>
         /// headerPlaceHolder control.
         /// </summary>
         /// <remarks>
@@ -31,6 +40,15 @@ namespace VR_Web_Project
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ContentPlaceHolder headerPlaceHolder;
+
+        /// <summary>
+        /// loginNav control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor loginNav;
 
         /// <summary>
         /// TitlePlaceHolder control.

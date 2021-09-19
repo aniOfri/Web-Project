@@ -10,12 +10,14 @@
     <title></title>
 </head>
 <body dir="rtl">
-    <div>
-        <div class="header">
-            <header class="navbar">
+    <div runat="server">
+        <div class="header" runat="server">
+            <header class="navbar" runat="server">
                 <img class="logo" src="VIRTUARIA.svg" alt="logo" />
+                <a class="cta logout" id="logoutNav" runat="server" href="Logout.aspx">התנתקות</a>
                 <asp:ContentPlaceHolder ID="headerPlaceHolder" runat="server">
                 </asp:ContentPlaceHolder>
+                <a class="cta" id="loginNav" runat="server" href="Login.aspx">התחברות</a>
             </header>
             </div>
         <asp:ContentPlaceHolder ID="TitlePlaceHolder" runat="server">
