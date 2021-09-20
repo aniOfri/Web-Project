@@ -164,7 +164,7 @@ namespace VR_Web_Project
                     label3.CssClass = "span3";
             }
         }
-        protected void Nextpage(object sender, EventArgs e)
+        protected void Order(object sender, EventArgs e)
         {
 
         }

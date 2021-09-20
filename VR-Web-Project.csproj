@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Appointments.aspx" />
+    <Content Include="AppointmentScript..js" />
     <Content Include="AppointmentStyle.css" />
     <Content Include="App_Data\VirtuariaDB.mdf" />
     <Content Include="App_Data\VirtuariaDB_log.ldf">

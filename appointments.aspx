@@ -27,18 +27,21 @@
         </ul>
 
         <br />
-     <ul>
-        <li>
-            <asp:Label runat="server" CssClass="AspChoose"><asp:Label runat="server" id="label3" CssClass="span2"><asp:Button runat="server"  Text="הבא" CssClass="transparentButton2 transparentButton" OnClick="Nextpage" /></asp:Label></asp:Label>
-        </li>
-    </ul>
+
         
     <div class="ddls">
     <asp:DataGrid ID="grid" runat="server" AutoGenerateColumns="true"></asp:DataGrid>
     <ul class="menu cf">
         <li>
-            <h1 class="choose"><span><asp:Label runat="server" ID="label1" Text="מספר משתתפים"></asp:Label></span></h1>
-            <ul class="submenu">
+            <asp:Label CssClass="choose" runat="server" ID="label1" Text="מספר משתתפים"
+                onmouseover="
+                {
+                timeDDL.className = 'submenu submenu2 timeDDL Invis';
+                dateDDL.className = 'submenu dateDDL Invis';
+                particDDL.className = 'submenu particDDL Visible';
+                }"
+                ></asp:Label>
+            <ul class="submenu particDDL Invis" id="particDDL">
                 <li class="option"><asp:Button runat="server" CustomParameter="אחד" text="משתתף אחד" CssClass="transparentButton" OnClick="ParticipantsOrder"/></li>
                 <li class="option"><asp:Button runat="server" CustomParameter="זוג" text="זוג משתתפים" CssClass="transparentButton" OnClick="ParticipantsOrder"/></li>
                 <li class="option"><asp:Button runat="server" CustomParameter="שלושה" text="שלושה משתתפים" CssClass="transparentButton" OnClick="ParticipantsOrder"/></li>
@@ -50,8 +53,15 @@
     </ul>
     <ul class="menu cf">
         <li>
-            <h1 class="choose"><span><asp:Label runat="server" ID="label2" Text="הזמנה תאריך"></asp:Label></span></h1>
-            <ul class="submenu">
+            <asp:Label CssClass="choose" runat="server" ID="label2" Text="הזמנה תאריך"
+                onmouseover="
+                {
+                timeDDL.className = 'submenu submenu2 timeDDL Invis';
+                dateDDL.className = 'submenu dateDDL Visible';
+                particDDL.className = 'submenu particDDL Invis';
+                }"
+                ></asp:Label>
+            <ul class="submenu dateDDL Invis" id="dateDDL">
                 <li class="option"><asp:Button runat="server" ID="date1" CustomParameter="1"  text="יום" CssClass="transparentButton" OnClick="DayOrder"/></li>
                 <li class="option"><asp:Button runat="server" ID="date2" CustomParameter="2"  text="יומיים" CssClass="transparentButton" OnClick="DayOrder"/></li>
                 <li class="option"><asp:Button runat="server" ID="date3" CustomParameter="3"  text="שלושה ימים" CssClass="transparentButton" OnClick="DayOrder"/></li>
@@ -64,8 +74,15 @@
     </ul>
     <ul class="menu cf">
         <li>
-            <h1 class="choose"><span><asp:Label runat="server" ID="label4" Text="הזמנת זמן"></asp:Label></span></h1>
-            <ul class="submenu submenu2">
+            <asp:Label CssClass="choose" runat="server" ID="label4" Text="הזמנת זמן"
+                onmouseover="
+                {
+                particDDL.className = 'submenu particDDL Invis'
+                dateDDL.className = 'submenu dateDDL Invis'
+                timeDDL.className = 'submenu submenu2 timeDDL Visible'
+                }"
+                ></asp:Label>
+            <ul class="submenu submenu2 timeDDL Invis" id="timeDDL">
                 <li class="noBackground">
                         <ul class="inline">
                             <li class="option center"><asp:Button runat="server" ID="time1" CustomParameter="0" text="1" CssClass="transparentButton" OnClick="TimeOrder"/></li>
@@ -110,11 +127,15 @@
                  </li></ul>
         </li>
     </ul>
-    </div>
-    </div>
+     <ul class="continue">
+        <li>
+            <asp:Label runat="server" CssClass="AspChoose"><asp:Label runat="server" id="label3" CssClass="span2"><asp:Button runat="server"  Text="הבא" CssClass="transparentButton2 transparentButton" OnClick="Order" /></asp:Label></asp:Label>
+        </li>
+    </ul>
     </form>
 
  </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="ScriptPlaceHolder" runat="server">
+    <script src="AppointmentScript.js"></script>
 </asp:Content>
