@@ -82,6 +82,7 @@
     <Content Include="LoginStyle.css" />
     <Content Include="Logout.aspx" />
     <Content Include="Manager.aspx" />
+    <Content Include="ManagerStyle.css" />
     <Content Include="MasterStyle.css" />
     <Content Include="Register.aspx" />
     <Content Include="RegisterScript.js" />

@@ -33,7 +33,7 @@
             
             <label><%=LogStatus%></label><br /><br />
             <div class="center">
-                <div class="backgroundButton"><input id="submitLogin" type="submit" name="submit" class="transparentButton" /></div>
+                <div class="backgroundButton"><input id="submitLogin" value="התחבר" type="submit" name="submit" class="transparentButton" /></div>
             </div>
         </form>
     </div>
