@@ -21,8 +21,7 @@ namespace VR_Web_Project
                 logoutNav.Style["opacity"] = "1";
                 logoutNav.Style["display"] = "inline";
 
-                string sessionUsername = Session["User"].ToString();
-                if (sessionUsername == "Manager")
+                if ((bool)Session["Manager"])
                 {
                     string currentUrl = HttpContext.Current.Request.Url.LocalPath;
                     if (!currentUrl.EndsWith("Manager.aspx"))

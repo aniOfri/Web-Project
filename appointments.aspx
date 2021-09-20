@@ -25,9 +25,8 @@
 			<li><a>5 משתתפים - 105 ש"ח למשתתף</a></li>
 			<li><a>6 משתתפים - 100 ש"ח למשתתף</a></li>
         </ul>
-
-        <br />
-
+    </div>
+     <br />
         
     <div class="ddls">
     <asp:DataGrid ID="grid" runat="server" AutoGenerateColumns="true"></asp:DataGrid>
@@ -42,12 +41,12 @@
                 }"
                 ></asp:Label>
             <ul class="submenu particDDL Invis" id="particDDL">
-                <li class="option"><asp:Button runat="server" CustomParameter="אחד" text="משתתף אחד" CssClass="transparentButton" OnClick="ParticipantsOrder"/></li>
-                <li class="option"><asp:Button runat="server" CustomParameter="זוג" text="זוג משתתפים" CssClass="transparentButton" OnClick="ParticipantsOrder"/></li>
-                <li class="option"><asp:Button runat="server" CustomParameter="שלושה" text="שלושה משתתפים" CssClass="transparentButton" OnClick="ParticipantsOrder"/></li>
-                <li class="option"><asp:Button runat="server" CustomParameter="ארבעה" text="ארבעה משתתפים" CssClass="transparentButton" OnClick="ParticipantsOrder"/></li>
-                <li class="option"><asp:Button runat="server" CustomParameter="חמישה" text="חמישה משתתפים" CssClass="transparentButton" OnClick="ParticipantsOrder"/></li>
-                <li class="option"><asp:Button runat="server" CustomParameter="שישה" text="שישה משתתפים" CssClass="transparentButton" OnClick="ParticipantsOrder"/></li>
+                <li class="option"><asp:Button runat="server" CustomParameter="0" text="משתתף אחד" CssClass="transparentButton" OnClick="ParticipantsOrder"/></li>
+                <li class="option"><asp:Button runat="server" CustomParameter="1" text="זוג משתתפים" CssClass="transparentButton" OnClick="ParticipantsOrder"/></li>
+                <li class="option"><asp:Button runat="server" CustomParameter="2" text="שלושה משתתפים" CssClass="transparentButton" OnClick="ParticipantsOrder"/></li>
+                <li class="option"><asp:Button runat="server" CustomParameter="3" text="ארבעה משתתפים" CssClass="transparentButton" OnClick="ParticipantsOrder"/></li>
+                <li class="option"><asp:Button runat="server" CustomParameter="4" text="חמישה משתתפים" CssClass="transparentButton" OnClick="ParticipantsOrder"/></li>
+                <li class="option"><asp:Button runat="server" CustomParameter="5" text="שישה משתתפים" CssClass="transparentButton" OnClick="ParticipantsOrder"/></li>
             </ul>
         </li>
     </ul>
@@ -132,6 +131,7 @@
             <asp:Label runat="server" CssClass="AspChoose"><asp:Label runat="server" id="label3" CssClass="span2"><asp:Button runat="server"  Text="הבא" CssClass="transparentButton2 transparentButton" OnClick="Order" /></asp:Label></asp:Label>
         </li>
     </ul>
+    </div>
     </form>
 
  </asp:Content>

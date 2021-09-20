@@ -105,7 +105,7 @@ namespace VR_Web_Project
                 for (int i = 0; i < 13; i++)
                 {
                     if (week[day + 1][i] != "0")
-                        times[i] = "לא זמין";
+                        times[i-1] = "לא זמין";
                 }
             }
 
@@ -128,8 +128,11 @@ namespace VR_Web_Project
         protected void ParticipantsOrder(object sender, EventArgs e)
         {
             Button btn = sender as Button;
-            label1.Text = "מספר משתתפים נבחר: " + btn.Attributes["CustomParameter"].ToString();
-            Session["Partic"] = btn.Attributes["CustomParameter"].ToString();
+            int parameter = int.Parse(btn.Attributes["CustomParameter"].ToString());
+            string[] inText = { "אחד", "זוג", "שלישייה", "רביעייה", "חמישייה", "שישייה" };
+            
+            label1.Text = "מספר משתתפים נבחר: " + inText[parameter];
+            Session["Partic"] = parameter + 1;
 
             if (allowToProceed())
                 label3.CssClass = "span3";
@@ -139,7 +142,7 @@ namespace VR_Web_Project
         {
             Button btn = sender as Button;
             label2.Text = "תאריך נבחר: " + btn.Text;
-            Session["Day"] = btn.Attributes["CustomParameter"].ToString();
+            Session["Day"] = btn.Text;
 
             if (allowToProceed())
                 label3.CssClass = "span3";
@@ -158,7 +161,7 @@ namespace VR_Web_Project
             if (btn.Text != "לא זמין")
             {
                 label4.Text = "זמן נבחר: " + btn.Text;
-                Session["Time"] = btn.Attributes["CustomParameter"].ToString();
+                Session["Time"] = btn.Text;
 
                 if (allowToProceed())
                     label3.CssClass = "span3";
@@ -166,7 +169,27 @@ namespace VR_Web_Project
         }
         protected void Order(object sender, EventArgs e)
         {
+            DateTime dateTime = DateTime.Parse
+                ($"{(string)Session["Day"]} {(string)Session["Time"]}");
+            int participants = (int)Session["Partic"];
 
+            Appointment appointment = new Appointment
+                ("", dateTime, participants);
+            if (Session["User"] != null)
+            {
+                User user = (User)Session["User"];
+                appointment.PhoneNumber = user.PhoneNumber;
+
+                appointment.Order();
+                Response.Redirect("Home.aspx");
+                Response.End();
+            }
+            else
+            {
+                Session["RedirectOrder"] = appointment;
+                Response.Redirect("Login.aspx");
+                Response.End();
+            }
         }
     }
 }

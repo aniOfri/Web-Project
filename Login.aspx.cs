@@ -17,9 +17,16 @@ namespace VR_Web_Project
                 {
                     LogStatus = "התחברת בהצלחה";
 
-                    Session["User"] = username;
+                    Session["User"] = user;
                     Session["Manager"] = user.IsManager;
 
+                    if (Session["RedirectOrder"] != null)
+                    {
+                        Appointment appointment = (Appointment)Session["RedirectOrder"];
+                        appointment.PhoneNumber = user.PhoneNumber;
+
+                        appointment.Order();
+                    }
                     Response.Redirect("Home.aspx");
                     Response.End();
                 }

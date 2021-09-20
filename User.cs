@@ -12,6 +12,7 @@ namespace VR_Web_Project
         public int Id { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
+        public string PhoneNumber { get; set; }
         public bool IsManager { get; set; }
         //private bool IsManager { get; set; }
         private DAL DAL = new DAL();
@@ -56,6 +57,16 @@ namespace VR_Web_Project
             return IsManager;
         }
 
+        public void setPhoneNumber()
+        {
+            string selectQuery = "SELECT PhoneNumber FROM Member";
+            selectQuery += " WHERE Id ='" + Id + "'";
+
+            SqlDataReader reader = DAL.GetReader(selectQuery);
+            if ((bool)reader.Read())
+                PhoneNumber = (string)reader["PhoneNumber"];
+        }
+
         public bool Login()
         {
             string selectQuery = "SELECT Password FROM Member";
@@ -70,6 +81,7 @@ namespace VR_Web_Project
                 {
                     setId();
                     setManager();
+                    setPhoneNumber();
                     return true;
                 }
                 else return false;

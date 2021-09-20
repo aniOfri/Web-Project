@@ -14,8 +14,7 @@ namespace VR_Web_Project
         {
             if (Session["User"] != null)
             {
-                string sessionUsername = (string)Session["User"].ToString();
-                if (sessionUsername != "Manager")
+                if (!(bool)Session["Manager"])
                 {
                     Response.Redirect("Home.aspx");
                     Response.End();

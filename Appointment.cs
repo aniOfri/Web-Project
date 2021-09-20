@@ -9,19 +9,41 @@ namespace VR_Web_Project
 {
     public class Appointment
     {
-        private int Id {get;set;}
-        private string PhoneNumber {get;set;}
-        private DateTime Date {get;set;}
-        private int ParticipantsID {get;set;}
+        public int Id {get;set;}
+        public string PhoneNumber {get;set;}
+        public DateTime Date {get;set;}
+        public int Participants {get;set;}
+        private DAL DAL = new DAL();
 
-        public Appointment(int id, string phoneNumber, DateTime date, int participantsId)
+        public Appointment(string phoneNumber, DateTime date, int participants)
         {
-            this.Id = id;
+            this.Id = countForId();
             this.PhoneNumber = phoneNumber;
             this.Date = date;
-            this.ParticipantsID = participantsId;
+            this.Participants = participants;
         }
 
+        // Count for id
+        private int countForId()
+        {
+            string sql = "SELECT COUNT(*) FROM Appointment";
+            return DAL.ExecuteScalar(sql);
+        }
+
+        public bool Order()
+        {
+            string sql = "INSERT INTO Appointment (Id, PhoneNumber, DateTime, Participants) VALUES (\'";
+            sql += Id + "\', \'" + PhoneNumber + "\', \'" + Date + "\', \'" + Participants + "\')";
+            try
+            {
+                DAL.ExecNonQuery(sql);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
         // Static method to create schedule
         public static string[][] createSchedule()
         {
