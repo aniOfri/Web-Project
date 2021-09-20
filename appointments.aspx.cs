@@ -12,9 +12,9 @@ namespace VR_Web_Project
         protected void Page_Load(object sender, EventArgs e)
         {
             if(!Page.IsPostBack){
-                Session["chooseDay"] = false;
-                Session["choosePartic"] = false;
-                Session["chooseTime"] = false;
+                Session["Day"] = null;
+                Session["Partic"] = null;
+                Session["Time"] = null;
 
                 setDateTime();
 
@@ -105,7 +105,7 @@ namespace VR_Web_Project
                 for (int i = 0; i < 13; i++)
                 {
                     if (week[day + 1][i] != "0")
-                        times[i] = "לא זמין";
+                        times[i-1] = "לא זמין";
                 }
             }
 
@@ -119,17 +119,20 @@ namespace VR_Web_Project
         // If all paramaters (time, date, and partc.) has been chosen, the function will return true
         private bool allowToProceed()
         {
-            return (bool)Session["choosePartic"] 
-                && (bool)Session["chooseDay"] 
-                && (bool)Session["chooseTime"];
+            return Session["Partic"] != null 
+                && Session["Day"] != null
+                && Session["Time"] != null;
         }
 
         // Button press for participants-related objects
         protected void ParticipantsOrder(object sender, EventArgs e)
         {
             Button btn = sender as Button;
-            label1.Text = "מספר משתתפים נבחר: " + btn.Attributes["CustomParameter"].ToString();
-            Session["choosePartic"] = true;
+            int parameter = int.Parse(btn.Attributes["CustomParameter"].ToString());
+            string[] inText = { "אחד", "זוג", "שלישייה", "רביעייה", "חמישייה", "שישייה" };
+            
+            label1.Text = "מספר משתתפים נבחר: " + inText[parameter];
+            Session["Partic"] = parameter + 1;
 
             if (allowToProceed())
                 label3.CssClass = "span3";
@@ -139,13 +142,13 @@ namespace VR_Web_Project
         {
             Button btn = sender as Button;
             label2.Text = "תאריך נבחר: " + btn.Text;
-            Session["chooseDay"] = true;
+            Session["Day"] = btn.Text;
 
             if (allowToProceed())
                 label3.CssClass = "span3";
 
             label4.Text = "הזמנת זמן";
-            Session["chooseTime"] = false;
+            Session["Time"] = null;
 
             DateTime date = Convert.ToDateTime(btn.Text);
             updateTimes((int)date.DayOfWeek);
@@ -158,15 +161,35 @@ namespace VR_Web_Project
             if (btn.Text != "לא זמין")
             {
                 label4.Text = "זמן נבחר: " + btn.Text;
-                Session["chooseTime"] = true;
+                Session["Time"] = btn.Text;
 
                 if (allowToProceed())
                     label3.CssClass = "span3";
             }
         }
-        protected void Nextpage(object sender, EventArgs e)
+        protected void Order(object sender, EventArgs e)
         {
+            DateTime dateTime = DateTime.Parse
+                ($"{(string)Session["Day"]} {(string)Session["Time"]}");
+            int participants = (int)Session["Partic"];
 
+            Appointment appointment = new Appointment
+                ("", dateTime, participants);
+            if (Session["User"] != null)
+            {
+                User user = (User)Session["User"];
+                appointment.PhoneNumber = user.PhoneNumber;
+
+                appointment.Order();
+                Response.Redirect("Home.aspx");
+                Response.End();
+            }
+            else
+            {
+                Session["RedirectOrder"] = appointment;
+                Response.Redirect("Login.aspx");
+                Response.End();
+            }
         }
     }
 }

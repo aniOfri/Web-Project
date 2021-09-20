@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/masterpage.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="VR_Web_Project.Login" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>התחברות</title>
-    <link rel="stylesheet" href="LoginStyle.css"/>
+    <link rel="stylesheet" href="Stylesheets/LoginStyle.css"/>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="headerPlaceHolder" runat="server">
         <nav>
@@ -39,5 +39,5 @@
     </div>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="ScriptPlaceHolder" runat="server">
-    <script src="LoginScript.js"></script>
+    <script src="Javascripts/LoginScript.js"></script>
 </asp:Content>

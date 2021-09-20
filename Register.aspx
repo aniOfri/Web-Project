@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/masterpage.Master" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="VR_Web_Project.Register" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>הרשמה</title>
-    <link rel="stylesheet" href="RegisterStyle.css"/>
+    <link rel="stylesheet" href="Stylesheets/RegisterStyle.css"/>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="headerPlaceHolder" runat="server">
     <nav>
@@ -47,5 +47,5 @@
     </div>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="ScriptPlaceHolder" runat="server">
-    <script src="RegisterScript.js"></script>
+    <script src="Javascripts/RegisterScript.js"></script>
 </asp:Content>

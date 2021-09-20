@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/masterpage.Master" AutoEventWireup="true" CodeBehind="Appointments.aspx.cs" Inherits="VR_Web_Project.appointments" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>הזמנות</title>
-    <link rel="stylesheet" href="AppointmentStyle.css"/>
+    <link rel="stylesheet" href="Stylesheets/AppointmentStyle.css"/>
 </asp:Content>
 <asp:Content ID="headerContent" ContentPlaceHolderID="headerPlaceHolder" runat="server">
     <nav>
@@ -137,5 +137,5 @@
  </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="ScriptPlaceHolder" runat="server">
-    <script src="AppointmentScript.js"></script>
+    <script src="Javascripts/AppointmentScript.js"></script>
 </asp:Content>

@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/masterpage.Master" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="VR_Web_Project.Home" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>דף הבית</title>
-    <link rel="stylesheet" href="HomeStyle.css"/>
+    <link rel="stylesheet" href="Stylesheets/HomeStyle.css"/>
 </asp:Content>
 <asp:Content ID="headerContent" ContentPlaceHolderID="headerPlaceHolder" runat="server">
     <nav>
@@ -38,6 +38,6 @@
     </div>
 </asp:Content>
 <asp:Content ID="info" ContentPlaceHolderID="ScriptPlaceHolder" runat="server">
-    <script src="HomeScript.js"></script>
+    <script src="Javascripts/HomeScript.js"></script>
 </asp:Content>
 

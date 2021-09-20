@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/masterpage.Master" AutoEventWireup="true" CodeBehind="Manager.aspx.cs" Inherits="VR_Web_Project.Manager" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>דף מנהל</title>
-    <link rel="stylesheet" href="ManagerStyle.css"/>
+    <link rel="stylesheet" href="Stylesheets/ManagerStyle.css"/>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="headerPlaceHolder" runat="server">
         <nav>
