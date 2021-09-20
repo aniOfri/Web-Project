@@ -24,9 +24,11 @@ namespace VR_Web_Project
                 string sessionUsername = Session["User"].ToString();
                 if (sessionUsername == "Manager")
                 {
-                    managerNav.Style["visibility"] = "visible";
-                    managerNav.Style["opacity"] = "1";
-                    managerNav.Style["display"] = "inline";
+                    string currentUrl = HttpContext.Current.Request.Url.LocalPath;
+                    if (!currentUrl.EndsWith("Manager.aspx"))
+                    {
+                        managerNav.Style["display"] = "inline";
+                    }
                 }
             }
         }

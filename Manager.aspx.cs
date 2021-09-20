@@ -15,15 +15,21 @@ namespace VR_Web_Project
             if (Session["User"] != null)
             {
                 string sessionUsername = (string)Session["User"].ToString();
-                if (sessionUsername != "Manager") Response.Redirect("Home.aspx");
+                if (sessionUsername != "Manager")
+                {
+                    Response.Redirect("Home.aspx");
+                    Response.End();
+                }
             }
-            else Response.Redirect("Home.aspx");
-
-            Response.End();
-
+            else
+            {
+                Response.Redirect("Home.aspx");
+                Response.End();
+            }
         }
         protected void Page_Load(object sender, EventArgs e)
         {
+            Session["Schedule"] = Appointment.createSchedule();
             setOnGrid();
         }
 

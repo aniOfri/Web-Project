@@ -117,8 +117,6 @@ li, a {
 
 .logout{
     display:none;
-    visibility: hidden;
-    opacity: 0;
     background-color: #d14b4b;
 }
 
@@ -128,6 +126,4 @@ li, a {
 
 .manager {
     display: none;
-    visibility: hidden;
-    opacity: 0;
 }

@@ -3,9 +3,19 @@
     <title>דף מנהל</title>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="headerPlaceHolder" runat="server">
+        <nav>
+        <ul class="links">
+            <li><a href="Manager.aspx">לוח זמנים</a></li>
+            <!--<li><a href="#information">מידע</a></li>-->
+        </ul>
+    </nav>
+    <a class="cta" href="Home.aspx">בית</a>
+    <a class="cta" href="Appointments.aspx">הזמנות</a>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="TitlePlaceHolder" runat="server">
     <form runat="server">
+    <img src="stars.png" class="stars"/>
+    <asp:DataGrid ID="grid" runat="server" AutoGenerateColumns="true"></asp:DataGrid>
     </form>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="ScriptPlaceHolder" runat="server">
