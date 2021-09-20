@@ -12,9 +12,9 @@ namespace VR_Web_Project
         protected void Page_Load(object sender, EventArgs e)
         {
             if(!Page.IsPostBack){
-                Session["chooseDay"] = false;
-                Session["choosePartic"] = false;
-                Session["chooseTime"] = false;
+                Session["Day"] = null;
+                Session["Partic"] = null;
+                Session["Time"] = null;
 
                 setDateTime();
 
@@ -119,9 +119,9 @@ namespace VR_Web_Project
         // If all paramaters (time, date, and partc.) has been chosen, the function will return true
         private bool allowToProceed()
         {
-            return (bool)Session["choosePartic"] 
-                && (bool)Session["chooseDay"] 
-                && (bool)Session["chooseTime"];
+            return Session["Partic"] != null 
+                && Session["Day"] != null
+                && Session["Time"] != null;
         }
 
         // Button press for participants-related objects
@@ -129,7 +129,7 @@ namespace VR_Web_Project
         {
             Button btn = sender as Button;
             label1.Text = "מספר משתתפים נבחר: " + btn.Attributes["CustomParameter"].ToString();
-            Session["choosePartic"] = true;
+            Session["Partic"] = btn.Attributes["CustomParameter"].ToString();
 
             if (allowToProceed())
                 label3.CssClass = "span3";
@@ -139,13 +139,13 @@ namespace VR_Web_Project
         {
             Button btn = sender as Button;
             label2.Text = "תאריך נבחר: " + btn.Text;
-            Session["chooseDay"] = true;
+            Session["Day"] = btn.Attributes["CustomParameter"].ToString();
 
             if (allowToProceed())
                 label3.CssClass = "span3";
 
             label4.Text = "הזמנת זמן";
-            Session["chooseTime"] = false;
+            Session["Time"] = null;
 
             DateTime date = Convert.ToDateTime(btn.Text);
             updateTimes((int)date.DayOfWeek);
@@ -158,7 +158,7 @@ namespace VR_Web_Project
             if (btn.Text != "לא זמין")
             {
                 label4.Text = "זמן נבחר: " + btn.Text;
-                Session["chooseTime"] = true;
+                Session["Time"] = btn.Attributes["CustomParameter"].ToString();
 
                 if (allowToProceed())
                     label3.CssClass = "span3";

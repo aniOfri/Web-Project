@@ -68,44 +68,44 @@
             <ul class="submenu submenu2">
                 <li class="noBackground">
                         <ul class="inline">
-                            <li class="option center"><asp:Button runat="server" ID="time1" CustomParameter="1"  text="1" CssClass="transparentButton" OnClick="TimeOrder"/></li>
-                            <li class="option center"><asp:Button runat="server" ID="time2" CustomParameter="1"  text="1" CssClass="transparentButton" OnClick="TimeOrder"/></li>
+                            <li class="option center"><asp:Button runat="server" ID="time1" CustomParameter="0" text="1" CssClass="transparentButton" OnClick="TimeOrder"/></li>
+                            <li class="option center"><asp:Button runat="server" ID="time2" CustomParameter="1" text="1" CssClass="transparentButton" OnClick="TimeOrder"/></li>
                         </ul> 
                  </li>
                 <li class="noBackground">
                         <ul class="inline">
-                            <li class="option center"><asp:Button runat="server" ID="time3" CustomParameter="1"  text="1" CssClass="transparentButton" OnClick="TimeOrder"/></li>
-                            <li class="option center"><asp:Button runat="server" ID="time4" CustomParameter="1"  text="1" CssClass="transparentButton" OnClick="TimeOrder"/></li>
+                            <li class="option center"><asp:Button runat="server" ID="time3" CustomParameter="2" text="1" CssClass="transparentButton" OnClick="TimeOrder"/></li>
+                            <li class="option center"><asp:Button runat="server" ID="time4" CustomParameter="3" text="1" CssClass="transparentButton" OnClick="TimeOrder"/></li>
                         </ul> 
                  </li>
                 <li class="noBackground">
                         <ul class="inline">
-                            <li class="option center"><asp:Button runat="server" ID="time5" CustomParameter="1"  text="1" CssClass="transparentButton" OnClick="TimeOrder"/></li>
-                            <li class="option center"><asp:Button runat="server" ID="time6" CustomParameter="1"  text="1" CssClass="transparentButton" OnClick="TimeOrder"/></li>
+                            <li class="option center"><asp:Button runat="server" ID="time5" CustomParameter="4" text="1" CssClass="transparentButton" OnClick="TimeOrder"/></li>
+                            <li class="option center"><asp:Button runat="server" ID="time6" CustomParameter="5" text="1" CssClass="transparentButton" OnClick="TimeOrder"/></li>
                         </ul> 
                  </li>
                 <li class="noBackground">
                         <ul class="inline">
-                            <li class="option center"><asp:Button runat="server" ID="time7" CustomParameter="1"  text="1" CssClass="transparentButton" OnClick="TimeOrder"/></li>
-                            <li class="option center"><asp:Button runat="server" ID="time8" CustomParameter="1"  text="1" CssClass="transparentButton" OnClick="TimeOrder"/></li>
+                            <li class="option center"><asp:Button runat="server" ID="time7" CustomParameter="6" text="1" CssClass="transparentButton" OnClick="TimeOrder"/></li>
+                            <li class="option center"><asp:Button runat="server" ID="time8" CustomParameter="7" text="1" CssClass="transparentButton" OnClick="TimeOrder"/></li>
                         </ul> 
                  </li>
                  <li class="noBackground">
                         <ul class="inline">
-                            <li class="option center"><asp:Button runat="server" ID="time9" CustomParameter="1"  text="1" CssClass="transparentButton" OnClick="TimeOrder"/></li>
-                            <li class="option center"><asp:Button runat="server" ID="time10" CustomParameter="1"  text="1" CssClass="transparentButton" OnClick="TimeOrder"/></li>
+                            <li class="option center"><asp:Button runat="server" ID="time9" CustomParameter="8" text="1" CssClass="transparentButton" OnClick="TimeOrder"/></li>
+                            <li class="option center"><asp:Button runat="server" ID="time10" CustomParameter="9" text="1" CssClass="transparentButton" OnClick="TimeOrder"/></li>
                         </ul> 
                  </li>
                 <li class="noBackground">
                         <ul class="inline">
-                            <li class="option center"><asp:Button runat="server" ID="time11" CustomParameter="1"  text="1" CssClass="transparentButton" OnClick="TimeOrder"/></li>
-                            <li class="option center"><asp:Button runat="server" ID="time12" CustomParameter="1"  text="1" CssClass="transparentButton" OnClick="TimeOrder"/></li>
+                            <li class="option center"><asp:Button runat="server" ID="time11" CustomParameter="10" text="1" CssClass="transparentButton" OnClick="TimeOrder"/></li>
+                            <li class="option center"><asp:Button runat="server" ID="time12" CustomParameter="11" text="1" CssClass="transparentButton" OnClick="TimeOrder"/></li>
                         </ul> 
                  </li>
                 <li class="noBackground">
                         <ul class="inline">
-                            <li class="option center"><asp:Button runat="server" ID="time13" CustomParameter="1"  text="1" CssClass="transparentButton" OnClick="TimeOrder"/></li>
-                            <li class="option center"><asp:Button runat="server" ID="time14" CustomParameter="1"  text="1" CssClass="transparentButton" OnClick="TimeOrder"/></li>
+                            <li class="option center"><asp:Button runat="server" ID="time13" CustomParameter="12" text="1" CssClass="transparentButton" OnClick="TimeOrder"/></li>
+                            <li class="option center"><asp:Button runat="server" ID="time14" CustomParameter="13" text="1" CssClass="transparentButton" OnClick="TimeOrder"/></li>
                         </ul> 
                  </li></ul>
         </li>
