@@ -11,7 +11,7 @@ namespace VR_Web_Project
 {
 
 
-    public partial class appointments
+    public partial class Appointments
     {
 
         /// <summary>

@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Data.SqlClient;
 using System.Data;
 
 namespace VR_Web_Project
 {
-    public partial class appointments : System.Web.UI.Page
+    public partial class Appointments : System.Web.UI.Page
     {
         //Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Ofri\source\repos\Web-Project\App_Data\VirtuariaDB.mdf;Integrated Security=True
         protected void Page_Load(object sender, EventArgs e)
@@ -16,18 +15,18 @@ namespace VR_Web_Project
                 Session["Partic"] = null;
                 Session["Time"] = null;
 
-                setDateTime();
+                SetDateTime();
 
-                createSchedule();
+                CreateSchedule();
 
                 //setOnGrid();
 
-                updateTimes(-1);
+                UpdateTimes(-1);
             }
         }
 
         // Set the values of the next dates relative to today
-        private void setDateTime()
+        private void SetDateTime()
         {
             DateTime today = DateTime.Today;
             for (int i = 1; i < 8; i++)
@@ -38,56 +37,13 @@ namespace VR_Web_Project
         }
 
         // Create a schedule using the SQL DB
-        private void createSchedule()
+        private void CreateSchedule()
         {
-            Session["Schedule"] = Appointment.createSchedule();
+            Session["Schedule"] = Appointment.CreateSchedule();
         }
-        private void setOnGrid()
-        {
-            string[][] week = (string[][])Session["Schedule"];
 
-            string[] daysValue = new string[8];
-            // Add the days and dates to the daysValue array by casting an integer to a "DayOfWeek" enum
-            daysValue[0] = "DAYS/TIMES";
-            for (int i = 0; i < 7; i++)
-                daysValue[i+1] = $"{(DayOfWeek)i} {Next((DayOfWeek)i)}";
-
-            DataTable dt = new DataTable("Appointments");
-
-            for (int i = 0; i < 8; i++)
-                dt.Columns.Add(new DataColumn(daysValue[i]));
-
-            for (int i = 0; i < 14; i++)
-            {
-                DataRow dr = dt.NewRow();
-                for (int j = 0; j < 8; j++)
-                {
-                    dr[daysValue[j]] = week[j][i];
-                }
-                dt.Rows.Add(dr);
-            }
-
-            grid.DataSource = dt;
-            grid.DataBind();
-        }
-        // Get the date of the next /weekday/
-        private string Next(DayOfWeek dayOfWeek)
-        {
-            DateTime from = DateTime.Today;
-            if (from.DayOfWeek != dayOfWeek)
-            {
-                int start = (int)from.DayOfWeek;
-                int target = (int)dayOfWeek;
-                if (target <= start)
-                    target += 7;
-
-                from = from.AddDays(target - start);
-            }
-
-            return "(" + from.ToShortDateString() + ")";
-        }
         // Update time values for the time ddl
-        private void updateTimes(int day)
+        private void UpdateTimes(int day)
         {
             string[][] week = (string[][])Session["Schedule"];
 
@@ -117,7 +73,7 @@ namespace VR_Web_Project
         }
 
         // If all paramaters (time, date, and partc.) has been chosen, the function will return true
-        private bool allowToProceed()
+        private bool AllowToProceed()
         {
             return Session["Partic"] != null 
                 && Session["Day"] != null
@@ -134,7 +90,7 @@ namespace VR_Web_Project
             label1.Text = "מספר משתתפים נבחר: " + inText[parameter];
             Session["Partic"] = parameter + 1;
 
-            if (allowToProceed())
+            if (AllowToProceed())
                 label3.CssClass = "span3";
         }
         // Button press for date-related objects
@@ -144,14 +100,14 @@ namespace VR_Web_Project
             label2.Text = "תאריך נבחר: " + btn.Text;
             Session["Day"] = btn.Text;
 
-            if (allowToProceed())
+            if (AllowToProceed())
                 label3.CssClass = "span3";
 
             label4.Text = "הזמנת זמן";
             Session["Time"] = null;
 
             DateTime date = Convert.ToDateTime(btn.Text);
-            updateTimes((int)date.DayOfWeek);
+            UpdateTimes((int)date.DayOfWeek);
         }
 
         // Button press for time-related objects
@@ -163,7 +119,7 @@ namespace VR_Web_Project
                 label4.Text = "זמן נבחר: " + btn.Text;
                 Session["Time"] = btn.Text;
 
-                if (allowToProceed())
+                if (AllowToProceed())
                     label3.CssClass = "span3";
             }
         }
