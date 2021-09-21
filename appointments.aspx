@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/masterpage.Master" AutoEventWireup="true" CodeBehind="Appointments.aspx.cs" Inherits="VR_Web_Project.appointments" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/masterpage.Master" AutoEventWireup="true" CodeBehind="Appointments.aspx.cs" Inherits="VR_Web_Project.Appointments" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>הזמנות</title>
     <link rel="stylesheet" href="Stylesheets/AppointmentStyle.css"/>

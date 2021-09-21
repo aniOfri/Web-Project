@@ -13,18 +13,17 @@ namespace VR_Web_Project
         public string PhoneNumber {get;set;}
         public DateTime Date {get;set;}
         public int Participants {get;set;}
-        private DAL DAL = new DAL();
 
         public Appointment(string phoneNumber, DateTime date, int participants)
         {
-            this.Id = countForId();
+            this.Id = CountForId();
             this.PhoneNumber = phoneNumber;
             this.Date = date;
             this.Participants = participants;
         }
 
         // Count for id
-        private int countForId()
+        private int CountForId()
         {
             string sql = "SELECT COUNT(*) FROM Appointment";
             return DAL.ExecuteScalar(sql);
@@ -45,12 +44,10 @@ namespace VR_Web_Project
             }
         }
         // Static method to create schedule
-        public static string[][] createSchedule()
+        public static string[][] CreateSchedule()
         {
-            DAL DAL = new DAL();
             string[][] week = new string[8][];
                 week[0] = new string[14];
-
 
             /* Available times in the system:
              "08:00", "09:15", "10:30", "11:45", "12:00",
@@ -76,7 +73,7 @@ namespace VR_Web_Project
             {
                 DateTime date = (DateTime)reader["DateTime"];
                 int days = (date - DateTime.Today).Days + 1 + (int)DateTime.Today.DayOfWeek;
-                if (days > 7) days = days - 7;
+                if (days > 7) days -= 7;
                 int hours = (date - DateTime.Today).Hours - 8;
                 if (days > 0 && hours > 0)
                 {

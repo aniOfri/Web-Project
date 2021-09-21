@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Web;
+﻿using System.Data;
 using System.Configuration;
 using System.Data.SqlClient;
 
@@ -10,24 +6,17 @@ namespace VR_Web_Project
 {
     public class DAL
     {
-        private string ConnectionString { get; set; }
-
-        public DAL()
-        {
-            this.ConnectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
-        }
         // GetConnection
-        public SqlConnection ConnectToDb()
+        private static SqlConnection ConnectToDb()
         {
+            string ConnectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+            
             SqlConnection conn = new SqlConnection(ConnectionString);
             return conn;
-
         }
 
-
         // ExecNonQuery
-
-        public void ExecNonQuery(string sql)
+        public static void ExecNonQuery(string sql)
         {
             SqlConnection conn = ConnectToDb();
             conn.Open();
@@ -39,7 +28,7 @@ namespace VR_Web_Project
 
         // IsExist
 
-        public bool IsExist(string sql)
+        public static bool IsExist(string sql)
         {
             SqlConnection conn = ConnectToDb();
             conn.Open();
@@ -52,7 +41,7 @@ namespace VR_Web_Project
         }
 
         // DataTable
-        public DataTable ExecuteDataTable(string sql)
+        public static DataTable ExecuteDataTable(string sql)
         {
             SqlConnection conn = ConnectToDb();
             conn.Open();
@@ -63,7 +52,7 @@ namespace VR_Web_Project
         }
 
         // ExecuteScalar
-        public int ExecuteScalar(string sql)
+        public static int ExecuteScalar(string sql)
         {
             SqlConnection conn = ConnectToDb();
             conn.Open();
@@ -74,7 +63,7 @@ namespace VR_Web_Project
 
 
         // GetReader
-        public SqlDataReader GetReader(string sql)
+        public static SqlDataReader GetReader(string sql)
         {
             SqlConnection conn = ConnectToDb();
             conn.Open();

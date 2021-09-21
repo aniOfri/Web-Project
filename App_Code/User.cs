@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
 
 namespace VR_Web_Project
 {
@@ -15,24 +11,23 @@ namespace VR_Web_Project
         public string PhoneNumber { get; set; }
         public bool IsManager { get; set; }
         //private bool IsManager { get; set; }
-        private DAL DAL = new DAL();
 
         public User(string username, string password)
         {
-            this.Id = countForId();
+            this.Id = CountForId();
             this.Username = username;
             this.Password = password;
             this.IsManager = false;
             //this.IsManager = isManager;
         }
 
-        private int countForId()
+        private int CountForId()
         {
             string sql = "SELECT COUNT(*) FROM Member";
             return DAL.ExecuteScalar(sql);
         }
 
-        private void setId()
+        private void SetId()
         {
             string selectQuery = "SELECT Id FROM Member";
             selectQuery += " WHERE Username ='" + Username + "'";
@@ -45,7 +40,7 @@ namespace VR_Web_Project
             reader.Close();
         }
 
-        public bool setManager()
+        public bool SetManager()
         {
             string selectQuery = "SELECT IsManager FROM Member";
             selectQuery += " WHERE Id ='" + Id + "'";
@@ -57,7 +52,7 @@ namespace VR_Web_Project
             return IsManager;
         }
 
-        public void setPhoneNumber()
+        public void SetPhoneNumber()
         {
             string selectQuery = "SELECT PhoneNumber FROM Member";
             selectQuery += " WHERE Id ='" + Id + "'";
@@ -79,9 +74,9 @@ namespace VR_Web_Project
 
                 if (pass == Password)
                 {
-                    setId();
-                    setManager();
-                    setPhoneNumber();
+                    SetId();
+                    SetManager();
+                    SetPhoneNumber();
                     return true;
                 }
                 else return false;

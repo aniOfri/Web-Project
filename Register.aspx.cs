@@ -7,7 +7,6 @@ namespace VR_Web_Project
         public string RegStatus = "";
         protected void Page_Load(object sender, EventArgs e)
         {
-            DAL DAL = new DAL();
             if (Session["status"] != null)
             {
                 RegStatus = Session["status"].ToString();

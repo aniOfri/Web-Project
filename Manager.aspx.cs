@@ -23,8 +23,8 @@ namespace VR_Web_Project
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-            Session["Schedule"] = Appointment.createSchedule();
-            setOnGrid();
+            Session["Schedule"] = Appointment.CreateSchedule();
+            SetOnGrid();
         }
 
         // Get the date of the next /weekday/
@@ -44,7 +44,7 @@ namespace VR_Web_Project
             return "(" + from.ToShortDateString() + ")";
         }
 
-        private void setOnGrid()
+        private void SetOnGrid()
         {
             string[][] week = (string[][])Session["Schedule"];
 

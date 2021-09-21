@@ -1,18 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace VR_Web_Project
 {
     public class Receipt
     {
-        private int Id { get; set; }
-        private DateTime OrderDate { get; set; }
-        private int UserID { get; set; }
-        private int AppointmentID { get; set; }
-        private int Price { get; set; }
-        private string CreditCard { get; set; }
+        public int Id { get; set; }
+        public DateTime OrderDate { get; set; }
+        public int UserID { get; set; }
+        public int AppointmentID { get; set; }
+        public int Price { get; set; }
+        public string CreditCard { get; set; }
 
         public Receipt(int id, DateTime orderDate, int userId, int appointmentId, int price, string creditCard)
         {
