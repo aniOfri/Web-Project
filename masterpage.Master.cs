@@ -7,23 +7,29 @@ namespace VR_Web_Project
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            // CHECKS IF THE USER IS LOGGED IN
             if (Session["User"] != null)
             {
+                // IF SO, TRANSFORM THE LOGIN BUTTON TO A PROFILE BUTTON
                 loginNav.HRef = "Profile.aspx";
                 loginNav.InnerHtml = "פרופיל";
-                headerNav.Style["width"] = "75%";
 
+                // LENGTHEN THE NAVBAR
+                headerNav.Style["width"] = "75%";
+                
+                // DISPLAY A LOGOUT BUTTON
                 logoutNav.Style["visibility"] = "visible";
                 logoutNav.Style["opacity"] = "1";
                 logoutNav.Style["display"] = "inline";
 
+                // CHECKS IF THE USER IS A MANAGER
                 if ((bool)Session["Manager"])
                 {
+                    /* AND IF THE PAGE IS NOT CURRENTLY A MANAGER PAGE, 
+                            DISPLAY A MANAGER PAGE BUTTON */
                     string currentUrl = HttpContext.Current.Request.Url.LocalPath;
                     if (!currentUrl.EndsWith("Manager.aspx"))
-                    {
                         managerNav.Style["display"] = "inline";
-                    }
                 }
             }
         }

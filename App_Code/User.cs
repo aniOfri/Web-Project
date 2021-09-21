@@ -126,11 +126,11 @@ namespace VR_Web_Project
         // A public function which registers the user the to site (inserts data to db)
         // INPUT: string as a phone number
         // OUTPUT: bool as success/fail
-        public bool Register(string phoneNumber)
+        public bool Register()
         {
             // BUILD STRING AS AN SQL COMMAND
             string sql = "INSERT INTO Member (Id, Username, PhoneNumber, Password, isManager) VALUES (\'";
-            sql += Id + "\', \'" + Username + "\', \'" + phoneNumber + "\', \'" + Password + "\', \'" + false + "\')";
+            sql += Id + "\', \'" + Username + "\', \'" + PhoneNumber + "\', \'" + Password + "\', \'" + false + "\')";
             
             // TRY TO EXECUTE COMMAND
             try {
