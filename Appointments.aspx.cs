@@ -7,28 +7,33 @@ namespace VR_Web_Project
 {
     public partial class Appointments : System.Web.UI.Page
     {
-        //Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Ofri\source\repos\Web-Project\App_Data\VirtuariaDB.mdf;Integrated Security=True
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!Page.IsPostBack){
+            if(!Page.IsPostBack)
+            {
+                // GET SCHEDULE FROM THE APPOINTMENT CLASS
+                Session["Schedule"] = Appointment.CreateSchedule();
+                
+                // RESET DATA SESSIONS
                 Session["Day"] = null;
                 Session["Partic"] = null;
                 Session["Time"] = null;
 
+                // UPDATE THE WEBSITE
                 SetDateTime();
-
-                CreateSchedule();
-
-                //setOnGrid();
-
                 UpdateTimes(-1);
             }
         }
 
-        // Set the values of the next dates relative to today
+        // A private function which sets the values of the next dates relative to today on the dropdownlist
+        // INPUT: none
+        // OUTPUT: void
         private void SetDateTime()
         {
+            // GET TODAYS DATE
             DateTime today = DateTime.Today;
+
+            // FOR LOOPS OVER EVERY BUTTON ON THE DROP DOWN LIST AND UPDATES TO VALUES
             for (int i = 1; i < 8; i++)
             {
                 Button btn = Master.FindControl("TitlePlaceHolder").FindControl("date"+i) as Button;
@@ -36,19 +41,16 @@ namespace VR_Web_Project
             }
         }
 
-        // Create a schedule using the SQL DB
-        private void CreateSchedule()
-        {
-            Session["Schedule"] = Appointment.CreateSchedule();
-        }
-
-        // Update time values for the time ddl
+        // A private function which updates time values for the "time" dropdownlist
+        // INPUT: int as day
+        // OUTPUT: void
         private void UpdateTimes(int day)
         {
+            // GET SCHEDULE week FROM SESSION
             string[][] week = (string[][])Session["Schedule"];
-
             string[] times = new string[14];
             
+            // FILL THE DROPDOWNLIST WITH THE TIMES
             Time time = new Time(8, 0);
             for (int i = 0; i < 14; i++)
             {
@@ -56,6 +58,7 @@ namespace VR_Web_Project
                 time.AddTime(1, 15);
             }
             
+            // SET AS UNAVAILABLE THE OCCUPIED APPOINTMENT TIMES
             if (day != -1)
             {
                 for (int i = 0; i < 13; i++)
@@ -65,6 +68,7 @@ namespace VR_Web_Project
                 }
             }
 
+            // FOR LOOPS OVER EVERY BUTTON ON THE DROP DOWN LIST AND UPDATES TO VALUES
             for (int i = 0; i < 14; i++)
             {
                 Button l = Master.FindControl("TitlePlaceHolder").FindControl("time" + (i + 1)) as Button;
@@ -72,7 +76,9 @@ namespace VR_Web_Project
             }
         }
 
-        // If all paramaters (time, date, and partc.) has been chosen, the function will return true
+        // A private functions which checks if all paramaters (time, date, and partc.) has been chosen
+        // INPUT: none
+        // OUTPUT: bool as an allowance to proceed
         private bool AllowToProceed()
         {
             return Session["Partic"] != null 
@@ -80,68 +86,103 @@ namespace VR_Web_Project
                 && Session["Time"] != null;
         }
 
-        // Button press for participants-related objects
+        // A Button press function for participants-related objects
         protected void ParticipantsOrder(object sender, EventArgs e)
         {
+            // GET BUTTON AS OBJECT
             Button btn = sender as Button;
-            int parameter = int.Parse(btn.Attributes["CustomParameter"].ToString());
-            string[] inText = { "אחד", "זוג", "שלישייה", "רביעייה", "חמישייה", "שישייה" };
             
+            // DECLARE PARAMETER FROM THE BUTTON CUSTOM PARAMETER
+            int parameter = int.Parse(btn.Attributes["CustomParameter"].ToString());
+
+            // DECLARE AN ARRAY FOR EASY TRANSITION BETWEEN INT AND TEXT
+            string[] inText = { "אחד", "זוג", "שלישייה", "רביעייה", "חמישייה", "שישייה" };
+
+            // UPDATE LABELS AND SESSION VALUES        
             label1.Text = "מספר משתתפים נבחר: " + inText[parameter];
             Session["Partic"] = parameter + 1;
 
+            // IF ALL VALUES BEEN CHOSEN, DISPLAY THE PROCEED BUTTON
             if (AllowToProceed())
                 label3.CssClass = "span3";
         }
-        // Button press for date-related objects
+        // A Button press function for date-related objects
         protected void DayOrder(object sender, EventArgs e)
         {
+            // GET BUTTON AS OBJECT
             Button btn = sender as Button;
+
+            // UPDATE LABELS AND SESSION VALUES         
             label2.Text = "תאריך נבחר: " + btn.Text;
             Session["Day"] = btn.Text;
 
+            // IF ALL VALUES BEEN CHOSEN, DISPLAY THE PROCEED BUTTON
             if (AllowToProceed())
                 label3.CssClass = "span3";
 
+            // RESET THE TIME CHOSEN VALUES
             label4.Text = "הזמנת זמן";
             Session["Time"] = null;
 
+            // UPDATE THE TIME DROPDOWNLIST FOR THE NEW CHOSEN DAY
             DateTime date = Convert.ToDateTime(btn.Text);
             UpdateTimes((int)date.DayOfWeek);
         }
 
-        // Button press for time-related objects
+        // A Button press function for time-related objects
         protected void TimeOrder(object sender, EventArgs e)
         {
+            // GET BUTTON AS OBJECT
             Button btn = sender as Button;
+
+            // IF TIME IS AVAILABLE
             if (btn.Text != "לא זמין")
             {
+                // UPDATE LABELS AND SESSION VALUES
                 label4.Text = "זמן נבחר: " + btn.Text;
                 Session["Time"] = btn.Text;
 
+                // IF ALL VALUES BEEN CHOSEN, DISPLAY THE PROCEED BUTTON
                 if (AllowToProceed())
                     label3.CssClass = "span3";
             }
         }
+
+        // A Button press function which orders the appointment
         protected void Order(object sender, EventArgs e)
         {
+            // CREATE AN APPOINTMENT CLASS WITHOUT THE PHONE NUMBER VARIABLE
             DateTime dateTime = DateTime.Parse
                 ($"{(string)Session["Day"]} {(string)Session["Time"]}");
             int participants = (int)Session["Partic"];
 
             Appointment appointment = new Appointment
                 ("", dateTime, participants);
+
+            // CHECKS IF THE USER IS LOGGED IN 
             if (Session["User"] != null)
             {
+                // GETS THE USER FROM SESSION AND APPLY THE PHONE NUMBER TO THE APPOINTMENT
                 User user = (User)Session["User"];
                 appointment.PhoneNumber = user.PhoneNumber;
 
+                /*
+                
+                WILL ADD A PAYMENT/VERIFICATION METHOD IN THE FUTURE.
+                
+                */
+
+                // INSERT THE DATA INTO THE DATABASE
                 appointment.Order();
+
+                // REDIRECT HOME.ASPX
                 Response.Redirect("Home.aspx");
                 Response.End();
             }
             else
             {
+                /* IF USER IS NOT LOGGED IN, THE SITE WILL REDIRECT
+                    TO THE LOGIN/REGISTER SITE AND THE REST OF THE OPERATION WILL BE DONE THERE*/
                 Session["RedirectOrder"] = appointment;
                 Response.Redirect("Login.aspx");
                 Response.End();
