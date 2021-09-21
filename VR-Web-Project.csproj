@@ -69,6 +69,8 @@
   <ItemGroup>
     <Content Include="Appointments.aspx" />
     <Content Include="Javascripts\AppointmentScript..js" />
+    <Content Include="Stylesheets\ProfileStyle.css" />
+    <Content Include="Profile.aspx" />
     <Content Include="Stylesheets\AppointmentStyle.css" />
     <Content Include="App_Data\VirtuariaDB.mdf" />
     <Content Include="App_Data\VirtuariaDB_log.ldf">
@@ -130,6 +132,13 @@
     </Compile>
     <Compile Include="Manager.aspx.designer.cs">
       <DependentUpon>Manager.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Profile.aspx.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Profile.aspx.designer.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="masterpage.Master.cs">

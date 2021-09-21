@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Drawing.Design;
-using System.Linq;
-using System.Web;
 
 namespace VR_Web_Project
 {

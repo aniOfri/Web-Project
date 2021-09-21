@@ -10,9 +10,20 @@ namespace VR_Web_Project
             // CHECKS IF THE USER IS LOGGED IN
             if (Session["User"] != null)
             {
-                // IF SO, TRANSFORM THE LOGIN BUTTON TO A PROFILE BUTTON
-                loginNav.HRef = "Profile.aspx";
-                loginNav.InnerHtml = "פרופיל";
+                //  IF SO, GET CURRENT URL
+                string currentUrl = HttpContext.Current.Request.Url.LocalPath;
+
+                /* AND IF THE PAGE IS NOT CURRENTLY A PROFILE PAGE
+                    TRANSFORM THE LOGIN BUTTON TO A PROFILE BUTTON */
+                if (!currentUrl.EndsWith("Profile.aspx")) 
+                { 
+                    loginNav.HRef = "Profile.aspx";
+                    loginNav.InnerHtml = "פרופיל";
+                }
+                else
+                {
+                    loginNav.Style["display"] = "none";
+                }
 
                 // LENGTHEN THE NAVBAR
                 headerNav.Style["width"] = "75%";
@@ -27,7 +38,6 @@ namespace VR_Web_Project
                 {
                     /* AND IF THE PAGE IS NOT CURRENTLY A MANAGER PAGE, 
                             DISPLAY A MANAGER PAGE BUTTON */
-                    string currentUrl = HttpContext.Current.Request.Url.LocalPath;
                     if (!currentUrl.EndsWith("Manager.aspx"))
                         managerNav.Style["display"] = "inline";
                 }
