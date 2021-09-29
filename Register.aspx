@@ -16,7 +16,7 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="TitlePlaceHolder" runat="server">
     <img src="stars.png" class="stars"/>
     <div class="formDiv">
-        <form id="formLogin" onsubmit="return LogValid();" method="get">
+        <form id="formRegister" onsubmit="return RegValid();" method="get">
             
             <div class="sidebyside">
                 <div><h1 class="title">הרשמה</h1></div>
@@ -41,7 +41,7 @@
             
             <label><%=RegStatus%></label><br /><br />
             <div class="center">
-                <div class="backgroundButton"><input id="submitLogin" value="הרשם" type="submit" name="submit" class="transparentButton" /></div>
+                <div class="backgroundButton"><input id="submitRegister" value="הרשם" type="submit" name="submit" class="transparentButton" /></div>
             </div>
         </form>
     </div>

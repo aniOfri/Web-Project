@@ -145,5 +145,30 @@ namespace VR_Web_Project
                 return false;
             }
         }
+
+        // A public function which changes the password of the users to the pass received as a paramater
+        // INPUT: string as the new password
+        // OUTPUT: bool as success/fail
+        public bool ChangePassword(string newPass)
+        {
+            // BUILD STRING AS AN SQL COMMAND
+            string sql = "UPDATE Member SET Password='" + newPass + "'";
+            sql += "WHERE Id='" + Id + "'";
+
+            // TRY TO EXECUTE COMMAND
+            try
+            {
+                DAL.ExecNonQuery(sql);
+
+                // PASSWORD CHANGED SUCCESSFULLY, RETURNS TRUE
+                return true;
+            }
+            catch
+            {
+
+                // THERE WAS AN ERROR, RETURNS FALSE
+                return false;
+            }
+        }
     }
 }
