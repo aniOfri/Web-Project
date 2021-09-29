@@ -7,20 +7,20 @@ h1.title {
     margin: 2px;
     font-family: 'Rubik', sans-serif;
     text-align: center;
-    font-size: 60px;
+    font-size: 80px;
     color: #FFF;
-    text-shadow:
-   -1px -1px 0 #000,  
-    1px -1px 0 #000,
-    -1px 1px 0 #000,
-     1px 1px 0 #000;
+    text-shadow: 0 0 20px #89CFF0;
+}
+
+a.title {
+    text-shadow: 0 0 200px #89CFF0;
 }
 
 div.text {
     color: #FFF;
     white-space: nowrap;
     z-index: 4;
-    transform: translateX(0vh) translateY(-200px);
+    transform: translateX(-50px) translateY(-150px);
 }
 
 section {
@@ -76,9 +76,28 @@ section img#person {
 
 .sec h1 {
     font-size: 50px;
-    padding-bottom: 5%;
 }
 
 .sec p {
     font-size: 2em;
+}
+
+img.example {
+    width: 140px;
+    height: 205px;
+    object-fit: fill;
+    border-radius: 20px;
+    margin: 10px;
+    transition: all .2s;
+}
+
+img.example:hover {
+    transform: scale(1.1);
+}
+
+div.games {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2%;
 }
