@@ -9,6 +9,7 @@ namespace VR_Web_Project
 {
     public partial class Profile : System.Web.UI.Page
     {
+        // DECLARE A GLOBAL VARIABLE TO DISPLAY ERROR/SUCCESS MESSAGES ONs
         public string PasswordChangeLog = "";
         protected void Page_Init(object sender, EventArgs e)
         {
@@ -24,6 +25,17 @@ namespace VR_Web_Project
 
             username.Text = "שלום, "+ user.Username.ToString();
 
+            // CHECKS IF STATUS SESSION IS NOT NULL
+            if (Session["status"] != null)
+            {
+                // IF SO, UPDATE THE GLOBAL VARIABLE TO DISPLAY THE STATUS
+                string status = Session["status"].ToString();
+                if (status == "200")
+                    PasswordChangeLog = "הסיסמה שונתה בהצלחה";
+                else if (status == "450") PasswordChangeLog = "קרתה תקלה במערכת";
+                else PasswordChangeLog = "הסיסמה הישנה אינה נכונה";
+            }
+
             // CHECKS IF THE SITE HAS BEEN RELOADED DUE TO A SUBMIT PRESS
             if (Request["submit"] != null)
             {
@@ -35,16 +47,15 @@ namespace VR_Web_Project
                 if (oldPass == user.Password)
                 {
                     if (user.ChangePassword(newPass))
-                        PasswordChangeLog = "הסיסמה שונתה בהצלחה";
-                    else PasswordChangeLog = "קרתה תקלה במערכת";
-
-                    // REDIRECT PROFILE.ASPX
-                    Response.Redirect("Profile.aspx");
-                    Response.End();
+                        Session["status"] = 200;
+                    else Session["status"] = 450;
                 }
                 else
                     // UPDATE THE GLOBAL VARIABLE (FAIL)
-                    PasswordChangeLog = "הסיסמה הישנה אינה נכונה";
+                    Session["status"] = "fail";
+
+                Response.Redirect("Profile.aspx");
+                Response.End();
             }
         }
     }

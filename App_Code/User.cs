@@ -159,6 +159,7 @@ namespace VR_Web_Project
             try
             {
                 DAL.ExecNonQuery(sql);
+                Password = newPass;
 
                 // PASSWORD CHANGED SUCCESSFULLY, RETURNS TRUE
                 return true;

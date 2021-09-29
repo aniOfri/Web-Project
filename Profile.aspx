@@ -30,7 +30,7 @@
             <input id="newPass" type="password" name="newPass"/><br />
             <a class="errorMsgs" id="newPassError"></a><br /> <!--- Error msg -->
 
-            <%=PasswordChangeLog %>
+            <label><%=PasswordChangeLog %></label><br/><br/>
             <div class="center">
                 <div class="backgroundButton"><input id="submitChange" value="הרשם" type="submit" name="submit" class="transparentButton"/></div>
             </div>
