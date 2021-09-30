@@ -5,8 +5,25 @@ namespace VR_Web_Project
 {
     public partial class Site1 : System.Web.UI.MasterPage
     {
+        public string participants = "";
+        public string date = "";
+        public string time = "";
         protected void Page_Load(object sender, EventArgs e)
         {
+            // CHECK IF AN ORDER EXISTS IN SESSION
+            if (Session["RedirectOrder"] != null)
+            {
+                // IF SO, SET THE GLOBAL VARS AS THE APPOINTMENT VALUES
+                Appointment appointment = (Appointment)Session["RedirectOrder"];
+                participants = "שחקנים: "+ appointment.Participants.ToString();
+                date = "תאריך: "+ appointment.Date.ToString("MM/dd/yyyy");
+                time = "זמן: "+ appointment.Date.ToString("HH:mm");
+            }
+            else
+                // IF NOT, DONT DISPLAY THE "CURRENT ORDER"
+                currentOrder.Attributes["class"] = "nodisplay";
+
+
             // CHECKS IF THE USER IS LOGGED IN
             if (Session["User"] != null)
             {

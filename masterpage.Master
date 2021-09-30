@@ -10,9 +10,9 @@
     <title></title>
 </head>
 <body dir="rtl">
-    <div runat="server">
-        <div class="header" runat="server" id="headerNav">
-            <header class="navbar" runat="server">
+    <div>
+        <div class="header">
+            <header runat="server" id="headerNav" class="navbar">
                 <img class="logo" src="VIRTUARIA.svg" alt="logo" />
                 <a class="cta logout" id="logoutNav" runat="server" href="Logout.aspx">התנתקות</a>
                 <asp:ContentPlaceHolder ID="headerPlaceHolder" runat="server">
@@ -20,7 +20,16 @@
                 <a class="cta" id="loginNav" runat="server" href="Login.aspx">התחברות</a>
                 <a class="cta manager" id="managerNav" runat="server" href="Manager.aspx">דף מנהל</a>
             </header>
-            </div>
+
+            <header runat="server" id="currentOrder" class="order">
+                <a>[הזמנה נוכחית]</a>
+                <div class="orderlist">
+                    <a><%=participants %></a>
+                    <a><%=date %></a>
+                    <a><%=time %></a>
+                </div>
+            </header>
+        </div>
         <asp:ContentPlaceHolder ID="TitlePlaceHolder" runat="server">
         </asp:ContentPlaceHolder>
 

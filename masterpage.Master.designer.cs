@@ -69,6 +69,15 @@ namespace VR_Web_Project
         protected global::System.Web.UI.HtmlControls.HtmlAnchor managerNav;
 
         /// <summary>
+        /// currentOrder control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl currentOrder;
+
+        /// <summary>
         /// TitlePlaceHolder control.
         /// </summary>
         /// <remarks>
