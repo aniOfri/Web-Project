@@ -51,7 +51,28 @@ namespace VR_Web_Project
                     {
                         // SUCCESS
                         Session["status"] = "200";
-                        Response.Redirect("Register.aspx");
+
+                        // CHECKS IF THE USER HAS BEEN REDIRECTED TO THE LOGIN PAGE AFTER DOING AN ORDER AND THEN DECIDED TO REGISTER
+                        if (Session["RedirectOrder"] != null)
+                        {
+                            // DECLARE AN APPOINTMENT FROM SESSION AND ASSIGN THE USERS PHONE NUMBER TO TO APPOINTMENT
+                            Appointment appointment = (Appointment)Session["RedirectOrder"];
+                            appointment.PhoneNumber = user.PhoneNumber;
+
+                            /*
+
+                            WILL ADD A PAYMENT/VERIFICATION METHOD IN THE FUTURE.
+
+                            */
+
+                            // INSERT THE DATA INTO THE DATABASE
+                            appointment.Order();
+
+                            // REDIRECT PROFILE.ASPX
+                            Response.Redirect("Profile.aspx");
+                        }
+                        else
+                            Response.Redirect("Register.aspx");
                     }
                     else
                     {

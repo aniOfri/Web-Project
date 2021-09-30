@@ -53,11 +53,17 @@ namespace VR_Web_Project
 
                         // INSERT THE DATA INTO THE DATABASE
                         appointment.Order();
-                    }
 
-                    // REDIRECT HOME.ASPX
-                    Response.Redirect("Home.aspx");
-                    Response.End();
+
+                        // REDIRECT PROFILE.ASPX
+                        Response.Redirect("Profile.aspx");
+                    }
+                    else
+                    {
+                        // REDIRECT HOME.ASPX
+                        Response.Redirect("Home.aspx");
+                        Response.End();
+                    }
                 }
                 else
                 {
