@@ -98,6 +98,7 @@ ul.footer {
     margin-bottom: 0px;
     padding-bottom: 20px;
     padding-top: 10px;
+    margin-left: 100px;
 }
 
 .footer {
@@ -106,8 +107,9 @@ ul.footer {
 }
 
 .footer li {
-    display: inline-block;
+    display: inline;
     padding: 0px 20px;
+    margin-left: 20px;
 }
 
 li, a {

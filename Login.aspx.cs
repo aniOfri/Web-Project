@@ -8,6 +8,16 @@ namespace VR_Web_Project
         public string LogStatus = "";
         protected void Page_Load(object sender, EventArgs e)
         {
+            // CHECKS IF STATUS SESSION IS NOT NULL
+            if (Session["status"] != null)
+            {
+                // IF SO, UPDATE THE GLOBAL VARIABLE TO DISPLAY THE STATUS
+                string status = Session["status"].ToString();
+                if (status == "200")
+                    LogStatus = "התחברת בהצלחה";
+                else if (status == "450") LogStatus = "שם משתמש או סיסמה אינם נכונים";
+            }
+
             // CHECKS IF THE SITE HAS BEEN RELOADED DUE TO A SUBMIT PRESS
             if (Request["submit"] != null)
             {
@@ -22,7 +32,7 @@ namespace VR_Web_Project
                 if (user.Login())
                 {
                     // UPDATE THE GLOBAL VARIABLE (SUCCESS)
-                    LogStatus = "התחברת בהצלחה";
+                    Session["status"] = 200;
 
                     // UPDATE THE SESSIONS
                     Session["User"] = user;
@@ -50,8 +60,15 @@ namespace VR_Web_Project
                     Response.End();
                 }
                 else
+                {
                     // UPDATE THE GLOBAL VARIABLE (FAIL)
-                    LogStatus = "שם משתמש או סיסמה אינם נכונים";
+                    Session["status"] = 450;
+
+
+                    // REDIRECT LOGIN.ASPX
+                    Response.Redirect("Login.aspx");
+                    Response.End();
+                }
             }
         }
     }
