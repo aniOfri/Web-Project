@@ -40,12 +40,12 @@
             
             <h1 class="title">בין המשחקים יש לנו את:</h1><br />
             <div class="games">
-                <img class="example" src="Sources/beatsaber.jpg"/>
-                <img class="example" src="Sources/minecraft.png"/>
-                <img class="example" src="Sources/pistolwhip.jpg"/>
-                <img class="example" src="Sources/superhot.jpg"/>
-                <img class="example" src="Sources/coc.jpg"/>
-                <img class="example" src="Sources/agario.png"/>
+                <img class="game" src="Sources/beatsaber.jpg"/>
+                <img class="game" src="Sources/minecraft.png"/>
+                <img class="game" src="Sources/pistolwhip.jpg"/>
+                <img class="game" src="Sources/superhot.jpg"/>
+                <img class="game" src="Sources/coc.jpg"/>
+                <img class="game" src="Sources/agario.png"/>
             </div>
         </div>
     </div>

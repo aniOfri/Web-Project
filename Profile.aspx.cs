@@ -13,16 +13,20 @@ namespace VR_Web_Project
         public string PasswordChangeLog = "";
         protected void Page_Init(object sender, EventArgs e)
         {
+            // CHECK IF A USER IS LOGGED IN
             if (Session["User"] == null)
             {
+                // IF NOT, REDIRECT TO PROFILE.ASPX
                 Response.Redirect("Login.aspx");
                 Response.End();
             }
         }
         protected void Page_Load(object sender, EventArgs e)
         {
+            // GET THE LOGGED USER AS A USER FROM "USER" SESSION 
             User user = (User)Session["User"];
 
+            // SET THE WELCOMING TEXT AS: "HELLO, [THE USER'S USERNAME]"
             username.Text = "שלום, "+ user.Username.ToString();
 
             // CHECKS IF STATUS SESSION IS NOT NULL
@@ -30,9 +34,12 @@ namespace VR_Web_Project
             {
                 // IF SO, UPDATE THE GLOBAL VARIABLE TO DISPLAY THE STATUS
                 string status = Session["status"].ToString();
+                // SUCCESS
                 if (status == "200")
                     PasswordChangeLog = "הסיסמה שונתה בהצלחה";
+                // INTERNAL ERROR SUCH AS DB ERROR
                 else if (status == "450") PasswordChangeLog = "קרתה תקלה במערכת";
+                // EXTERNAL ERROR SUCH AS WRONG PASSWORD
                 else PasswordChangeLog = "הסיסמה הישנה אינה נכונה";
             }
 
@@ -46,14 +53,18 @@ namespace VR_Web_Project
                 // LOGIN AND CONTINUE IF SUCCESS
                 if (oldPass == user.Password)
                 {
+                    // CHANGE PASSWORD OF user TO newPass
                     if (user.ChangePassword(newPass))
+                        // SET STATUS SESSION AS SUCCESS
                         Session["status"] = 200;
+                    // SET STATUS SESSION TO AN INTERNAL ERROR
                     else Session["status"] = 450;
                 }
                 else
-                    // UPDATE THE GLOBAL VARIABLE (FAIL)
+                    // SET STATUS SESSION TO AN EXTERNAL ERROR
                     Session["status"] = "fail";
 
+                // REDIRECT TO PROFILE.ASPX
                 Response.Redirect("Profile.aspx");
                 Response.End();
             }
