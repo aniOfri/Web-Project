@@ -5,12 +5,12 @@
 </asp:Content>
 <asp:Content ID="headerContent" ContentPlaceHolderID="headerPlaceHolder" runat="server">
     <nav>
-        <ul class="links">
+        <ul class="links resetpadding">
             <li><a href="Home.aspx">בית</a></li>
             <li><a href="#information">מידע</a></li>
         </ul>
     </nav>
-    <a class="cta" href="Appointments.aspx">הזמנות</a>
+    <a class="cta buttons" href="Appointments.aspx">הזמנות</a>
 </asp:Content>
 <asp:Content ID="titleContent" ContentPlaceHolderID="TitlePlaceHolder" runat="server">
     <section>

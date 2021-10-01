@@ -57,11 +57,6 @@ namespace VR_Web_Project
             string[][] week = new string[8][];
                 week[0] = new string[14];
 
-            /* Available times in the system:
-             "08:00", "09:15", "10:30", "11:45", "12:00",
-             "13:15", "14:30", "15:45", "16:00", "17:15",
-             "18:30", "19:45", "20:00", "21:15" */
-
             // DECLARE A CUSTOM TIME CLASS
             Time time = new Time(8, 0);
 
@@ -81,8 +76,8 @@ namespace VR_Web_Project
             }
 
             // GET READER FROM DATABASE
-            string cmdString = "SELECT * FROM Appointment";
-            SqlDataReader reader = DAL.GetReader(cmdString);
+            string sql = "SELECT * FROM Appointment";
+            SqlDataReader reader = DAL.GetReader(sql);
             while (reader.Read())
             {
                 // FILL THE OCCUPIED SPOTS WITH THE NUMBER OF PARTICIPANTS 

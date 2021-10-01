@@ -41,9 +41,6 @@ namespace VR_Web_Project
                 {
                     loginNav.Style["display"] = "none";
                 }
-
-                // LENGTHEN THE NAVBAR
-                headerNav.Style["width"] = "60%";
                 
                 // DISPLAY A LOGOUT BUTTON
                 logoutNav.Style["visibility"] = "visible";

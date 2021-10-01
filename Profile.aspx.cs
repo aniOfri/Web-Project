@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
 namespace VR_Web_Project
@@ -76,9 +77,23 @@ namespace VR_Web_Project
             // DECLARE DATATABLE Appointments
             DataTable dt = Appointment.GetAppointments(user);
 
-            // SET grid DATASOURCE AND BIND
-            grid.DataSource = dt;
-            grid.DataBind();
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                DataRow dr = dt.Rows[i];
+
+                DateTime dateTime = (DateTime)dr[2];
+
+                string text;
+                text = " תאריך: "+ dateTime.ToString("MM/dd/yyyy");
+                text += " זמן: " + dateTime.ToString("HH:mm");
+                text += " מספר משתתפים: " + dr[3];
+
+                if (dateTime > DateTime.Today)
+                {
+                    var a = new HtmlGenericControl("a") { InnerText = text };
+                    appointmentsArea.Controls.Add(a);
+                }
+            }
         }
     }
 }

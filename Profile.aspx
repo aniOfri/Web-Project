@@ -38,7 +38,8 @@
             </form>
         </div>
         <div class="appointmentsView">
-            <asp:DataGrid ID="grid" runat="server" AutoGenerateColumns="true"></asp:DataGrid>
+            <h1>הזמנות:</h1>
+            <asp:Panel ID="appointmentsArea" runat="server"></asp:Panel>
         </div>
     </div>
 </asp:Content>
