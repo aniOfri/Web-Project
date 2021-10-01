@@ -43,7 +43,7 @@ namespace VR_Web_Project
                 }
 
                 // LENGTHEN THE NAVBAR
-                headerNav.Style["width"] = "75%";
+                headerNav.Style["width"] = "60%";
                 
                 // DISPLAY A LOGOUT BUTTON
                 logoutNav.Style["visibility"] = "visible";

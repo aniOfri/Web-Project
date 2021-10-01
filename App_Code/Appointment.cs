@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Data.SqlClient;
 
 namespace VR_Web_Project
@@ -98,6 +99,16 @@ namespace VR_Web_Project
             // CLOSE READER AND RETURN SCHEDULE
             reader.Close();
             return week;
+        }
+
+        public static DataTable GetAppointments(User user)
+        {
+            string sql = "SELECT * FROM Appointment";
+            sql += " WHERE PhoneNumber='" + user.PhoneNumber + "'";
+
+            DataTable dt = DAL.ExecuteDataTable(sql);
+
+            return dt;
         }
     }
 }

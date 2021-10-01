@@ -38,7 +38,7 @@
             </form>
         </div>
         <div class="appointmentsView">
-
+            <asp:DataGrid ID="grid" runat="server" AutoGenerateColumns="true"></asp:DataGrid>
         </div>
     </div>
 </asp:Content>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -25,6 +26,7 @@ namespace VR_Web_Project
         {
             // GET THE LOGGED USER AS A USER FROM "USER" SESSION 
             User user = (User)Session["User"];
+            SetOnGrid(user);
 
             // SET THE WELCOMING TEXT AS: "HELLO, [THE USER'S USERNAME]"
             username.Text = "שלום, "+ user.Username.ToString();
@@ -68,6 +70,15 @@ namespace VR_Web_Project
                 Response.Redirect("Profile.aspx");
                 Response.End();
             }
+        }
+        private void SetOnGrid(User user)
+        {
+            // DECLARE DATATABLE Appointments
+            DataTable dt = Appointment.GetAppointments(user);
+
+            // SET grid DATASOURCE AND BIND
+            grid.DataSource = dt;
+            grid.DataBind();
         }
     }
 }
