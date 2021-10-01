@@ -9,10 +9,10 @@ namespace VR_Web_Project
         protected void Page_Load(object sender, EventArgs e)
         {
             // CHECKS IF STATUS SESSION IS NOT NULL
-            if (Session["status"] != null)
+            if (Session["logstatus"] != null)
             {
                 // IF SO, UPDATE THE GLOBAL VARIABLE TO DISPLAY THE STATUS
-                string status = Session["status"].ToString();
+                string status = Session["logstatus"].ToString();
                 if (status == "200")
                     LogStatus = "התחברת בהצלחה";
                 else if (status == "450") LogStatus = "שם משתמש או סיסמה אינם נכונים";
@@ -32,7 +32,7 @@ namespace VR_Web_Project
                 if (user.Login())
                 {
                     // UPDATE THE GLOBAL VARIABLE (SUCCESS)
-                    Session["status"] = 200;
+                    Session["logstatus"] = 200;
 
                     // UPDATE THE SESSIONS
                     Session["User"] = user;
@@ -68,7 +68,7 @@ namespace VR_Web_Project
                 else
                 {
                     // UPDATE THE GLOBAL VARIABLE (FAIL)
-                    Session["status"] = 450;
+                    Session["logstatus"] = 450;
 
 
                     // REDIRECT LOGIN.ASPX

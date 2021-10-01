@@ -33,10 +33,10 @@ namespace VR_Web_Project
             username.Text = "שלום, "+ user.Username.ToString();
 
             // CHECKS IF STATUS SESSION IS NOT NULL
-            if (Session["status"] != null)
+            if (Session["passstatus"] != null)
             {
                 // IF SO, UPDATE THE GLOBAL VARIABLE TO DISPLAY THE STATUS
-                string status = Session["status"].ToString();
+                string status = Session["passstatus"].ToString();
                 // SUCCESS
                 if (status == "200")
                     PasswordChangeLog = "הסיסמה שונתה בהצלחה";
@@ -59,13 +59,13 @@ namespace VR_Web_Project
                     // CHANGE PASSWORD OF user TO newPass
                     if (user.ChangePassword(newPass))
                         // SET STATUS SESSION AS SUCCESS
-                        Session["status"] = 200;
+                        Session["passstatus"] = 200;
                     // SET STATUS SESSION TO AN INTERNAL ERROR
-                    else Session["status"] = 450;
+                    else Session["passstatus"] = 450;
                 }
                 else
                     // SET STATUS SESSION TO AN EXTERNAL ERROR
-                    Session["status"] = "fail";
+                    Session["passstatus"] = "fail";
 
                 // REDIRECT TO PROFILE.ASPX
                 Response.Redirect("Profile.aspx");

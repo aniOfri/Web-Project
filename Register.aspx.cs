@@ -9,10 +9,10 @@ namespace VR_Web_Project
         protected void Page_Load(object sender, EventArgs e)
         {
             // CHECKS IF STATUS SESSION IS NOT NULL
-            if (Session["status"] != null)
+            if (Session["regstatus"] != null)
             {
                 // IF SO, UPDATE THE GLOBAL VARIABLE TO DISPLAY THE STATUS
-                string status = Session["status"].ToString();
+                string status = Session["regstatus"].ToString();
                 if (status == "200")
                     RegStatus = "נרשמת בהצלחה";
                 else
@@ -37,7 +37,7 @@ namespace VR_Web_Project
                 if (DAL.IsExist(selectQueryPhone) || DAL.IsExist(selectQueryUsername))
                 {   
                     // IF SO, RETURN ERROR 405
-                    Session["status"] = "405";
+                    Session["regstatus"] = "405";
                     Response.Redirect("Register.aspx");
                 }
                 else
@@ -50,7 +50,7 @@ namespace VR_Web_Project
                     if (user.Register())
                     {
                         // SUCCESS
-                        Session["status"] = "200";
+                        Session["regstatus"] = "200";
 
                         // CHECKS IF THE USER HAS BEEN REDIRECTED TO THE LOGIN PAGE AFTER DOING AN ORDER AND THEN DECIDED TO REGISTER
                         if (Session["RedirectOrder"] != null)
@@ -77,7 +77,7 @@ namespace VR_Web_Project
                     else
                     {
                         // FAIL
-                        Session["status"] = "405";
+                        Session["regstatus"] = "405";
                         Response.Redirect("Register.aspx");
                     }
                 }
