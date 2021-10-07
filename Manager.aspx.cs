@@ -29,10 +29,25 @@ namespace VR_Web_Project
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!Page.IsPostBack)
+            {
+                Session["Offset"] = 0;
+            }
+
+            // CREATE SCHEDULE
+            updateSchedule();
+        }
+
+        private void updateSchedule(int increment = 0)
+        {
+            // UPDATE GLOBAL OFFSET
+            int offset = (int)Session["Offset"];
+            offset += increment;
+            Session["Offset"] = offset;
 
             // GET SCHEDULE FROM THE APPOINTMENT CLASS
-            Session["Schedule"] = Appointment.CreateSchedule();
-
+            Session["Schedule"] = Appointment.CreateSchedule(offset);
+            
             // SET THE SCHEDULE ON A DATAGRID
             SetOnGrid();
         }
@@ -40,7 +55,7 @@ namespace VR_Web_Project
         // A private function which returns the date of the next /weekday/ parameter
         // INPUT: DayOfWeek as a day of the week
         // OUTPUT: string as a the next date of the former day of the week
-        private string Next(DayOfWeek dayOfWeek)
+        private string Next(DayOfWeek dayOfWeek, int offset)
         {
             // DECLARE from AS TODAY
             DateTime from = DateTime.Today;
@@ -60,6 +75,9 @@ namespace VR_Web_Project
                 from = from.AddDays(target - start);
             }
 
+            // APPLY OFFSET
+            from = from.AddDays(offset);
+
             // RETURN THE DATE AS STRING IN PARENTHESIS
             return "(" + from.ToShortDateString() + ")";
         }
@@ -75,15 +93,20 @@ namespace VR_Web_Project
             string[] daysValue = new string[8];
             // ADD THE DAYS AND DATES TO THE daysValue BY CASTING AN INTEGER TO A "DayOfWeek" ENUM
             daysValue[0] = "DAYS/TIMES";
-            for (int i = 0; i < 7; i++)
-                daysValue[i + 1] = $"{(DayOfWeek)i} {Next((DayOfWeek)i)}";
+            for (int i = 0; i < 7; i++) { 
 
+                string str = $"{(DayOfWeek)i} {Next((DayOfWeek)i, (int)Session["Offset"])}";
+
+                System.Diagnostics.Debug.WriteLine(str);
+                daysValue[i + 1] = str;
+            }
             // DECLARE DATATABLE Appointments
             DataTable dt = new DataTable("Appointments");
 
             // ADD DAYS COLUMNS
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < 8; i++) {
                 dt.Columns.Add(new DataColumn(daysValue[i]));
+            }
 
             // TRANSFER THE week 2DARRAY TO THE DATATABLE dt
             for (int i = 0; i < 14; i++)
@@ -99,6 +122,16 @@ namespace VR_Web_Project
             // SET grid DATASOURCE AND BIND
             grid.DataSource = dt;
             grid.DataBind();
+        }
+
+        protected void Back_Click(object sender, EventArgs e)
+        {
+            updateSchedule(-7);
+        }
+
+        protected void Next_Click(object sender, EventArgs e)
+        {
+            updateSchedule(7);
         }
     }
 }

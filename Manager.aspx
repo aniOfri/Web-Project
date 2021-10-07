@@ -16,10 +16,16 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="TitlePlaceHolder" runat="server">
     <form runat="server">
     <img src="stars.png" class="stars"/>
-    <span class="title">דף מנהל</span>
+    <div class="title">
+        <span>דף מנהל</span>
+    </div>
     <div class="wrapper">
         <div class="grid">
             <h1 class="schedule">לוח זמנים</h1>
+            <div class="buttons">
+                <asp:Button runat="server" Text="<" OnClick="Back_Click"/>
+                <asp:Button runat="server" Text=">" OnClick="Next_Click"/>
+            </div>
             <asp:DataGrid ID="grid" runat="server" AutoGenerateColumns="true"></asp:DataGrid>
         </div>
         <div class="userManagement">
