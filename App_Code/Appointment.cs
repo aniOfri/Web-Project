@@ -77,7 +77,8 @@ namespace VR_Web_Project
 
             // GET READER FROM DATABASE
             string sql = "SELECT * FROM Appointment";
-            SqlDataReader reader = DAL.GetReader(sql);
+            var readerAndConnection = DAL.GetReader(sql);
+            SqlDataReader reader = readerAndConnection.Item1;
             while (reader.Read())
             {
                 // FILL THE OCCUPIED SPOTS WITH THE NUMBER OF PARTICIPANTS 
@@ -96,6 +97,7 @@ namespace VR_Web_Project
 
             // CLOSE READER AND RETURN SCHEDULE
             reader.Close();
+            readerAndConnection.Item2.Close();
             return week;
         }
 
@@ -106,7 +108,8 @@ namespace VR_Web_Project
             selectQuery += " WHERE PhoneNumber ='" + phoneNumber + "'";
 
             // GET READER USING DAL
-            SqlDataReader reader = DAL.GetReader(selectQuery);
+            var readerAndConnection = DAL.GetReader(selectQuery);
+            SqlDataReader reader = readerAndConnection.Item1;
 
             // READ VALUE NEEDED
             string username = "";
@@ -115,6 +118,7 @@ namespace VR_Web_Project
 
             // CLOSE AND RETURN
             reader.Close();
+            readerAndConnection.Item2.Close();
             return username;
         }
 

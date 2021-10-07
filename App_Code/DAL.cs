@@ -105,7 +105,7 @@ namespace VR_Web_Project
         // A static function which return a reader of the database
         // INPUT: string as an sql command
         // OUTPUT: SqlDataReader as a reader
-        public static SqlDataReader GetReader(string sql)
+        public static (SqlDataReader, SqlConnection) GetReader(string sql)
         {
             // GET CONNECTION AND OPEN IT
             SqlConnection conn = ConnectToDb();
@@ -119,7 +119,7 @@ namespace VR_Web_Project
             // conn.Dispose();
 
             // RETURN
-            return reader;
+            return (reader, conn);
         }
     }
 }

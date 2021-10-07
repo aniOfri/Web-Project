@@ -76,14 +76,16 @@ namespace VR_Web_Project
             selectQuery += " AND Password ='" + Password + "'";
 
             // GET READER USING DAL
-            SqlDataReader reader = DAL.GetReader(selectQuery);
-            
+            var readerAndConnection = DAL.GetReader(selectQuery);
+            SqlDataReader reader = readerAndConnection.Item1;
+
             // ASSIGN NEW DATA TO Id OF this
             if ((bool)reader.Read())
                 Id = (int)reader["Id"];
 
             // CLOSE
             reader.Close();
+            readerAndConnection.Item2.Close();
         }
 
         // A private function which sets IsManager of this as the IsManager value of the user who logged in using the database
@@ -96,7 +98,8 @@ namespace VR_Web_Project
             selectQuery += " WHERE Id ='" + Id + "'";
 
             // GET READER USING DAL
-            SqlDataReader reader = DAL.GetReader(selectQuery);
+            var readerAndConnection = DAL.GetReader(selectQuery);
+            SqlDataReader reader = readerAndConnection.Item1;
 
             // ASSIGN NEW DATA TO IsManager OF this
             if ((bool)reader.Read())
@@ -104,6 +107,7 @@ namespace VR_Web_Project
 
             // CLOSE
             reader.Close();
+            readerAndConnection.Item2.Close();
         }
 
         // A private function which sets PhoneNumber of this as the PhoneNumber of the user who logged in using the database
@@ -116,7 +120,8 @@ namespace VR_Web_Project
             selectQuery += " WHERE Id ='" + Id + "'";
 
             // GET READER USING DAL
-            SqlDataReader reader = DAL.GetReader(selectQuery);
+            var readerAndConnection = DAL.GetReader(selectQuery);
+            SqlDataReader reader = readerAndConnection.Item1;
 
             // ASSIGN NEW DATA TO PhoneNumber OF this
             if ((bool)reader.Read())
@@ -124,6 +129,7 @@ namespace VR_Web_Project
 
             // CLOSE
             reader.Close();
+            readerAndConnection.Item2.Close();
         }
 
         // A public function which attempts to log in the user into the site using this' values
