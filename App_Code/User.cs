@@ -59,7 +59,7 @@ namespace VR_Web_Project
         // A private function which returns the next Id
         // INPUT: none
         // OUTPUT: int as the Id
-        private int CountForId()
+        public static int CountForId()
         {
             string sql = "SELECT COUNT(*) FROM Member";
             return DAL.ExecuteCounting(sql);
@@ -215,6 +215,16 @@ namespace VR_Web_Project
                 // THERE WAS AN ERROR, RETURNS FALSE
                 return false;
             }
+        }
+
+        public static DataTable GetUsers(int userOffset)
+        {
+            string sql = "SELECT * FROM Member";
+            sql += " WHERE Id BETWEEN " + userOffset + " AND " + (userOffset + 10);
+            
+            DataTable dt = DAL.ExecuteDataTable(sql);
+
+            return dt;
         }
     }
 }

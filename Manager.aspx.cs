@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Web.UI.HtmlControls;
 
 namespace VR_Web_Project
 {
@@ -31,19 +32,23 @@ namespace VR_Web_Project
         {
             if (!Page.IsPostBack)
             {
-                Session["Offset"] = 0;
+                Session["DayOffset"] = 0;
+                Session["UserOffset"] = 0;
             }
 
             // CREATE SCHEDULE
             updateSchedule();
+
+            // SET USERS ON PANEL
+            SetOnPanel();
         }
 
         private void updateSchedule(int increment = 0)
         {
             // UPDATE GLOBAL OFFSET
-            int offset = (int)Session["Offset"];
+            int offset = (int)Session["DayOffset"];
             offset += increment;
-            Session["Offset"] = offset;
+            Session["DayOffset"] = offset;
 
             // GET SCHEDULE FROM THE APPOINTMENT CLASS
             Session["Schedule"] = Appointment.CreateSchedule(offset);
@@ -93,13 +98,9 @@ namespace VR_Web_Project
             string[] daysValue = new string[8];
             // ADD THE DAYS AND DATES TO THE daysValue BY CASTING AN INTEGER TO A "DayOfWeek" ENUM
             daysValue[0] = "DAYS/TIMES";
-            for (int i = 0; i < 7; i++) { 
-
-                string str = $"{(DayOfWeek)i} {Next((DayOfWeek)i, (int)Session["Offset"])}";
-
-                System.Diagnostics.Debug.WriteLine(str);
-                daysValue[i + 1] = str;
-            }
+            for (int i = 0; i < 7; i++)
+                daysValue[i + 1] = $"{(DayOfWeek)i} {Next((DayOfWeek)i, (int)Session["DayOffset"])}";
+            
             // DECLARE DATATABLE Appointments
             DataTable dt = new DataTable("Appointments");
 
@@ -124,6 +125,31 @@ namespace VR_Web_Project
             grid.DataBind();
         }
 
+        private void SetOnPanel()
+        {
+            int userOffset = (int)Session["UserOffset"];
+
+            if (VR_Web_Project.User.CountForId() < userOffset)
+                userOffset = 0;
+
+            // DECLARE DATATABLE Appointments
+            DataTable dt = VR_Web_Project.User.GetUsers(userOffset);
+
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                DataRow dr = dt.Rows[i];
+
+                string text;
+                text = " ID: " + ((int)dr[0]).ToString();
+                text = " שם משתמש: " + (string)dr[1];
+                text += " מספר טלפון: " + (string)dr[3];
+                text += " מנהל?: " + ((bool)dr[4]).ToString();
+
+                var a = new HtmlGenericControl("a") { InnerText = text };
+                usersArea.Controls.Add(a);
+            }
+        }
+
         protected void Back_Click(object sender, EventArgs e)
         {
             updateSchedule(-7);
@@ -132,6 +158,27 @@ namespace VR_Web_Project
         protected void Next_Click(object sender, EventArgs e)
         {
             updateSchedule(7);
+        }
+
+        protected void Back_Click2(object sender, EventArgs e)
+        {
+            int offset = (int)Session["UserOffset"];
+            if (offset > 10)
+            {
+                offset -= 10;
+                Session["UserOffset"] = offset;
+            }
+        }
+
+        protected void Next_Click2(object sender, EventArgs e)
+        {
+            int offset = (int)Session["UserOffset"];
+
+            if (VR_Web_Project.User.CountForId() > offset + 10)
+            {
+                offset += 10;
+                Session["UserOffset"] = offset;
+            }
         }
     }
 }

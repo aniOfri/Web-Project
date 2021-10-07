@@ -28,8 +28,14 @@
             </div>
             <asp:DataGrid ID="grid" runat="server" AutoGenerateColumns="true"></asp:DataGrid>
         </div>
-        <div class="userManagement">
 
+        <div class="userManagement">
+            <h1>משתמשים:</h1>
+            <div class="buttons">
+                <asp:Button runat="server" Text="<" OnClick="Back_Click2"/>
+                <asp:Button runat="server" Text=">" OnClick="Next_Click2"/>
+            </div>
+            <asp:Panel CssClass="users" ID="usersArea" runat="server"></asp:Panel>
         </div>
     </div>
 

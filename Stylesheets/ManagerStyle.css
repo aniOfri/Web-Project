@@ -7,7 +7,6 @@ body {
 div.grid {
     font-family: 'Rubik', sans-serif;
     text-align: center;
-    border: solid 5px white;
     width: 50%;
 }
 
@@ -67,11 +66,37 @@ div.footerContact {
 div.wrapper {
     color: #FFF;
     width: 100%;
+    height: 500px;
     overflow: hidden;
     display: flex;
-    border: solid 5px white;
 }
 
-div.buttons{
-    margin-bottom: 1%;
+div.userManagement {
+    text-align: center;
+    width: 50%;
+    float: left;
+}
+
+div.userManagement div {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+
+div.userManagement div.buttons {
+    display: block;
+}
+
+div.buttons {
+    margin-bottom: 3%;
+}
+
+div.userManagement div a {
+    width: 450px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #34495e;
+    border-radius: 50px;
+    margin-top: 1%;
 }
