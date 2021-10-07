@@ -54,7 +54,7 @@ function RegValid() {
                     phoneReg.style.border = "";
                     phoneInvalid.style.display = "none";
 
-                    // Validate email
+                    // Validate phone number
                     if (validatePhone(phoneReg.value)) {
                         phoneInvalid.innerHTML = "מספר טלפון שגוי";
                         phoneReg.style.border = "2px dashed blue";

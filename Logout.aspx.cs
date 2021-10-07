@@ -9,6 +9,10 @@ namespace VR_Web_Project
         {
             // RESET USER SESSION AND REDIRECT HOME
             Session["User"] = null;
+            Session["regstatus"] = null;
+            Session["logstatus"] = null;
+            Session["passstatus"] = null;
+
             Response.Redirect("Home.aspx");
             Response.End();
         }

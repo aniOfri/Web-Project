@@ -46,20 +46,17 @@ div.wrapper {
     width: 100%;
     overflow: hidden;
     display: flex;
-    border: 1px solid white;
 }
 
 div.passwordChange {
     text-align: center;
     width: 50%;
-    border: 1px solid white;
 }
 
 div.appointmentsView {
     text-align: center;
     width: 50%;
     float: left;
-    border: 1px solid white;
 }
 
 div.appointmentsView div {

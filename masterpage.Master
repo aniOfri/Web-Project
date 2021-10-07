@@ -13,7 +13,7 @@
     <div>
         <div class="header">
             <header runat="server" id="headerNav" class="navbar">
-                <img class="logo" src="VIRTUARIA.svg" alt="logo" />
+                <a href="Home.aspx"><img class="logo" src="VIRTUARIA.svg" alt="logo" /></a>
                 <a class="cta logout" id="logoutNav" runat="server" href="Logout.aspx">התנתקות</a>
                 <asp:ContentPlaceHolder ID="headerPlaceHolder" runat="server">
                 </asp:ContentPlaceHolder>

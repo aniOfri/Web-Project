@@ -1,5 +1,8 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 using System.Data.SqlClient;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace VR_Web_Project
 {
@@ -18,6 +21,40 @@ namespace VR_Web_Project
             this.Password = password;
             this.IsManager = false;
         }
+
+        private static string GenerateSalt()
+        {
+            var bytes = new byte[128 / 8];
+            var rng = new RNGCryptoServiceProvider();
+            rng.GetBytes(bytes);
+
+            return Convert.ToBase64String(bytes);
+        }
+
+        public static string HashPassword(string password, string salt = null)
+        {
+            // Generate the Salt
+            var genSalt = (salt == null) ? GenerateSalt() : salt;
+
+            // Hash the password
+            var byteResult = new Rfc2898DeriveBytes(Encoding.UTF8.GetBytes(password), Encoding.UTF8.GetBytes(genSalt), 10000);
+            var hash = Convert.ToBase64String(byteResult.GetBytes(24));
+
+            return hash + "." + genSalt;
+        }
+
+        public static bool VerifyPassword(string password, string digest)
+        {
+            // Split the digest into two parts
+            string[] parts = digest.Split('.');
+            var storedHash = parts[0];
+            var storedSalt = parts[1];
+
+            var hash = HashPassword(password, storedSalt);
+
+            return (hash == digest);
+        }
+
 
         // A private function which returns the next Id
         // INPUT: none
@@ -107,8 +144,9 @@ namespace VR_Web_Project
 
                 // FORMAT AND CHECK THE PASSWORD
                 string pass = dt.Rows[0]["password"].ToString().Replace(" ", "");
-                if (pass == Password)
+                if (VerifyPassword(Password, pass))
                 {
+                    Password = pass;
                     // ASSIGN this WITH TRUE DATA
                     SetId();
                     SetManager();
@@ -130,7 +168,7 @@ namespace VR_Web_Project
         {
             // BUILD STRING AS AN SQL COMMAND
             string sql = "INSERT INTO Member (Id, Username, PhoneNumber, Password, isManager) VALUES (\'";
-            sql += Id + "\', \'" + Username + "\', \'" + PhoneNumber + "\', \'" + Password + "\', \'" + false + "\')";
+            sql += Id + "\', \'" + Username + "\', \'" + PhoneNumber + "\', \'" + HashPassword(Password) + "\', \'" + false + "\')";
             
             // TRY TO EXECUTE COMMAND
             try {
@@ -151,15 +189,16 @@ namespace VR_Web_Project
         // OUTPUT: bool as success/fail
         public bool ChangePassword(string newPass)
         {
+            string hashedPassword = HashPassword(newPass);
             // BUILD STRING AS AN SQL COMMAND
-            string sql = "UPDATE Member SET Password='" + newPass + "'";
+            string sql = "UPDATE Member SET Password='" + hashedPassword + "'";
             sql += "WHERE Id='" + Id + "'";
 
             // TRY TO EXECUTE COMMAND
             try
             {
                 DAL.ExecNonQuery(sql);
-                Password = newPass;
+                Password = hashedPassword;
 
                 // PASSWORD CHANGED SUCCESSFULLY, RETURNS TRUE
                 return true;

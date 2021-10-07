@@ -63,7 +63,7 @@ namespace VR_Web_Project
             {
                 for (int i = 0; i < 13; i++)
                 {
-                    if (week[day + 1][i] != "0")
+                    if (week[day + 1][i] != "")
                         times[i-1] = "לא זמין";
                 }
             }

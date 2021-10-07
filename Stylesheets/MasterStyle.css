@@ -12,7 +12,7 @@ div.header {
     position: fixed;
 }
 header.navbar {
-    width:50%;
+    width:auto;
     position: absolute;
     margin: 0;
     border-radius: 50px;
@@ -32,6 +32,10 @@ li, a, button {
 
 .logo {
     cursor: pointer;
+    width: 240px;
+    height: 86px;
+    margin-right: 10px;
+    margin-left: 15px;
 }
 
 .links{

@@ -53,7 +53,7 @@ namespace VR_Web_Project
         // OUTPUT string[][] as the schedule
         public static string[][] CreateSchedule()
         {
-            // DECLARE THE FUNCTIONS
+            // DECLARE THE ARRAY
             string[][] week = new string[8][];
                 week[0] = new string[14];
 
@@ -72,7 +72,7 @@ namespace VR_Web_Project
             {
                 week[i] = new string[14];
                 for (int j = 0; j < 14; j++)
-                    week[i][j] = "0";
+                    week[i][j] = "";
             }
 
             // GET READER FROM DATABASE
@@ -84,16 +84,38 @@ namespace VR_Web_Project
                 DateTime date = (DateTime)reader["DateTime"];
                 int days = (date - DateTime.Today).Days + 1 + (int)DateTime.Today.DayOfWeek;
                 if (days > 7) days -= 7;
-                int hours = (date - DateTime.Today).Hours - 8;
+                int hours = (date - DateTime.Today).Hours - 9;
+
+                string str = $"{GetUsername((string)reader["PhoneNumber"])}" +
+                    $" ({(int)reader["Participants"]}/6)";
                 if (days > 0 && hours > 0)
                 {
-                    week[days][hours] = ((int)reader["Participants"]).ToString();
+                    week[days][hours] = str;
                 }
             }
 
             // CLOSE READER AND RETURN SCHEDULE
             reader.Close();
             return week;
+        }
+
+        private static string GetUsername(string phoneNumber)
+        {
+            // BUILD STRING AS AN SQL COMMAND
+            string selectQuery = "SELECT Username FROM Member";
+            selectQuery += " WHERE PhoneNumber ='" + phoneNumber + "'";
+
+            // GET READER USING DAL
+            SqlDataReader reader = DAL.GetReader(selectQuery);
+
+            // READ VALUE NEEDED
+            string username = "";
+            if ((bool)reader.Read())
+                username = (string)reader["Username"];
+
+            // CLOSE AND RETURN
+            reader.Close();
+            return username;
         }
 
         public static DataTable GetAppointments(User user)

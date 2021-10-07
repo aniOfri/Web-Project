@@ -54,7 +54,7 @@ namespace VR_Web_Project
                 string newPass = Request["newPass"].Replace(" ", "");
 
                 // LOGIN AND CONTINUE IF SUCCESS
-                if (oldPass == user.Password)
+                if (VR_Web_Project.User.VerifyPassword(oldPass, user.Password))
                 {
                     // CHANGE PASSWORD OF user TO newPass
                     if (user.ChangePassword(newPass))
