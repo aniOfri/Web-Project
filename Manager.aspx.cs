@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Web.UI.HtmlControls;
+using System.Web.UI.WebControls;
 
 namespace VR_Web_Project
 {
@@ -150,35 +151,40 @@ namespace VR_Web_Project
             }
         }
 
-        protected void Back_Click(object sender, EventArgs e)
+        protected void Calendar_Click(object sender, EventArgs e)
         {
-            updateSchedule(-7);
+            // GET BUTTON AS OBJECT
+            Button btn = sender as Button;
+
+            // DECLARE PARAMETER FROM THE BUTTON CUSTOM PARAMETER
+            int parameter = int.Parse(btn.Attributes["CustomParameter"].ToString());
+
+            if (parameter != 0)
+                updateSchedule(parameter);
+            else
+                Session["DayOffset"] = 0;
         }
 
-        protected void Next_Click(object sender, EventArgs e)
+        protected void Users_Click(object sender, EventArgs e)
         {
-            updateSchedule(7);
-        }
+            // GET BUTTON AS OBJECT
+            Button btn = sender as Button;
 
-        protected void Back_Click2(object sender, EventArgs e)
-        {
+            // DECLARE PARAMETER FROM THE BUTTON CUSTOM PARAMETER
+            int parameter = int.Parse(btn.Attributes["CustomParameter"].ToString());
+
             int offset = (int)Session["UserOffset"];
-            if (offset > 10)
-            {
-                offset -= 10;
-                Session["UserOffset"] = offset;
-            }
-        }
 
-        protected void Next_Click2(object sender, EventArgs e)
-        {
-            int offset = (int)Session["UserOffset"];
-
-            if (VR_Web_Project.User.CountForId() > offset + 10)
-            {
-                offset += 10;
-                Session["UserOffset"] = offset;
+            if (parameter == -1){
+                if (offset > 10)
+                    offset -= 10;
             }
+            else{
+                if (VR_Web_Project.User.CountForId() > offset + 10)
+                    offset += 10;
+            }
+
+            Session["UserOffset"] = offset;
         }
     }
 }

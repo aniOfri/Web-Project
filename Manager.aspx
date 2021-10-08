@@ -23,8 +23,9 @@
         <div class="grid">
             <h1 class="schedule">לוח זמנים</h1>
             <div class="buttons">
-                <asp:Button runat="server" Text="<" OnClick="Back_Click"/>
-                <asp:Button runat="server" Text=">" OnClick="Next_Click"/>
+                <asp:Button runat="server" CustomParameter="-7" Text="<" OnClick="Calendar_Click"/>
+                <asp:Button runat="server" CustomParameter="0" Text="היום" OnClick="Calendar_Click"/>
+                <asp:Button runat="server" CustomParameter="7" Text=">" OnClick="Calendar_Click"/>
             </div>
             <asp:DataGrid ID="grid" runat="server" AutoGenerateColumns="true"></asp:DataGrid>
         </div>
@@ -32,8 +33,8 @@
         <div class="userManagement">
             <h1>משתמשים:</h1>
             <div class="buttons">
-                <asp:Button runat="server" Text="<" OnClick="Back_Click2"/>
-                <asp:Button runat="server" Text=">" OnClick="Next_Click2"/>
+                <asp:Button runat="server" CustomParameter="-1" Text="<" OnClick="Users_Click"/>
+                <asp:Button runat="server" CustomParameter="1" Text=">" OnClick="Users_Click"/>
             </div>
             <asp:Panel CssClass="users" ID="usersArea" runat="server"></asp:Panel>
         </div>
