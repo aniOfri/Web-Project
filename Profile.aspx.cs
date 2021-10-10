@@ -57,7 +57,7 @@ namespace VR_Web_Project
                 if (VR_Web_Project.User.VerifyPassword(oldPass, user.Password))
                 {
                     // CHANGE PASSWORD OF user TO newPass
-                    if (user.ChangePassword(newPass))
+                    if (VR_Web_Project.User.ChangePassword(newPass, user: user))
                         // SET STATUS SESSION AS SUCCESS
                         Session["passstatus"] = 200;
                     // SET STATUS SESSION TO AN INTERNAL ERROR

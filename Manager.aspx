@@ -21,7 +21,7 @@
     </div>
     <div class="wrapper">
         <div class="grid">
-            <h1 class="schedule">לוח זמנים</h1>
+            <h1 class="schedule">דף מנהל</h1>
             <div class="buttons">
                 <asp:Button runat="server" CustomParameter="-7" Text="<" OnClick="Calendar_Click"/>
                 <asp:Button runat="server" CustomParameter="0" Text="היום" OnClick="Calendar_Click"/>
@@ -29,7 +29,6 @@
             </div>
             <asp:DataGrid ID="grid" runat="server" AutoGenerateColumns="true"></asp:DataGrid>
         </div>
-
         <div class="userManagement">
             <h1>משתמשים:</h1>
             <div class="buttons">

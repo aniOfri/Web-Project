@@ -99,4 +99,19 @@ div.userManagement div a {
     background-color: #34495e;
     border-radius: 50px;
     margin-top: 1%;
+    cursor: pointer;
+}
+
+div.userManagement div div {
+    padding-top: 1%;
+    padding-bottom: 1%;
+    display: none;
+}
+
+div.userManagement div a:hover + div{
+    display: flex;
+}
+
+div.userManagement div div:hover{
+    display: flex;
 }

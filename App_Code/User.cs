@@ -88,48 +88,53 @@ namespace VR_Web_Project
             readerAndConnection.Item2.Close();
         }
 
-        // A private function which sets IsManager of this as the IsManager value of the user who logged in using the database
-        // INPUT: none
-        // OUTPUT: void
-        public void SetManager()
+        // A private function which returns IsManager of the user who correlate to the given id
+        // INPUT: string as id
+        // OUTPUT: bool as manager state
+        public static bool GetManager(string id)
         {
             // BUILD STRING AS AN SQL COMMAND
             string selectQuery = "SELECT IsManager FROM Member";
-            selectQuery += " WHERE Id ='" + Id + "'";
+            selectQuery += " WHERE Id ='" + id + "'";
 
             // GET READER USING DAL
             var readerAndConnection = DAL.GetReader(selectQuery);
             SqlDataReader reader = readerAndConnection.Item1;
 
             // ASSIGN NEW DATA TO IsManager OF this
+            bool isManager = false;
             if ((bool)reader.Read())
-                IsManager = (bool)reader["IsManager"];
+                isManager = (bool)reader["IsManager"];
 
             // CLOSE
             reader.Close();
             readerAndConnection.Item2.Close();
+
+            return isManager;
         }
 
-        // A private function which sets PhoneNumber of this as the PhoneNumber of the user who logged in using the database
-        // INPUT: none
-        // OUTPUT: void
-        public void SetPhoneNumber()
+        // A private function which returns PhoneNumber of the user who correlate to the given id
+        // INPUT: string as id
+        // OUTPUT: string as phone number
+        public static string GetPhoneNumber(string id)
         {
             // BUILD STRING AS AN SQL COMMAND
             string selectQuery = "SELECT PhoneNumber FROM Member";
-            selectQuery += " WHERE Id ='" + Id + "'";
+            selectQuery += " WHERE Id ='" + id + "'";
 
             // GET READER USING DAL
             var readerAndConnection = DAL.GetReader(selectQuery);
             SqlDataReader reader = readerAndConnection.Item1;
 
             // ASSIGN NEW DATA TO PhoneNumber OF this
+            string phoneNumber = "";
             if ((bool)reader.Read())
-                PhoneNumber = (string)reader["PhoneNumber"];
+                phoneNumber = (string)reader["PhoneNumber"];
 
             // CLOSE
             reader.Close();
             readerAndConnection.Item2.Close();
+            return phoneNumber;
         }
 
         // A public function which attempts to log in the user into the site using this' values
@@ -155,8 +160,8 @@ namespace VR_Web_Project
                     Password = pass;
                     // ASSIGN this WITH TRUE DATA
                     SetId();
-                    SetManager();
-                    SetPhoneNumber();
+                    IsManager = GetManager(Id.ToString());
+                    PhoneNumber = GetPhoneNumber(Id.ToString());
 
                     // RETURN SUCCESS
                     return true;
@@ -191,20 +196,24 @@ namespace VR_Web_Project
         }
 
         // A public function which changes the password of the users to the pass received as a paramater
-        // INPUT: string as the new password
+        // INPUT: string as the new password and string as userid or User as user
         // OUTPUT: bool as success/fail
-        public bool ChangePassword(string newPass)
+        public static bool ChangePassword(string newPass, string id = null, User user = null)
         {
+            if (user != null)
+                id = user.Id.ToString();
+
             string hashedPassword = HashPassword(newPass);
             // BUILD STRING AS AN SQL COMMAND
             string sql = "UPDATE Member SET Password='" + hashedPassword + "'";
-            sql += "WHERE Id='" + Id + "'";
+            sql += "WHERE Id='" + id + "'";
 
             // TRY TO EXECUTE COMMAND
             try
             {
                 DAL.ExecNonQuery(sql);
-                Password = hashedPassword;
+                if (user != null)
+                    user.Password = hashedPassword;
 
                 // PASSWORD CHANGED SUCCESSFULLY, RETURNS TRUE
                 return true;
@@ -215,6 +224,52 @@ namespace VR_Web_Project
                 // THERE WAS AN ERROR, RETURNS FALSE
                 return false;
             }
+        }
+
+        // A public function which sets IsManager of the users to correlates to the given id
+        // INPUT: string as id and bool as new value
+        // OUTPUT: bool as success/fail
+        public static bool SetManager(string id, bool newValue)
+        {
+            // BUILD STRING AS AN SQL COMMAND
+            string sql = "UPDATE Member SET IsManager='" + newValue + "'";
+            sql += "WHERE Id='" + id + "'";
+
+            // TRY TO EXECUTE COMMAND
+            try
+            {
+                DAL.ExecNonQuery(sql);
+
+                // PASSWORD CHANGED SUCCESSFULLY, RETURNS TRUE
+                return true;
+            }
+            catch
+            {
+
+                // THERE WAS AN ERROR, RETURNS FALSE
+                return false;
+            }
+        }
+
+        public static string GetUsername(string id)
+        {
+            // BUILD STRING AS AN SQL COMMAND
+            string selectQuery = "SELECT Username FROM Member";
+            selectQuery += " WHERE Id ='" + id + "'";
+
+            // GET READER USING DAL
+            var readerAndConnection = DAL.GetReader(selectQuery);
+            SqlDataReader reader = readerAndConnection.Item1;
+
+            // READ VALUE NEEDED
+            string username = "";
+            if ((bool)reader.Read())
+                username = (string)reader["Username"];
+
+            // CLOSE AND RETURN
+            reader.Close();
+            readerAndConnection.Item2.Close();
+            return username;
         }
 
         public static DataTable GetUsers(int userOffset)

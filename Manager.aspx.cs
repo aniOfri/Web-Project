@@ -140,15 +140,71 @@ namespace VR_Web_Project
             {
                 DataRow dr = dt.Rows[i];
 
+                // DECLARE userid AS THE USER ID FROM DB
+                string userid = ((int)dr[0]).ToString();
+
+                // BUILD A STRING AS INNERTEXT FOR TEXT ELEMENT
                 string text;
-                text = " ID: " + ((int)dr[0]).ToString();
+                text = " ID: " + userid;
                 text = " שם משתמש: " + (string)dr[1];
                 text += " מספר טלפון: " + (string)dr[3];
                 text += " מנהל?: " + ((bool)dr[4]).ToString();
 
+                // CREATE TEXT ELEMENT USING THE FORMER STRING
                 var a = new HtmlGenericControl("a") { InnerText = text };
                 usersArea.Controls.Add(a);
+
+                // CREATE DIV
+                var div = new HtmlGenericControl("div");
+                div.Attributes.Add("class", "buttons");
+
+                // CREATE DELETE USER BUTTON
+                Button delete = new Button();
+                delete.CommandArgument = userid;
+                delete.Click += new EventHandler(Delete_Click);
+                delete.Text = "מחק";
+                div.Controls.Add(delete);
+
+                // CREATE TOGGLE PERMISSIONS BUTTON
+                Button toggle = new Button();
+                toggle.CommandArgument = userid;
+                toggle.Click += new EventHandler(TogglePerms_Click);
+                toggle.Text = "החלף גישות";
+                div.Controls.Add(toggle);
+
+                // CREATE RESET PASSWORD BUTTON
+                Button reset = new Button();
+                reset.CommandArgument = userid;
+                reset.Click += new EventHandler(ResetPass_Click);
+                reset.Text = "אפס סיסמה";
+                div.Controls.Add(reset);
+
+                // ADD DIV TO PAGE
+                usersArea.Controls.Add(div);
             }
+        }
+
+
+        protected void TogglePerms_Click(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+            string userid = button.CommandArgument;
+
+            bool newValue = !VR_Web_Project.User.GetManager(userid);
+            VR_Web_Project.User.SetManager(userid, newValue);
+        }
+        protected void ResetPass_Click(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+            string userid = button.CommandArgument;
+
+            string newValue = VR_Web_Project.User.GetUsername(userid);
+            VR_Web_Project.User.ChangePassword(newValue, id: userid);
+        }
+
+        protected void Delete_Click(object sender, EventArgs e)
+        {
+
         }
 
         protected void Calendar_Click(object sender, EventArgs e)
@@ -162,7 +218,10 @@ namespace VR_Web_Project
             if (parameter != 0)
                 updateSchedule(parameter);
             else
+            {
                 Session["DayOffset"] = 0;
+                updateSchedule(0);
+            }
         }
 
         protected void Users_Click(object sender, EventArgs e)

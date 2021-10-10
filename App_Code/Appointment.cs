@@ -7,14 +7,14 @@ namespace VR_Web_Project
     public class Appointment
     {
         public int Id {get;set;}
-        public string PhoneNumber {get;set;}
+        public string UserId {get;set;}
         public DateTime Date {get;set;}
         public int Participants {get;set;}
 
-        public Appointment(string phoneNumber, DateTime date, int participants)
+        public Appointment(string userId, DateTime date, int participants)
         {
             this.Id = CountForId();
-            this.PhoneNumber = phoneNumber;
+            this.UserId = userId;
             this.Date = date;
             this.Participants = participants;
         }
@@ -34,8 +34,8 @@ namespace VR_Web_Project
         public bool Order()
         {
             // BUILD STRING AS AN SQL COMMAND
-            string sql = "INSERT INTO Appointment (Id, PhoneNumber, DateTime, Participants) VALUES (\'";
-            sql += Id + "\', \'" + PhoneNumber + "\', \'" + Date + "\', \'" + Participants + "\')";
+            string sql = "INSERT INTO Appointment (Id, UserId, DateTime, Participants) VALUES (\'";
+            sql += Id + "\', \'" + UserId + "\', \'" + Date + "\', \'" + Participants + "\')";
             
             // EXECUTE COMMAND AND RETURN TRUE IF SUCESS AND FAIL OTHERWISE
             try
@@ -86,7 +86,7 @@ namespace VR_Web_Project
                 int days = (date - DateTime.Today).Days + 1 + (int)DateTime.Today.DayOfWeek + dayOffset - 7;
                 int hours = (date - DateTime.Today).Hours - 9;
 
-                string str = $"{GetUsername((string)reader["PhoneNumber"])}" +
+                string str = $"{GetUsername((string)reader["UserId"])}" +
                     $" ({(int)reader["Participants"]}/6)";
                 if (days > 0 && hours > 0 && days < 7)
                 {
@@ -100,31 +100,10 @@ namespace VR_Web_Project
             return week;
         }
 
-        private static string GetUsername(string phoneNumber)
-        {
-            // BUILD STRING AS AN SQL COMMAND
-            string selectQuery = "SELECT Username FROM Member";
-            selectQuery += " WHERE PhoneNumber ='" + phoneNumber + "'";
-
-            // GET READER USING DAL
-            var readerAndConnection = DAL.GetReader(selectQuery);
-            SqlDataReader reader = readerAndConnection.Item1;
-
-            // READ VALUE NEEDED
-            string username = "";
-            if ((bool)reader.Read())
-                username = (string)reader["Username"];
-
-            // CLOSE AND RETURN
-            reader.Close();
-            readerAndConnection.Item2.Close();
-            return username;
-        }
-
         public static DataTable GetAppointments(User user)
         {
             string sql = "SELECT * FROM Appointment";
-            sql += " WHERE PhoneNumber='" + user.PhoneNumber + "'";
+            sql += " WHERE Id='" + user.Id + "'";
 
             DataTable dt = DAL.ExecuteDataTable(sql);
 

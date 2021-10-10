@@ -43,7 +43,7 @@ namespace VR_Web_Project
                     {
                         // DECLARE AN APPOINTMENT FROM SESSION AND ASSIGN THE USERS PHONE NUMBER TO TO APPOINTMENT
                         Appointment appointment = (Appointment)Session["RedirectOrder"];
-                        appointment.PhoneNumber = user.PhoneNumber;
+                        appointment.UserId = user.Id.ToString();
 
                         /*
 
