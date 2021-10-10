@@ -33,8 +33,10 @@ namespace VR_Web_Project
         {
             if (!Page.IsPostBack)
             {
-                Session["DayOffset"] = 0;
-                Session["UserOffset"] = 0;
+                if (Session["DayOffset"] == null)
+                    Session["DayOffset"] = 0;
+                if (Session["UserOffset"] == null)
+                    Session["UserOffset"] = 0;
             }
 
             // CREATE SCHEDULE
@@ -128,6 +130,7 @@ namespace VR_Web_Project
 
         private void SetOnPanel()
         {
+            usersArea.Controls.Clear();
             int userOffset = (int)Session["UserOffset"];
 
             if (VR_Web_Project.User.CountForId() < userOffset)
@@ -146,17 +149,16 @@ namespace VR_Web_Project
                 // BUILD A STRING AS INNERTEXT FOR TEXT ELEMENT
                 string text;
                 text = " ID: " + userid;
-                text = " שם משתמש: " + (string)dr[1];
-                text += " מספר טלפון: " + (string)dr[3];
-                text += " מנהל?: " + ((bool)dr[4]).ToString();
+                text += " | שם משתמש: " + (string)dr[1];
+                text += " | מספר טלפון: " + (string)dr[3];
+                text += " | מנהל?: " + ((bool)dr[4]).ToString();
 
                 // CREATE TEXT ELEMENT USING THE FORMER STRING
                 var a = new HtmlGenericControl("a") { InnerText = text };
-                usersArea.Controls.Add(a);
 
                 // CREATE DIV
                 var div = new HtmlGenericControl("div");
-                div.Attributes.Add("class", "buttons");
+                div.Attributes.Add("class", "hiddenbuttons");
 
                 // CREATE DELETE USER BUTTON
                 Button delete = new Button();
@@ -179,8 +181,16 @@ namespace VR_Web_Project
                 reset.Text = "אפס סיסמה";
                 div.Controls.Add(reset);
 
+
+                // CREATE WRAPPER
+                var userDiv = new HtmlGenericControl("div");
+                userDiv.Attributes.Add("class", "userWrapper");
+
+                userDiv.Controls.Add(a);
+                userDiv.Controls.Add(div);
+
                 // ADD DIV TO PAGE
-                usersArea.Controls.Add(div);
+                usersArea.Controls.Add(userDiv);
             }
         }
 
@@ -192,6 +202,9 @@ namespace VR_Web_Project
 
             bool newValue = !VR_Web_Project.User.GetManager(userid);
             VR_Web_Project.User.SetManager(userid, newValue);
+            
+            Response.Redirect("Manager.aspx");
+            Response.End();
         }
         protected void ResetPass_Click(object sender, EventArgs e)
         {
@@ -200,6 +213,9 @@ namespace VR_Web_Project
 
             string newValue = VR_Web_Project.User.GetUsername(userid);
             VR_Web_Project.User.ChangePassword(newValue, id: userid);
+
+            Response.Redirect("Manager.aspx");
+            Response.End();
         }
 
         protected void Delete_Click(object sender, EventArgs e)
@@ -222,6 +238,9 @@ namespace VR_Web_Project
                 Session["DayOffset"] = 0;
                 updateSchedule(0);
             }
+
+            Response.Redirect("Manager.aspx");
+            Response.End(); 
         }
 
         protected void Users_Click(object sender, EventArgs e)
@@ -235,7 +254,7 @@ namespace VR_Web_Project
             int offset = (int)Session["UserOffset"];
 
             if (parameter == -1){
-                if (offset > 10)
+                if (offset >= 10)
                     offset -= 10;
             }
             else{
@@ -244,6 +263,9 @@ namespace VR_Web_Project
             }
 
             Session["UserOffset"] = offset;
+
+            Response.Redirect("Manager.aspx");
+            Response.End();
         }
     }
 }

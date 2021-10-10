@@ -2,6 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>דף מנהל</title>
     <link rel="stylesheet" href="Stylesheets/ManagerStyle.css"/>
+    <link rel="stylesheet" href="Stylesheets/ManagerStyleSASS.scss"/>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="headerPlaceHolder" runat="server">
         <nav>
@@ -16,12 +17,9 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="TitlePlaceHolder" runat="server">
     <form runat="server">
     <img src="stars.png" class="stars"/>
-    <div class="title">
-        <span>דף מנהל</span>
-    </div>
     <div class="wrapper">
         <div class="grid">
-            <h1 class="schedule">דף מנהל</h1>
+            <h1 class="schedule">לוח זמנים</h1>
             <div class="buttons">
                 <asp:Button runat="server" CustomParameter="-7" Text="<" OnClick="Calendar_Click"/>
                 <asp:Button runat="server" CustomParameter="0" Text="היום" OnClick="Calendar_Click"/>
@@ -42,4 +40,5 @@
     </form>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="ScriptPlaceHolder" runat="server">
+    <script src="Javascripts/axe.js"></script>
 </asp:Content>

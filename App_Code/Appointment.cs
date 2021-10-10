@@ -83,10 +83,10 @@ namespace VR_Web_Project
             {
                 // FILL THE OCCUPIED SPOTS WITH THE NUMBER OF PARTICIPANTS 
                 DateTime date = (DateTime)reader["DateTime"];
-                int days = (date - DateTime.Today).Days + 1 + (int)DateTime.Today.DayOfWeek + dayOffset - 7;
+                int days = (date - DateTime.Today).Days + 1 + (int)DateTime.Today.DayOfWeek + dayOffset;
                 int hours = (date - DateTime.Today).Hours - 9;
 
-                string str = $"{GetUsername((string)reader["UserId"])}" +
+                string str = $"{User.GetUsername((string)reader["UserId"])}" +
                     $" ({(int)reader["Participants"]}/6)";
                 if (days > 0 && hours > 0 && days < 7)
                 {

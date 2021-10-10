@@ -164,7 +164,7 @@ namespace VR_Web_Project
             {
                 // GETS THE USER FROM SESSION AND APPLY THE PHONE NUMBER TO THE APPOINTMENT
                 User user = (User)Session["User"];
-                appointment.PhoneNumber = user.PhoneNumber;
+                appointment.UserId = user.Id.ToString();
 
                 /*
                 
