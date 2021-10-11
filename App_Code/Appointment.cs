@@ -83,14 +83,24 @@ namespace VR_Web_Project
             {
                 // FILL THE OCCUPIED SPOTS WITH THE NUMBER OF PARTICIPANTS 
                 DateTime date = (DateTime)reader["DateTime"];
-                int days = (date - DateTime.Today).Days + 1 + (int)DateTime.Today.DayOfWeek + dayOffset;
-                int hours = (date - DateTime.Today).Hours - 9;
+                int days = (date - DateTime.Today).Days + 1 + (int)DateTime.Today.DayOfWeek;
+                int hours = (date - DateTime.Today).Hours - 8;
+
+                System.Diagnostics.Debug.WriteLine("DAY:"+ (days).ToString());
+
+                System.Diagnostics.Debug.WriteLine("origin:"+ (hours).ToString());
+
+                if (hours > 4) hours -= 1; 
+                if (hours > 8) hours -= 1; 
+                if (hours > 12) hours -= 1;
+
+                System.Diagnostics.Debug.WriteLine("after edit:" + (hours).ToString());
 
                 string str = $"{User.GetUsername((string)reader["UserId"])}" +
                     $" ({(int)reader["Participants"]}/6)";
-                if (days > 0 && hours > 0 && days < 7)
+                if (days > 0+dayOffset && hours > 0 && days < 8+dayOffset)
                 {
-                    week[days][hours] = str;
+                    week[days-dayOffset][hours] = str;
                 }
             }
 
@@ -103,7 +113,7 @@ namespace VR_Web_Project
         public static DataTable GetAppointments(User user)
         {
             string sql = "SELECT * FROM Appointment";
-            sql += " WHERE Id='" + user.Id + "'";
+            sql += " WHERE UserId='" + user.Id + "'";
 
             DataTable dt = DAL.ExecuteDataTable(sql);
 

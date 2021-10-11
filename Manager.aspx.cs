@@ -31,6 +31,7 @@ namespace VR_Web_Project
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            // IF POST IS FIRST TIME LOADING
             if (!Page.IsPostBack)
             {
                 if (Session["DayOffset"] == null)
@@ -55,39 +56,9 @@ namespace VR_Web_Project
 
             // GET SCHEDULE FROM THE APPOINTMENT CLASS
             Session["Schedule"] = Appointment.CreateSchedule(offset);
-            
+
             // SET THE SCHEDULE ON A DATAGRID
             SetOnGrid();
-        }
-
-        // A private function which returns the date of the next /weekday/ parameter
-        // INPUT: DayOfWeek as a day of the week
-        // OUTPUT: string as a the next date of the former day of the week
-        private string Next(DayOfWeek dayOfWeek, int offset)
-        {
-            // DECLARE from AS TODAY
-            DateTime from = DateTime.Today;
-
-            // CHECKS IF from IS NOT THE GIVEN PARAMETER
-            if (from.DayOfWeek != dayOfWeek)
-            {
-                // IF SO, DECLARE start AS TODAY AND target AS THE PARAMETER BOTH CASTED TO INT 
-                int start = (int)from.DayOfWeek;
-                int target = (int)dayOfWeek;
-
-                // IF THE targets DAY HAPPENS BEFORE TODAY IN THE WEEK ADD 7 TO THE target
-                if (target <= start)
-                    target += 7;
-
-                // ADD TO form THE DIFFERENCE BETWEEN target AND start
-                from = from.AddDays(target - start);
-            }
-
-            // APPLY OFFSET
-            from = from.AddDays(offset);
-
-            // RETURN THE DATE AS STRING IN PARENTHESIS
-            return "(" + from.ToShortDateString() + ")";
         }
 
         // A private function which sets the schedule on a datagrid
@@ -102,7 +73,7 @@ namespace VR_Web_Project
             // ADD THE DAYS AND DATES TO THE daysValue BY CASTING AN INTEGER TO A "DayOfWeek" ENUM
             daysValue[0] = "DAYS/TIMES";
             for (int i = 0; i < 7; i++)
-                daysValue[i + 1] = $"{(DayOfWeek)i} {Next((DayOfWeek)i, (int)Session["DayOffset"])}";
+                daysValue[i + 1] = $"{(DayOfWeek)i} {Time.Next((DayOfWeek)i, (int)Session["DayOffset"])}";
             
             // DECLARE DATATABLE Appointments
             DataTable dt = new DataTable("Appointments");
@@ -127,12 +98,19 @@ namespace VR_Web_Project
             grid.DataSource = dt;
             grid.DataBind();
         }
+        // A private function which sets the users on a panel
+        // INPUT: none
+        // OUTPUT: void
 
         private void SetOnPanel()
         {
+            // CLEAR THE PANEL
             usersArea.Controls.Clear();
+
+            // GET THE OFFSET FROM SESSION
             int userOffset = (int)Session["UserOffset"];
 
+            // CHECK IF OFFSET IS LARGER THEN THE NUMBER OF USERS IN DB
             if (VR_Web_Project.User.CountForId() < userOffset)
                 userOffset = 0;
 
@@ -186,6 +164,7 @@ namespace VR_Web_Project
                 var userDiv = new HtmlGenericControl("div");
                 userDiv.Attributes.Add("class", "userWrapper");
 
+                // ADD ELEMENTS TO DIV
                 userDiv.Controls.Add(a);
                 userDiv.Controls.Add(div);
 
@@ -193,7 +172,6 @@ namespace VR_Web_Project
                 usersArea.Controls.Add(userDiv);
             }
         }
-
 
         protected void TogglePerms_Click(object sender, EventArgs e)
         {
@@ -231,6 +209,7 @@ namespace VR_Web_Project
             // DECLARE PARAMETER FROM THE BUTTON CUSTOM PARAMETER
             int parameter = int.Parse(btn.Attributes["CustomParameter"].ToString());
 
+
             if (parameter != 0)
                 updateSchedule(parameter);
             else
@@ -239,6 +218,7 @@ namespace VR_Web_Project
                 updateSchedule(0);
             }
 
+            // REDIRECT
             Response.Redirect("Manager.aspx");
             Response.End(); 
         }
@@ -251,6 +231,7 @@ namespace VR_Web_Project
             // DECLARE PARAMETER FROM THE BUTTON CUSTOM PARAMETER
             int parameter = int.Parse(btn.Attributes["CustomParameter"].ToString());
 
+            // GET OFFSET FROM SESSION
             int offset = (int)Session["UserOffset"];
 
             if (parameter == -1){
@@ -262,8 +243,10 @@ namespace VR_Web_Project
                     offset += 10;
             }
 
+            // SET SESSION AS NEW OFFSET
             Session["UserOffset"] = offset;
 
+            // REDIRECT
             Response.Redirect("Manager.aspx");
             Response.End();
         }

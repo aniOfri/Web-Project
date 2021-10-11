@@ -56,6 +56,7 @@ namespace VR_Web_Project
 
 
                         // REDIRECT PROFILE.ASPX
+                        Session["RedirectOrder"] = null;
                         Response.Redirect("Profile.aspx");
                     }
                     else

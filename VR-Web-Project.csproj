@@ -69,7 +69,6 @@
   <ItemGroup>
     <Content Include="Appointments.aspx" />
     <Content Include="Javascripts\AppointmentScript..js" />
-    <Content Include="Stylesheets\axe.js" />
     <Content Include="Stylesheets\ProfileStyle.css" />
     <Content Include="Profile.aspx" />
     <Content Include="Stylesheets\AppointmentStyle.css" />

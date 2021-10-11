@@ -1,4 +1,6 @@
-﻿namespace VR_Web_Project
+﻿using System;
+
+namespace VR_Web_Project
 {
     // A SIMPLE TIME STORING-AND-DISPLAYING CLASS
     public class Time
@@ -57,6 +59,36 @@
 
             // RETURN
             return toReturn;
+        }
+
+        // A public static function which returns the date of the next /weekday/ parameter
+        // INPUT: DayOfWeek as a day of the week
+        // OUTPUT: string as a the next date of the former day of the week
+        public static string Next(DayOfWeek dayOfWeek, int offset)
+        {
+            // DECLARE from AS TODAY
+            DateTime from = DateTime.Today;
+
+            // CHECKS IF from IS NOT THE GIVEN PARAMETER
+            if (from.DayOfWeek != dayOfWeek)
+            {
+                // IF SO, DECLARE start AS TODAY AND target AS THE PARAMETER BOTH CASTED TO INT 
+                int start = (int)from.DayOfWeek;
+                int target = (int)dayOfWeek;
+
+                // IF THE targets DAY HAPPENS BEFORE TODAY IN THE WEEK ADD 7 TO THE target
+                if (target <= start)
+                    target += 7;
+
+                // ADD TO form THE DIFFERENCE BETWEEN target AND start
+                from = from.AddDays(target - start);
+            }
+
+            // APPLY OFFSET
+            from = from.AddDays(offset);
+
+            // RETURN THE DATE AS STRING IN PARENTHESIS
+            return "(" + from.ToShortDateString() + ")";
         }
     }
 }

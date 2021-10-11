@@ -2,8 +2,8 @@
 var finalReturn = false,
     textLog = document.getElementById("textRegister"),
     phoneReg = document.getElementById("phoneRegister"),
-    newPass = document.getElementById("passRegister"),
-    passConfReg = document.getElementById("passRegister2"),
+    passRegister = document.getElementById("passRegister"),
+    passRegister2 = document.getElementById("passRegister2"),
     textInvalid = document.getElementById("regTextError");
 phoneInvalid = document.getElementById("regPhoneError");
 passInvalid = document.getElementById("regPassError");
@@ -62,48 +62,48 @@ function RegValid() {
                         finalReturn = false;
                     }
                     else {
-                        emailReg.style.border = "";
-                        emailInvalid.style.display = "none";
+                        phoneReg.style.border = "";
+                        phoneInvalid.style.display = "none";
 
                         // Empty Password
-                        if (newPass.value.length == 0) {
+                        if (passRegister.value.length == 0) {
                             passInvalid.innerHTML = "סיסמה לא יכולה להיות ריקה";
-                            newPass.style.border = "2px dashed blue";
+                            passRegister.style.border = "2px dashed blue";
                             passInvalid.style.display = "inline";
                             finalReturn = false;
                         }
                         else {
-                            newPass.style.border = "";
+                            passRegister.style.border = "";
                             passInvalid.style.display = "none";
 
                             // Too short password
-                            if (newPass.value.length < 5) {
+                            if (passRegister.value.length < 5) {
                                 passInvalid.innerHTML = "סיסמה לא יכול להיות קצרה מ5 אותיות";
-                                newPass.style.border = "2px dashed blue";
+                                passRegister.style.border = "2px dashed blue";
                                 passInvalid.style.display = "inline";
                                 finalReturn = false;
                             }
                             else {
                                 // Too long password
-                                if (newPass.value.length > 16) {
+                                if (passRegister.value.length > 16) {
                                     passInvalid.innerHTML = "סיסמה לא יכול להיות ארוכה מ16";
-                                    newPass.style.border = "2px dashed blue";
+                                    passRegister.style.border = "2px dashed blue";
                                     passInvalid.style.display = "inline";
                                     finalReturn = false;
                                 }
                                 else {
-                                    newPass.style.border = "";
+                                    passRegister.style.border = "";
                                     passInvalid.style.display = "none";
 
-                                    if (newPass.value != passConfReg.value) {
+                                    if (passRegister.value != passRegister2.value) {
                                         passConfInvalid.innerHTML = "סיסמאות לא תואמות";
-                                        newPass.style.border = "2px dashed blue";
-                                        passConfReg.style.border = "2px dashed blue";
+                                        passRegister.style.border = "2px dashed blue";
+                                        passRegister2.style.border = "2px dashed blue";
                                         passConfInvalid.style.display = "inline";
                                         finalReturn = false;
                                     }
                                     else {
-                                        passConfReg.style.border = "";
+                                        passRegister2.style.border = "";
                                         passConfInvalid.style.display = "none";
                                        finalReturn = true;
                                     }
