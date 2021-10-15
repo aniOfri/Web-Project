@@ -162,21 +162,9 @@ namespace VR_Web_Project
             // CHECKS IF THE USER IS LOGGED IN 
             if (Session["User"] != null)
             {
-                // GETS THE USER FROM SESSION AND APPLY THE PHONE NUMBER TO THE APPOINTMENT
-                User user = (User)Session["User"];
-                appointment.UserId = user.Id.ToString();
-
-                /*
-                
-                WILL ADD A PAYMENT/VERIFICATION METHOD IN THE FUTURE.
-                
-                */
-
-                // INSERT THE DATA INTO THE DATABASE
-                appointment.Order();
-
                 // REDIRECT HOME.ASPX
-                Response.Redirect("Home.aspx");
+                Session["RedirectOrder"] = appointment;
+                Response.Redirect("Payment.aspx");
                 Response.End();
             }
             else

@@ -43,7 +43,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DALlib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DALlib\bin\Debug\DALlib.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -68,7 +74,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Appointments.aspx" />
+    <None Include="Connected Services\CreditCardWS\ccservice.disco" />
+    <None Include="Connected Services\CreditCardWS\configuration91.svcinfo" />
+    <None Include="Connected Services\CreditCardWS\configuration.svcinfo" />
+    <None Include="Connected Services\CreditCardWS\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Javascripts\AppointmentScript..js" />
+    <Content Include="Payment.aspx" />
+    <Content Include="Stylesheets\PaymentStyle.css" />
     <Content Include="Stylesheets\ProfileStyle.css" />
     <Content Include="Profile.aspx" />
     <Content Include="Stylesheets\AppointmentStyle.css" />
@@ -101,7 +116,11 @@
     <Compile Include="Appointments.aspx.designer.cs">
       <DependentUpon>Appointments.aspx</DependentUpon>
     </Compile>
-    <Compile Include="App_Code\DAL.cs" />
+    <Compile Include="Connected Services\CreditCardWS\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -133,6 +152,13 @@
     <Compile Include="Manager.aspx.designer.cs">
       <DependentUpon>Manager.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Payment.aspx.cs">
+      <DependentUpon>Payment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Payment.aspx.designer.cs">
+      <DependentUpon>Payment.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Profile.aspx.cs">
       <DependentUpon>Profile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -160,6 +186,10 @@
     <Compile Include="App_Code\User.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Connected Services\CreditCardWS\ccservice.wsdl" />
+    <Content Include="Connected Services\CreditCardWS\VR_Web_Project.CreditCardWS.ChargeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="packages.config" />
     <Content Include="masterpage.Master" />
     <None Include="web.Debug.config">
@@ -169,7 +199,18 @@
       <DependentUpon>web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\CreditCardWS\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CreditCardWS\CreditCardWS.csproj">
+      <Project>{ba5ed8d8-bb35-4ca8-9766-7991f1c118ff}</Project>
+      <Name>CreditCardWS</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

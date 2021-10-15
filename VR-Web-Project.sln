@@ -4,6 +4,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.29324.140
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VR-Web-Project", "VR-Web-Project.csproj", "{D40692FF-BF65-4011-958C-FD3D48BA9A33}"
+	ProjectSection(ProjectDependencies) = postProject
+		{BA5ED8D8-BB35-4CA8-9766-7991F1C118FF} = {BA5ED8D8-BB35-4CA8-9766-7991F1C118FF}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DALLib", "..\DALlib\DALLib.csproj", "{D79B90FB-9681-4FF2-AC41-9A5A39987062}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreditCardWS", "..\CreditCardWS\CreditCardWS.csproj", "{BA5ED8D8-BB35-4CA8-9766-7991F1C118FF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +22,14 @@ Global
 		{D40692FF-BF65-4011-958C-FD3D48BA9A33}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D40692FF-BF65-4011-958C-FD3D48BA9A33}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D40692FF-BF65-4011-958C-FD3D48BA9A33}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D79B90FB-9681-4FF2-AC41-9A5A39987062}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D79B90FB-9681-4FF2-AC41-9A5A39987062}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D79B90FB-9681-4FF2-AC41-9A5A39987062}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D79B90FB-9681-4FF2-AC41-9A5A39987062}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA5ED8D8-BB35-4CA8-9766-7991F1C118FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA5ED8D8-BB35-4CA8-9766-7991F1C118FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA5ED8D8-BB35-4CA8-9766-7991F1C118FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA5ED8D8-BB35-4CA8-9766-7991F1C118FF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
