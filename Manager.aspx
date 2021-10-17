@@ -2,7 +2,6 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>דף מנהל</title>
     <link rel="stylesheet" href="Stylesheets/ManagerStyle.css"/>
-    <link rel="stylesheet" href="Stylesheets/ManagerStyleSASS.scss"/>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="headerPlaceHolder" runat="server">
         <nav>
@@ -40,5 +39,5 @@
     </form>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="ScriptPlaceHolder" runat="server">
-    <script src="Javascripts/axe.js"></script>
+    <script src="Javascripts/ManagerScript.js"></script>
 </asp:Content>

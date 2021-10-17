@@ -84,24 +84,28 @@ namespace VR_Web_Project
             {
                 // FILL THE OCCUPIED SPOTS WITH THE NUMBER OF PARTICIPANTS 
                 DateTime date = (DateTime)reader["DateTime"];
-                int days = (date - DateTime.Today).Days + 1 + (int)DateTime.Today.DayOfWeek;
-                int hours = (date - DateTime.Today).Hours - 8;
+                DateTime today = DateTime.Today;
+                today = today.AddHours(date.Hour);
+                today = today.AddMinutes(date.Minute);
 
-                System.Diagnostics.Debug.WriteLine("DAY:"+ (days).ToString());
+                int days = (date - today).Days;
+                days += (int)DateTime.Now.DayOfWeek + 1;
 
-                System.Diagnostics.Debug.WriteLine("origin:"+ (hours).ToString());
+                today = DateTime.Today;
+                int hours = (date - today).Hours - 8;
 
-                if (hours > 4) hours -= 1; 
-                if (hours > 8) hours -= 1; 
+                if (hours < 0) hours += 24;
+                if (hours > 4) hours -= 1;
+                if (hours > 8) hours -= 1;
                 if (hours > 12) hours -= 1;
 
-                System.Diagnostics.Debug.WriteLine("after edit:" + (hours).ToString());
+                string username = User.GetUsername((string)reader["UserId"]);
 
-                string str = $"{User.GetUsername((string)reader["UserId"])}" +
-                    $" ({(int)reader["Participants"]}/6)";
-                if (days > 0+dayOffset && hours > 0 && days < 8+dayOffset)
+                string str = $"{username}" +
+                    $" ({(int)reader["Participants"]}/6 {(int)reader["Id"]})" ;
+                if (days >= dayOffset && hours > 0 && days <= 7 + dayOffset)
                 {
-                    week[days-dayOffset][hours] = str;
+                    week[days + Math.Abs(dayOffset)][hours] = str;
                 }
             }
 

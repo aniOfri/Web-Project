@@ -15,12 +15,19 @@ namespace VR_Web_Project.CreditCardWS {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="CreditCardWS.CCServiceSoap")]
     public interface CCServiceSoap {
         
-        // CODEGEN: Generating message contract since element name ccn from namespace http://tempuri.org/ is not marked nillable
+        // CODEGEN: Generating message contract since element name creditCardNumber from namespace http://tempuri.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Charge", ReplyAction="*")]
         VR_Web_Project.CreditCardWS.ChargeResponse Charge(VR_Web_Project.CreditCardWS.ChargeRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Charge", ReplyAction="*")]
         System.Threading.Tasks.Task<VR_Web_Project.CreditCardWS.ChargeResponse> ChargeAsync(VR_Web_Project.CreditCardWS.ChargeRequest request);
+        
+        // CODEGEN: Generating message contract since element name managerPassword from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Credit", ReplyAction="*")]
+        VR_Web_Project.CreditCardWS.CreditResponse Credit(VR_Web_Project.CreditCardWS.CreditRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Credit", ReplyAction="*")]
+        System.Threading.Tasks.Task<VR_Web_Project.CreditCardWS.CreditResponse> CreditAsync(VR_Web_Project.CreditCardWS.CreditRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -50,19 +57,19 @@ namespace VR_Web_Project.CreditCardWS {
         public int price;
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
-        public string ccn;
+        public string creditCardNumber;
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
-        public string month;
+        public string expirationMonth;
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
-        public string year;
+        public string expirationYear;
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
-        public string fn;
+        public string firstName;
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=5)]
-        public string ln;
+        public string lastName;
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=6)]
         public string cvv;
@@ -70,13 +77,13 @@ namespace VR_Web_Project.CreditCardWS {
         public ChargeRequestBody() {
         }
         
-        public ChargeRequestBody(int price, string ccn, string month, string year, string fn, string ln, string cvv) {
+        public ChargeRequestBody(int price, string creditCardNumber, string expirationMonth, string expirationYear, string firstName, string lastName, string cvv) {
             this.price = price;
-            this.ccn = ccn;
-            this.month = month;
-            this.year = year;
-            this.fn = fn;
-            this.ln = ln;
+            this.creditCardNumber = creditCardNumber;
+            this.expirationMonth = expirationMonth;
+            this.expirationYear = expirationYear;
+            this.firstName = firstName;
+            this.lastName = lastName;
             this.cvv = cvv;
         }
     }
@@ -115,6 +122,82 @@ namespace VR_Web_Project.CreditCardWS {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class CreditRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="Credit", Namespace="http://tempuri.org/", Order=0)]
+        public VR_Web_Project.CreditCardWS.CreditRequestBody Body;
+        
+        public CreditRequest() {
+        }
+        
+        public CreditRequest(VR_Web_Project.CreditCardWS.CreditRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class CreditRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string managerPassword;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=1)]
+        public int valueToBeAdded;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public string creditCardNumber;
+        
+        public CreditRequestBody() {
+        }
+        
+        public CreditRequestBody(string managerPassword, int valueToBeAdded, string creditCardNumber) {
+            this.managerPassword = managerPassword;
+            this.valueToBeAdded = valueToBeAdded;
+            this.creditCardNumber = creditCardNumber;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class CreditResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="CreditResponse", Namespace="http://tempuri.org/", Order=0)]
+        public VR_Web_Project.CreditCardWS.CreditResponseBody Body;
+        
+        public CreditResponse() {
+        }
+        
+        public CreditResponse(VR_Web_Project.CreditCardWS.CreditResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class CreditResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public bool CreditResult;
+        
+        public CreditResponseBody() {
+        }
+        
+        public CreditResponseBody(bool CreditResult) {
+            this.CreditResult = CreditResult;
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface CCServiceSoapChannel : VR_Web_Project.CreditCardWS.CCServiceSoap, System.ServiceModel.IClientChannel {
     }
@@ -147,15 +230,15 @@ namespace VR_Web_Project.CreditCardWS {
             return base.Channel.Charge(request);
         }
         
-        public bool Charge(int price, string ccn, string month, string year, string fn, string ln, string cvv) {
+        public bool Charge(int price, string creditCardNumber, string expirationMonth, string expirationYear, string firstName, string lastName, string cvv) {
             VR_Web_Project.CreditCardWS.ChargeRequest inValue = new VR_Web_Project.CreditCardWS.ChargeRequest();
             inValue.Body = new VR_Web_Project.CreditCardWS.ChargeRequestBody();
             inValue.Body.price = price;
-            inValue.Body.ccn = ccn;
-            inValue.Body.month = month;
-            inValue.Body.year = year;
-            inValue.Body.fn = fn;
-            inValue.Body.ln = ln;
+            inValue.Body.creditCardNumber = creditCardNumber;
+            inValue.Body.expirationMonth = expirationMonth;
+            inValue.Body.expirationYear = expirationYear;
+            inValue.Body.firstName = firstName;
+            inValue.Body.lastName = lastName;
             inValue.Body.cvv = cvv;
             VR_Web_Project.CreditCardWS.ChargeResponse retVal = ((VR_Web_Project.CreditCardWS.CCServiceSoap)(this)).Charge(inValue);
             return retVal.Body.ChargeResult;
@@ -166,17 +249,46 @@ namespace VR_Web_Project.CreditCardWS {
             return base.Channel.ChargeAsync(request);
         }
         
-        public System.Threading.Tasks.Task<VR_Web_Project.CreditCardWS.ChargeResponse> ChargeAsync(int price, string ccn, string month, string year, string fn, string ln, string cvv) {
+        public System.Threading.Tasks.Task<VR_Web_Project.CreditCardWS.ChargeResponse> ChargeAsync(int price, string creditCardNumber, string expirationMonth, string expirationYear, string firstName, string lastName, string cvv) {
             VR_Web_Project.CreditCardWS.ChargeRequest inValue = new VR_Web_Project.CreditCardWS.ChargeRequest();
             inValue.Body = new VR_Web_Project.CreditCardWS.ChargeRequestBody();
             inValue.Body.price = price;
-            inValue.Body.ccn = ccn;
-            inValue.Body.month = month;
-            inValue.Body.year = year;
-            inValue.Body.fn = fn;
-            inValue.Body.ln = ln;
+            inValue.Body.creditCardNumber = creditCardNumber;
+            inValue.Body.expirationMonth = expirationMonth;
+            inValue.Body.expirationYear = expirationYear;
+            inValue.Body.firstName = firstName;
+            inValue.Body.lastName = lastName;
             inValue.Body.cvv = cvv;
             return ((VR_Web_Project.CreditCardWS.CCServiceSoap)(this)).ChargeAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        VR_Web_Project.CreditCardWS.CreditResponse VR_Web_Project.CreditCardWS.CCServiceSoap.Credit(VR_Web_Project.CreditCardWS.CreditRequest request) {
+            return base.Channel.Credit(request);
+        }
+        
+        public bool Credit(string managerPassword, int valueToBeAdded, string creditCardNumber) {
+            VR_Web_Project.CreditCardWS.CreditRequest inValue = new VR_Web_Project.CreditCardWS.CreditRequest();
+            inValue.Body = new VR_Web_Project.CreditCardWS.CreditRequestBody();
+            inValue.Body.managerPassword = managerPassword;
+            inValue.Body.valueToBeAdded = valueToBeAdded;
+            inValue.Body.creditCardNumber = creditCardNumber;
+            VR_Web_Project.CreditCardWS.CreditResponse retVal = ((VR_Web_Project.CreditCardWS.CCServiceSoap)(this)).Credit(inValue);
+            return retVal.Body.CreditResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<VR_Web_Project.CreditCardWS.CreditResponse> VR_Web_Project.CreditCardWS.CCServiceSoap.CreditAsync(VR_Web_Project.CreditCardWS.CreditRequest request) {
+            return base.Channel.CreditAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<VR_Web_Project.CreditCardWS.CreditResponse> CreditAsync(string managerPassword, int valueToBeAdded, string creditCardNumber) {
+            VR_Web_Project.CreditCardWS.CreditRequest inValue = new VR_Web_Project.CreditCardWS.CreditRequest();
+            inValue.Body = new VR_Web_Project.CreditCardWS.CreditRequestBody();
+            inValue.Body.managerPassword = managerPassword;
+            inValue.Body.valueToBeAdded = valueToBeAdded;
+            inValue.Body.creditCardNumber = creditCardNumber;
+            return ((VR_Web_Project.CreditCardWS.CCServiceSoap)(this)).CreditAsync(inValue);
         }
     }
 }

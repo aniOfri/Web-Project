@@ -6,11 +6,11 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="1" maxOccurs="1" name="price" type="s:int" />
-            <s:element minOccurs="0" maxOccurs="1" name="ccn" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="month" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="year" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="fn" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="ln" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="creditCardNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="expirationMonth" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="expirationYear" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="firstName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="lastName" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="cvv" type="s:string" />
           </s:sequence>
         </s:complexType>
@@ -22,6 +22,22 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="Credit">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="managerPassword" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="valueToBeAdded" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="creditCardNumber" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreditResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CreditResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="ChargeSoapIn">
@@ -30,10 +46,20 @@
   <wsdl:message name="ChargeSoapOut">
     <wsdl:part name="parameters" element="tns:ChargeResponse" />
   </wsdl:message>
+  <wsdl:message name="CreditSoapIn">
+    <wsdl:part name="parameters" element="tns:Credit" />
+  </wsdl:message>
+  <wsdl:message name="CreditSoapOut">
+    <wsdl:part name="parameters" element="tns:CreditResponse" />
+  </wsdl:message>
   <wsdl:portType name="CCServiceSoap">
     <wsdl:operation name="Charge">
       <wsdl:input message="tns:ChargeSoapIn" />
       <wsdl:output message="tns:ChargeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Credit">
+      <wsdl:input message="tns:CreditSoapIn" />
+      <wsdl:output message="tns:CreditSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="CCServiceSoap" type="tns:CCServiceSoap">
@@ -47,11 +73,29 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="Credit">
+      <soap:operation soapAction="http://tempuri.org/Credit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="CCServiceSoap12" type="tns:CCServiceSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="Charge">
       <soap12:operation soapAction="http://tempuri.org/Charge" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Credit">
+      <soap12:operation soapAction="http://tempuri.org/Credit" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

@@ -12,6 +12,7 @@ namespace VR_Web_Project
             Session["regstatus"] = null;
             Session["logstatus"] = null;
             Session["passstatus"] = null;
+            Session["paystatus"] = null;
             Session["RedirectOrder"] = null;
 
             Response.Redirect("Home.aspx");

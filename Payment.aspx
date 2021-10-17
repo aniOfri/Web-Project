@@ -23,29 +23,30 @@
              </div>
 
             <label for="textLogin">מספר כרטיס אשראי:</label><br />
-            <input id="textLogin" type="text" name="CCN" /><br />
+            <input id="CCN" type="text" name="CCN" /><br />
             <a class="errorMsgs" id="ccnError"></a><br /> <!--- Error msg -->
 
             <label for="expireMonth">חודש תפוגה:</label> <br />
-            <input id="expireMonth" type="text" name="month"/><br />
+            <input id="month" type="text" name="month"/><br />
             <a class="errorMsgs" id="monthError"></a><br /> <!--- Error msg -->
 
             <label for="expireYear">שנת תפוגה:</label> <br />
-            <input id="expireYear" type="text" name="year"/><br />
+            <input id="year" type="text" name="year"/><br />
             <a class="errorMsgs" id="yearError"></a><br /> <!--- Error msg -->
 
             <label for="firstName">שם פרטי:</label> <br />
-            <input id="firstName" type="text" name="fn"/><br />
+            <input id="fn" type="text" name="fn"/><br />
             <a class="errorMsgs" id="fnError"></a><br /> <!--- Error msg -->
 
             <label for="lastName">שם משפחה:</label> <br />
-            <input id="lastName" type="text" name="ln"/><br />
+            <input id="ln" type="text" name="ln"/><br />
             <a class="errorMsgs" id="lnError"></a><br /> <!--- Error msg -->
             
             <label for="cvv">CVV:</label> <br />
             <input id="cvv" type="text" name="cvv"/><br />
             <a class="errorMsgs" id="cvvError"></a><br /> <!--- Error msg -->
            
+            <label><%=PayStatus%></label><br /><br />
             <div class="center">
                 <div class="backgroundButton"><input id="submitLogin" value="התחבר" type="submit" name="submit" class="transparentButton" /></div>
             </div>

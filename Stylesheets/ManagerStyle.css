@@ -8,6 +8,7 @@ div.grid {
     font-family: 'Rubik', sans-serif;
     text-align: center;
     width: 50%;
+    margin-right: 3%;
 }
 
 h1.schedule {
@@ -45,6 +46,10 @@ table tbody tr:first-child{
 
 table tbody tr:first-child td {
     width: 80px;
+}
+
+table tbody tr:nth-child(n+1) td {
+    width: 100px;
 }
 
 
@@ -113,10 +118,16 @@ div.userManagement div a {
     font-size: 14px;
 }
 
-div.userManagement div div div{
+div.userManagement div div div {
     padding-top: 10px;
     padding-bottom: 1%;
     display: none;
+    transition: all ease-in-out 0.2s
+}
+
+
+div.userManagement div div a {
+    transition: all ease-in-out 0.2s
 }
 
 div.userManagement div div input{
@@ -142,6 +153,7 @@ div.userManagement div div a:hover + div {
     display: block;
 }
 
-div.userManagement div div div:hover{
+div.userManagement div div div:hover {
     display: block;
+    transition: all ease-in-out 0.2s
 }
