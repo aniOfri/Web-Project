@@ -127,3 +127,8 @@ C:\Users\Ofri\source\repos\VR WEB PROJECT\Web-Project\bin\CreditCardWS.pdb
 C:\Users\Ofri\source\repos\VR WEB PROJECT\Web-Project\bin\CreditCardWS.dll.config
 C:\Users\Ofri\source\repos\VR WEB PROJECT\Web-Project\bin\System.Web.Optimization.xml
 C:\Users\Ofri\source\repos\VR WEB PROJECT\Web-Project\bin\Microsoft.AspNet.FriendlyUrls.xml
+C:\Users\Ofri\source\repos\VR WEB PROJECT\Web-Project\bin\Newtonsoft.Json.dll
+C:\Users\Ofri\source\repos\VR WEB PROJECT\Web-Project\bin\WebGrease.dll
+C:\Users\Ofri\source\repos\VR WEB PROJECT\Web-Project\bin\Antlr3.Runtime.dll
+C:\Users\Ofri\source\repos\VR WEB PROJECT\Web-Project\bin\Newtonsoft.Json.xml
+C:\Users\Ofri\source\repos\VR WEB PROJECT\Web-Project\bin\Antlr3.Runtime.pdb

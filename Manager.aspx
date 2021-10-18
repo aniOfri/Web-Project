@@ -16,6 +16,20 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="TitlePlaceHolder" runat="server">
     <form runat="server">
     <img src="stars.png" class="stars"/>
+            <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+      <!-- Modal content -->
+      <div class="modal-content">
+        <div class="modal-header">
+            <span class="close"></span>
+            <h2 class="popupTitle">מידע על ההזמנה:</h2>
+        </div>
+        <span class="close"></span>
+        <p class="popupData"></p>
+      </div>
+
+    </div>
     <div class="wrapper">
         <div class="grid">
             <h1 class="schedule">לוח זמנים</h1>

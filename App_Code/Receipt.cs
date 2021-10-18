@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using DALLib;
 
@@ -58,7 +59,7 @@ namespace VR_Web_Project
             }
         }
 
-        public static string BuildReceiptString(string appointmentId)
+        public static Dictionary<string, string> BuildReceiptString(string appointmentId)
         {
             string sql = "SELECT * FROM Receipt";
             sql += " WHERE AppointmentId='" + appointmentId + "'";
@@ -67,14 +68,20 @@ namespace VR_Web_Project
 
             DataRow dr = dt.Rows[0];
 
-            string receiptString = "";
-            receiptString += "תאריך הזמנה: " + ((DateTime)dr[1]).ToString() + "\n";
-            receiptString += "מחיר: " + ((int)dr[4]).ToString() + "\n";
-            receiptString += "כרטיס אשראי: " + ((string)dr[5]) + "\n";
-            receiptString += "שם פרטי: " + ((string)dr[6]) + "\n";
-            receiptString += "שם משפחה: " + ((string)dr[7]) + "\n";
+            string[] dateTime = ((DateTime)dr[1]).ToString("MM/dd/yyyy HH:mm").Split(' ');
+            string date = dateTime[0];
+            string time = dateTime[1];
 
-            return receiptString;
+            Dictionary<string, string> dic = new Dictionary<string, string>();
+
+            dic.Add("date", date);
+            dic.Add("time", time);
+            dic.Add("price", ((int)dr[4]).ToString());
+            dic.Add("ccn", ((string)dr[5]));
+            dic.Add("firstname", ((string)dr[6]));
+            dic.Add("lastname", ((string)dr[7]));
+
+            return dic;
         }
     }
 }

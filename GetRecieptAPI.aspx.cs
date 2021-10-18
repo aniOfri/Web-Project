@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Newtonsoft.Json;
 
 namespace VR_Web_Project
 {
@@ -12,10 +13,10 @@ namespace VR_Web_Project
         protected void Page_Init(object sender, EventArgs e)
         {
             string appointmentId = Request.Form["AppointmentId"];
-            string str = Receipt.BuildReceiptString(appointmentId);
+            Dictionary<string, string> dic = Receipt.BuildReceiptString(appointmentId);
 
-           // string json = Json.Encode(str);
-            //Response.Write(json);
+            string json = JsonConvert.SerializeObject(dic);
+            Response.Write(json);
         }
     }
 }

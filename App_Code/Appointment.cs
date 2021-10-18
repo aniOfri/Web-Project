@@ -102,7 +102,7 @@ namespace VR_Web_Project
                 string username = User.GetUsername((string)reader["UserId"]);
 
                 string str = $"{username}" +
-                    $" ({(int)reader["Participants"]}/6 {(int)reader["Id"]})" ;
+                    $" ({(int)reader["Participants"]}/6) {(int)reader["Id"]}" ;
                 if (days >= dayOffset && hours > 0 && days <= 7 + dayOffset)
                 {
                     week[days + Math.Abs(dayOffset)][hours] = str;
