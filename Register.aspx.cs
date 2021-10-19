@@ -60,18 +60,10 @@ namespace VR_Web_Project
                             Appointment appointment = (Appointment)Session["RedirectOrder"];
                             appointment.UserId = user.Id.ToString();
 
-                            /*
-
-                            WILL ADD A PAYMENT/VERIFICATION METHOD IN THE FUTURE.
-
-                            */
-
-                            // INSERT THE DATA INTO THE DATABASE
-                            appointment.Order();
-
-                            // REDIRECT PROFILE.ASPX
-                            Session["RedirectOrder"] = null;
-                            Response.Redirect("Profile.aspx");
+                            // REDIRECT PAYMENT.ASPX
+                            Session["RedirectOrder"] = appointment;
+                            Response.Redirect("Payment.aspx");
+                            Response.End();
                         }
                         else
                             Response.Redirect("Register.aspx");

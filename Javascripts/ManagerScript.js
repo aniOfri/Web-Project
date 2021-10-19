@@ -32,7 +32,7 @@ $("td").click(function () {
                 str += "תאריך הזמנה: " + data["date"] + " \n ";
                 str += "שעת הזמנה: " + data["time"] + " \n ";
                 str += "מחיר: " + data["price"] + " \n ";
-                str += "כרטיס אשראי: ************" + data["ccn"] + " \n ";
+                str += "כרטיס אשראי: " + data["ccn"] + "* * * * \n ";
                 str += "שם פרטי: " + data["firstname"] + " \n ";
                 str += "שם משפחה: " + data["lastname"] + " \n";;
 

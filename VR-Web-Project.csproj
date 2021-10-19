@@ -80,7 +80,7 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <Content Include="GetRecieptAPI.aspx" />
-    <Content Include="Javascripts\AppointmentScript..js" />
+    <Content Include="Javascripts\AppointmentScript.js" />
     <Content Include="Javascripts\ManagerScript.js" />
     <Content Include="Payment.aspx" />
     <Content Include="Stylesheets\PaymentStyle.css" />

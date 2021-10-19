@@ -24,9 +24,8 @@ namespace VR_Web_Project
                 string status = Session["paystatus"].ToString();
                 if (status == "200")
                     PayStatus = "";
-                else if (status == "450") PayStatus = "פרטי התשלום אינם נכונים";
+                else if (status == "450") PayStatus = "העסקה נדחתה";
             }
-
 
             // CHECKS IF THE SITE HAS BEEN RELOADED DUE TO A SUBMIT PRESS
             if (Request["submit"] != null)
