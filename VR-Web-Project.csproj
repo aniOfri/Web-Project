@@ -116,6 +116,7 @@
     <Compile Include="Appointments.aspx.designer.cs">
       <DependentUpon>Appointments.aspx</DependentUpon>
     </Compile>
+    <Content Include="App_Code\GiftCard.cs" />
     <Compile Include="Connected Services\CreditCardWS\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

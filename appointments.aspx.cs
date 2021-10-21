@@ -2,6 +2,7 @@
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
+using System.Web.UI.HtmlControls;
 
 namespace VR_Web_Project
 {
@@ -57,13 +58,20 @@ namespace VR_Web_Project
                 times[i] = time.GetTime();
                 time.AddTime(1, 15);
             }
-            
+
             // SET AS UNAVAILABLE THE OCCUPIED APPOINTMENT TIMES
+            DateTime now = DateTime.Now;
+            int hours = now.Hour - 7;
+
+            if (hours > 4) hours -= 1;
+            if (hours > 8) hours -= 1;
+            if (hours > 12) hours -= 1;
+
             if (day != -1)
             {
                 for (int i = 0; i < 13; i++)
                 {
-                    if (week[day + 1][i] != "")
+                    if (week[day + 1][i] != "" || ((int)DateTime.Today.DayOfWeek == day && hours > i))
                         times[i] = "לא זמין";
                 }
             }
