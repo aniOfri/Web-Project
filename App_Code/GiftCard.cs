@@ -14,9 +14,9 @@ namespace VR_Web_Project
 
         public GiftCard(string code)
         {
-            Worth = FindWorthByCode(code);
-            Code = code;
-            IsExpired = Worth==0 ? true : false;
+            this.Worth = FindWorthByCode(code);
+            this.Code = code;
+            this.IsExpired = Worth==0 ? true : false;
         }
 
         private int FindWorthByCode(string code)
@@ -43,5 +43,38 @@ namespace VR_Web_Project
             }
 
         }
+
+        public static int ApplyGiftCard(int price, string code)
+        {
+            string sql = "SELECT Worth FROM GiftCard WHERE Code ='" + code + "'";
+
+            // GET READER USING DAL
+            var readerAndConnection = DAL.GetReader(sql);
+            SqlDataReader reader = readerAndConnection.Item1;
+
+            // ASSIGN DATA TO Balance
+            int balance = 0;
+            if ((bool)reader.Read())
+                balance = (int)reader["Balance"];
+
+            // CLOSE
+            reader.Close();
+            readerAndConnection.Item2.Close();
+
+            // SET NEWBALANCE AS THE NEW VALUE FOR THE DB
+            int newWorth = balance - price;
+            int newPrice = price - balance;
+            if (newWorth > 0)
+            {
+                string updateSql = "UPDATE GiftCard SET Worth = '" + newWorth + "'"
+                     + " WHERE Code='"+code+"'";
+
+                DAL.ExecNonQuery(updateSql);
+                return newPrice;
+            }
+            return price;
+
+        }
+
     }
 }

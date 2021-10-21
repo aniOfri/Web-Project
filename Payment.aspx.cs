@@ -44,6 +44,10 @@ namespace VR_Web_Project
                 int[] prices = new int[6] { 140, 120, 115, 110, 105, 100 };
                 int price = prices[(int)Session["Partic"]-1] * (int)Session["Partic"];
 
+                GiftCard giftCard = new GiftCard(giftCardCode);
+                if (!giftCard.IsExpired)
+                    price = GiftCard.ApplyGiftCard(price, giftCardCode);
+
                 // WEB SERVICE
                 CreditCardWS.CCServiceSoapClient service = new CreditCardWS.CCServiceSoapClient();
                 bool verification = service.Charge(price, creditCardNumber, expirationMonth, expirationYear, firstName, lastName, cvv);

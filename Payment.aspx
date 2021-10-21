@@ -48,7 +48,7 @@
            
             <label for="giftcard">כרטיס מתנה:</label> <br />
             <input id="giftcard" type="text" name="cvv"/><br />
-            <label id="giftCardInfo">(ישומש אם תקין)</label> <br />
+            <label id="giftCardInfo">(ימומש אם תקין)</label> <br />
            
             <label><%=PayStatus%></label><br /><br />
             <div class="center">
