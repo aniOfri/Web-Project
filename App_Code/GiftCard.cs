@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
 using DALLib;
 
-namespace VR_Web_Project.App_Code
+namespace VR_Web_Project
 {
     public class GiftCard
     {
@@ -25,17 +23,25 @@ namespace VR_Web_Project.App_Code
         {
             string sql = "SELECT Worth FROM GiftCard WHERE Code ='" + code + "'";
 
-            var readerAndConnection = DAL.GetReader(sql);
-            SqlDataReader reader = readerAndConnection.Item1;
+            try
+            {
+                var readerAndConnection = DAL.GetReader(sql);
+                SqlDataReader reader = readerAndConnection.Item1;
 
-            int worth = 0;
-            if ((bool)reader.Read())
-                worth = (int)reader["Worth"];
+                int worth = 0;
+                if (reader.Read())
+                    worth = (int)reader["Worth"];
 
-            reader.Close();
-            readerAndConnection.Item2.Close();
+                reader.Close();
+                readerAndConnection.Item2.Close();
 
-            return worth;
+                return worth;
+            }
+            catch
+            {
+                return 0;
+            }
+
         }
     }
 }

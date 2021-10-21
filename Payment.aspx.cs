@@ -37,6 +37,7 @@ namespace VR_Web_Project
                 string firstName = Request["fn"].Replace(" ", "");
                 string lastName = Request["ln"].Replace(" ", "");
                 string cvv = Request["cvv"].Replace(" ", "");
+                string giftCardCode = Request["giftcard"].Replace(" ", "");
 
                 // DECLARE A USER USING THE FORMER STRINGS
                 // PRICES ARRAY

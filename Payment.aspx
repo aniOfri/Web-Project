@@ -46,9 +46,13 @@
             <input id="cvv" type="text" name="cvv"/><br />
             <a class="errorMsgs" id="cvvError"></a><br /> <!--- Error msg -->
            
+            <label for="giftcard">כרטיס מתנה:</label> <br />
+            <input id="giftcard" type="text" name="cvv"/><br />
+            <label id="giftCardInfo">(ישומש אם תקין)</label> <br />
+           
             <label><%=PayStatus%></label><br /><br />
             <div class="center">
-                <div class="backgroundButton"><input id="submitLogin" value="התחבר" type="submit" name="submit" class="transparentButton" /></div>
+                <div class="backgroundButton"><input id="submitLogin" value="שלם" type="submit" name="submit" class="transparentButton" /></div>
             </div>
         </form>
     </div>
