@@ -28,7 +28,7 @@ namespace VR_Web_Project
             }
 
             // CHECKS IF THE SITE HAS BEEN RELOADED DUE TO A SUBMIT PRESS
-            if (Request["submit"] != null)
+            if (Request["CCN"] != null)
             {
                 // DECLARE TWO STRINGS AS USERNAME AND PASSWORD USING THE SUBMIT DATA
                 string creditCardNumber = Request["CCN"].Replace(" ", "");

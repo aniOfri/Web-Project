@@ -19,7 +19,7 @@ namespace VR_Web_Project
             }
 
             // CHECKS IF THE SITE HAS BEEN RELOADED DUE TO A SUBMIT PRESS
-            else if (Request["name"] != null)
+            if (Request["name"] != null)
             {
                 // CHECK IF SUBMIT WAS ACTUALLY "CANCEL ORDER"
                 if (Request["name"] == "")

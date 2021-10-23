@@ -89,23 +89,32 @@ namespace VR_Web_Project
                 today = today.AddMinutes(date.Minute);
 
                 int days = (date - today).Days;
-                days += (int)DateTime.Now.DayOfWeek + 1;
+                days += (int)DateTime.Now.DayOfWeek + 1 - 7; // +offset, -week
+
+                if (days == 7) days -= 1;
+                else if (days == 0) days -= 1;
 
                 today = DateTime.Today;
                 int hours = (date - today).Hours - 8;
-
+                    
                 if (hours < 0) hours += 24;
-                if (hours > 4) hours -= 1;
-                if (hours > 8) hours -= 1;
-                if (hours > 12) hours -= 1;
-
+                if (hours >= 11) hours -= 3;
+                else if (hours >= 7) hours -= 2;
+                else if (hours >= 3) hours -= 0;
+                
                 string username = User.GetUsername((string)reader["UserId"]);
+
+
+                if (username == "ofek")
+                    username = "ofek";
 
                 string str = $"{username}" +
                     $" ({(int)reader["Participants"]}/6) {(int)reader["Id"]}" ;
-                if (days >= dayOffset && hours > 0 && days <= 7 + dayOffset)
+                if (days >= dayOffset && hours >= 0 && days <= 7 + dayOffset)
                 {
-                    week[days + Math.Abs(dayOffset)][hours] = str;
+                    int daysIndex = days + Math.Abs(dayOffset);
+                    while (daysIndex > 7) daysIndex -= 7;
+                    week[daysIndex][hours] = str;
                 }
             }
 
