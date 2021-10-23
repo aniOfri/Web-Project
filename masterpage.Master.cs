@@ -23,17 +23,35 @@ namespace VR_Web_Project
                 // IF NOT, DONT DISPLAY THE "CURRENT ORDER"
                 currentOrder.Attributes["class"] = "nodisplay";
 
+            string currentUrl = HttpContext.Current.Request.Url.LocalPath;
+
+
+            if (currentUrl.EndsWith("Login.aspx"))
+            {
+                form.Attributes["onsubmit"] = "return LogValid();";
+                form.Method = "get";
+            }
+
+            else if (currentUrl.EndsWith("Register.aspx"))
+            {
+                form.Attributes["onsubmit"] = "return RegValid();";
+                form.Method = "get";
+            }
+
+            else if (currentUrl.EndsWith("Payment.aspx"))
+            {
+                form.Attributes["onsubmit"] = "return PayValid();";
+                form.Method = "get";
+            }
 
             // CHECKS IF THE USER IS LOGGED IN
             if (Session["User"] != null)
             {
-                //  IF SO, GET CURRENT URL
-                string currentUrl = HttpContext.Current.Request.Url.LocalPath;
-
                 /* AND IF THE PAGE IS NOT CURRENTLY A PROFILE PAGE
                     TRANSFORM THE LOGIN BUTTON TO A PROFILE BUTTON */
                 if (!currentUrl.EndsWith("Profile.aspx")) 
-                { 
+                {
+                    form.Attributes["onsubmit"] = "return passValid();";
                     loginNav.HRef = "Profile.aspx";
                     loginNav.InnerHtml = "פרופיל";
                 }
@@ -56,6 +74,13 @@ namespace VR_Web_Project
                         managerNav.Style["display"] = "inline";
                 }
             }
+        }
+
+        protected void cancel_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Logout.aspx");
+            Response.Redirect("Home.aspx");
+            Response.End();
         }
     }
 }

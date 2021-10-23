@@ -14,7 +14,6 @@
     <a class="cta" href="Appointments.aspx">הזמנות</a>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="TitlePlaceHolder" runat="server">
-    <form runat="server">
     <img src="stars.png" class="stars"/>
             <!-- The Modal -->
     <div id="myModal" class="modal">
@@ -49,8 +48,6 @@
             <asp:Panel CssClass="users" ID="usersArea" runat="server"></asp:Panel>
         </div>
     </div>
-
-    </form>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="ScriptPlaceHolder" runat="server">
     <script src="Javascripts/ManagerScript.js"></script>

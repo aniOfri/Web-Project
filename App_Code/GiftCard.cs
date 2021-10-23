@@ -41,38 +41,34 @@ namespace VR_Web_Project
             {
                 return 0;
             }
-
         }
 
-        public static int ApplyGiftCard(int price, string code)
+        public int ApplyGiftCard(int price)
         {
-            string sql = "SELECT Worth FROM GiftCard WHERE Code ='" + code + "'";
-
-            // GET READER USING DAL
-            var readerAndConnection = DAL.GetReader(sql);
-            SqlDataReader reader = readerAndConnection.Item1;
-
-            // ASSIGN DATA TO Balance
-            int balance = 0;
-            if ((bool)reader.Read())
-                balance = (int)reader["Balance"];
-
-            // CLOSE
-            reader.Close();
-            readerAndConnection.Item2.Close();
-
             // SET NEWBALANCE AS THE NEW VALUE FOR THE DB
-            int newWorth = balance - price;
-            int newPrice = price - balance;
+            int newWorth = Worth - price;
+            int newPrice = price < Worth ? 0 : price - Worth;
             if (newWorth > 0)
             {
                 string updateSql = "UPDATE GiftCard SET Worth = '" + newWorth + "'"
-                     + " WHERE Code='"+code+"'";
+                     + " WHERE Code='"+Code+"'";
 
                 DAL.ExecNonQuery(updateSql);
                 return newPrice;
             }
-            return price;
+            else
+            {
+                string updateSql = "UPDATE GiftCard SET Worth = '" + 0 + "'"
+                + " WHERE Code='" + Code + "'";
+
+                DAL.ExecNonQuery(updateSql);
+
+                updateSql = "UPDATE GiftCard SET IsExpired = '" + true + "'"
+                    + " WHERE Code='" + Code + "'";
+
+                DAL.ExecNonQuery(updateSql);
+                return newPrice;
+            }
 
         }
 

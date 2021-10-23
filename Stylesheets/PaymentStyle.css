@@ -27,10 +27,6 @@ img.stars {
     margin: auto;
     padding-top: 7%;
     padding-bottom: 15%;
-}
-
-form {
-    display: table-cell;
     text-align: center;
     vertical-align: middle;
 }

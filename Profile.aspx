@@ -20,8 +20,6 @@
     <div class="wrapper">
         <div class="passwordChange">
             <h1>שינוי סיסמה:</h1>
-            <form id="formChangePass" onsubmit="return passValid();" method="get">
-
             <label for="oldPass">סיסמה ישנה:</label><br />
             <input id="oldPass" type="password" name="oldPass"/><br />
             <a class="errorMsgs" id="oldPassError"></a><br /> <!--- Error msg -->
@@ -34,8 +32,6 @@
             <div class="center">
                 <div class="backgroundButton"><input id="submitChange" value="הרשם" type="submit" name="submit" class="transparentButton"/></div>
             </div>
-
-            </form>
         </div>
         <div class="appointmentsView">
             <h1>הזמנות:</h1>

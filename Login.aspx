@@ -16,8 +16,6 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="TitlePlaceHolder" runat="server">
     <img src="stars.png" class="stars"/>
     <div class="formDiv">
-        <form id="formLogin" onsubmit="return LogValid();" method="get">
-            
             <div class="sidebyside">
                 <div><h1 class="title">התחברות</h1></div>
                 <div><a href="Register.aspx"><h2>או הרשמה</h2></a></div>
@@ -33,9 +31,8 @@
             
             <label><%=LogStatus%></label><br /><br />
             <div class="center">
-                <div class="backgroundButton"><input id="submitLogin" value="התחבר" type="submit" name="submit" class="transparentButton" /></div>
+                <div class="backgroundButton"><input id="submit" runat="server" value="התחבר" type="submit" name="submit" class="transparentButton" /></div>
             </div>
-        </form>
     </div>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="ScriptPlaceHolder" runat="server">

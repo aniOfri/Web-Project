@@ -13,7 +13,6 @@
     <a class="cta" href="Home.aspx">בית</a>
 </asp:Content>
 <asp:Content ID="pricesContent" ContentPlaceHolderID="TitlePlaceHolder" runat="server">
-    <form runat="server">
     <img src="stars.png" class="stars"/>
     <div class="prices">
         <h1 class="prices pricelist">מחירון</h1>
@@ -132,8 +131,6 @@
         </li>
     </ul>
     </div>
-    </form>
-
  </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="ScriptPlaceHolder" runat="server">

@@ -11,6 +11,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body dir="rtl">
+    <form id="form" runat="server">
     <div>
         <div class="header">
             <header runat="server" id="headerNav" class="navbar">
@@ -21,15 +22,16 @@
                 <a class="cta" id="loginNav" runat="server" href="Login.aspx">התחברות</a>
                 <a class="cta manager" id="managerNav" runat="server" href="Manager.aspx">דף מנהל</a>
             </header>
-
-            <header runat="server" id="currentOrder" class="order">
+        <header runat="server" id="currentOrder" class="order">
                 <a>[הזמנה נוכחית]</a>
                 <div class="orderlist">
                     <a><%=participants %></a>
                     <a><%=date %></a>
                     <a><%=time %></a>
+                    <a><asp:Button ID="cancel" runat="server" Text="בטל הזמנה" CssClass="transparentButton" OnClick="cancel_Click" /></a>
                 </div>
             </header>
+
         </div>
         <asp:ContentPlaceHolder ID="TitlePlaceHolder" runat="server">
         </asp:ContentPlaceHolder>
@@ -47,5 +49,6 @@
             </nav>
         </div>
     </div>
+    </form>
 </body>
 </html>

@@ -21,8 +21,16 @@ namespace VR_Web_Project
             }
 
             // CHECKS IF THE SITE HAS BEEN RELOADED DUE TO A SUBMIT PRESS
-            if (Request["submit"] != null)
+            if (Request["name"] != null)
             {
+
+                // CHECK IF SUBMIT WAS ACTUALLY "CANCEL ORDER"
+                if (Request["name"] == "")
+                {
+                    Response.Redirect("Logout.aspx");
+                    Response.Redirect("Home.aspx");
+                    Response.End();
+                }
                 // DECLARE THREE STRINGS AS USERNAME, PHONENUMBER AND PASSWORD USING THE SUBMIT DATA
                 string username = Request["name"].Replace(" ", "");
                 string phone = Request["phone"].Replace(" ", "");
@@ -39,7 +47,7 @@ namespace VR_Web_Project
                 {   
                     // IF SO, RETURN ERROR 405
                     Session["regstatus"] = "405";
-                    Response.Redirect("Register.aspx");
+                    Response.Redirect("Register.aspx");     
                 }
                 else
                 {
@@ -63,16 +71,17 @@ namespace VR_Web_Project
                             // REDIRECT PAYMENT.ASPX
                             Session["RedirectOrder"] = appointment;
                             Response.Redirect("Payment.aspx");
-                            Response.End();
                         }
                         else
-                            Response.Redirect("Register.aspx");
+                            Response.Redirect("Login.aspx");
+                        Response.End();
                     }
                     else
                     {
                         // FAIL
                         Session["regstatus"] = "405";
                         Response.Redirect("Register.aspx");
+                        Response.End();
                     }
                 }
             }

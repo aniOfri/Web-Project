@@ -16,13 +16,10 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="TitlePlaceHolder" runat="server">
     <img src="stars.png" class="stars"/>
     <div class="formDiv">
-        <form id="formRegister" onsubmit="return RegValid();" method="get">
-            
             <div class="sidebyside">
                 <div><h1 class="title">הרשמה</h1></div>
                 <div><a href="Login.aspx"><h2>או התחברות</h2></a></div>
              </div>
-
             <label for="textRegister">שם משתמש:</label><br />
             <input id="textRegister" type="text" name="name"/><br />
             <a class="errorMsgs" id="regTextError"></a><br /> <!--- Error msg -->
@@ -41,10 +38,9 @@
             
             <label><%=RegStatus%></label><br /><br />
             <div class="center">
-                <div class="backgroundButton"><input id="submitRegister" value="הרשם" type="submit" name="submit" class="transparentButton" /></div>
+                <div class="backgroundButton"><input id="submitRegister" runat="server" value="הרשם" type="submit" name="submit" class="transparentButton" /></div>
             </div>
-        </form>
-    </div>
+    </div>  
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="ScriptPlaceHolder" runat="server">
     <script src="Javascripts/RegisterScript.js"></script>

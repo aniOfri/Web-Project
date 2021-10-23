@@ -40,6 +40,7 @@
             
             <h1 class="title">בין המשחקים יש לנו את:</h1><br />
             <div class="games">
+                <img class="game" src="Sources/league.jpg"/>
                 <img class="game" src="Sources/beatsaber.jpg"/>
                 <img class="game" src="Sources/minecraft.png"/>
                 <img class="game" src="Sources/pistolwhip.jpg"/>

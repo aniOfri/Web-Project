@@ -46,7 +46,7 @@ namespace VR_Web_Project
 
                 GiftCard giftCard = new GiftCard(giftCardCode);
                 if (!giftCard.IsExpired)
-                    price = GiftCard.ApplyGiftCard(price, giftCardCode);
+                    price = giftCard.ApplyGiftCard(price);
 
                 // WEB SERVICE
                 CreditCardWS.CCServiceSoapClient service = new CreditCardWS.CCServiceSoapClient();

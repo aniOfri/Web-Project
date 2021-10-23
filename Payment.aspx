@@ -16,8 +16,6 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="TitlePlaceHolder" runat="server">
     <img src="stars.png" class="stars"/>
     <div class="formDiv">
-        <form id="formLogin" onsubmit="return PayValid();" method="get">
-            
             <div class="sidebyside">
                 <div><h1 class="title">תשלום</h1></div>
              </div>
@@ -47,14 +45,13 @@
             <a class="errorMsgs" id="cvvError"></a><br /> <!--- Error msg -->
            
             <label for="giftcard">כרטיס מתנה:</label> <br />
-            <input id="giftcard" type="text" name="cvv"/><br />
+            <input id="giftcard" type="text" name="giftcard"/><br />
             <label id="giftCardInfo">(ימומש אם תקין)</label> <br />
            
             <label><%=PayStatus%></label><br /><br />
             <div class="center">
                 <div class="backgroundButton"><input id="submitLogin" value="שלם" type="submit" name="submit" class="transparentButton" /></div>
             </div>
-        </form>
     </div>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="ScriptPlaceHolder" runat="server">
