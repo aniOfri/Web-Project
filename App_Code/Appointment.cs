@@ -82,38 +82,47 @@ namespace VR_Web_Project
             SqlDataReader reader = readerAndConnection.Item1;
             while (reader.Read())
             {
-                // FILL THE OCCUPIED SPOTS WITH THE NUMBER OF PARTICIPANTS 
+                // GET DATA FROM READER
                 DateTime date = (DateTime)reader["DateTime"];
                 DateTime today = DateTime.Today;
                 today = today.AddHours(date.Hour);
                 today = today.AddMinutes(date.Minute);
 
-
                 int days = (date.Date - today.Date).Days;
                 days += (int)DateTime.Now.DayOfWeek + 1; // +offset, -week
 
+                // CHECK IF DAY IS MOD 7 AND NON ZERO
                 if (days % 7 == 0 && days != 0)
                 {
+                    // IF SO, RE-ALIGN THE DAY
                     if (days >= 0) days -= 1;
                     else days += 1;
                 }
 
+                // RESET today TO TODAY (WITHOUT THE HOURS/MINUTES)
                 today = DateTime.Today;
                 int hours = (date - today).Hours - 8;
 
+                // ALIGN THE TIME CORRECTLY BECAUSE OF SKIPPING HOURS
                 if (hours < 0) hours += 24;
                 if (hours >= 11) hours -= 3;
                 else if (hours >= 7) hours -= 2;
                 else if (hours >= 3) hours -= 0;
 
+                // GET USERNAME
                 string username = User.GetUsername((string)reader["UserId"]);
 
+                // BUILD STRING TO THE APPOINTMENT SLOT
                 string str = $"{username}" +
                     $" ({(int)reader["Participants"]}/6) {(int)reader["Id"]}" ;
+                
+                // CHECK IF VALID
                 if (days > dayOffset && hours >= 0 && days < 8 + dayOffset)
                 {
+                    // CREATE INDEX FOR DAY 
                     int daysIndex = days + Math.Abs(dayOffset);
                     while (daysIndex > 7) daysIndex -= 7;
+                    // IMPLEMENT
                     week[daysIndex][hours] = str;
                 }
             }
@@ -123,7 +132,9 @@ namespace VR_Web_Project
             readerAndConnection.Item2.Close();
             return week;
         }
-
+        // A static function which gets the appointments of a user
+        // INPUT: User as user
+        // OUTPUT DataTable as appointments
         public static DataTable GetAppointments(User user)
         {
             string sql = "SELECT * FROM Appointment";

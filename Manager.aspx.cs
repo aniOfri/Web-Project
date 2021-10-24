@@ -198,7 +198,13 @@ namespace VR_Web_Project
 
         protected void Delete_Click(object sender, EventArgs e)
         {
+            Button button = (Button)sender;
+            string userid = button.CommandArgument;
 
+            VR_Web_Project.User.Delete(userid);
+
+            Response.Redirect("Manager.aspx");
+            Response.End();
         }
 
         protected void Calendar_Click(object sender, EventArgs e)

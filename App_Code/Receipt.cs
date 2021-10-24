@@ -58,8 +58,10 @@ namespace VR_Web_Project
                 return false;
             }
         }
-
-        public static Dictionary<string, string> BuildReceiptString(string appointmentId)
+        // A static function which creates a receipt dictionary
+        // INPUT: string as appointment id
+        // OUTPUT Dictionary<string, string> as receipt
+        public static Dictionary<string, string> BuildReceiptDictionary(string appointmentId)
         {
             string sql = "SELECT * FROM Receipt";
             sql += " WHERE AppointmentId='" + appointmentId + "'";

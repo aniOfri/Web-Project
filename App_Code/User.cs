@@ -282,5 +282,26 @@ namespace VR_Web_Project
 
             return dt;
         }
+
+        public static bool Delete(int userId)
+        {
+            // BUILD STRING AS AN SQL COMMAND
+            string sql = "DELETE FROM Member";
+            sql += "WHERE Id='" + userId + "'";
+
+            // TRY TO EXECUTE COMMAND
+            try
+            {
+                DAL.ExecNonQuery(sql);
+
+                // PASSWORD CHANGED SUCCESSFULLY, RETURNS TRUE
+                return true;
+            }
+            catch
+            {
+                // THERE WAS AN ERROR, RETURNS FALSE
+                return false;
+            }
+        }
     }
 }
