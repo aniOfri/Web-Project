@@ -61,9 +61,9 @@ label {
     transition: all 0.2s ease-in-out 0s;
 }
 
-    .backgroundButton:hover {
-        background-color: #34497f;
-    }
+.backgroundButton:hover {
+    background-color: #34497f;
+}
 
 .center {
     width: 100px;

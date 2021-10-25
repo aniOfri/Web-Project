@@ -80,9 +80,11 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <Content Include="GetRecieptAPI.aspx" />
+    <Content Include="GiftCard.aspx" />
     <Content Include="Javascripts\AppointmentScript.js" />
     <Content Include="Javascripts\ManagerScript.js" />
     <Content Include="Payment.aspx" />
+    <Content Include="Stylesheets\GiftCardStyle.css" />
     <Content Include="Stylesheets\PaymentStyle.css" />
     <Content Include="Stylesheets\ProfileStyle.css" />
     <Content Include="Profile.aspx" />
@@ -128,6 +130,13 @@
     </Compile>
     <Compile Include="GetRecieptAPI.aspx.designer.cs">
       <DependentUpon>GetRecieptAPI.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GiftCard.aspx.cs">
+      <DependentUpon>GiftCard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GiftCard.aspx.designer.cs">
+      <DependentUpon>GiftCard.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

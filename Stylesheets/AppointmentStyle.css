@@ -6,11 +6,11 @@ body {
 
 
 div.prices {
-    padding-top: 8%;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    z-index: 10;
+    text-align: center;
+}
+
+div.pricesBorder {
+    margin-right: 15%;
 }
 
 img.stars {
@@ -122,7 +122,7 @@ ul.menu {
 
 .menu > li {
     margin-bottom: 3%;
-    margin-right: 25%;
+    margin-right: 15%;
     float: left;
     position: relative;
     width: 600px;
@@ -240,8 +240,43 @@ ul.inline {
 div.ddls {
     margin-top: 2%;
     margin-left: 28%;
-    margin-right: 12%;
     display: flex;
     justify-content: center;
     flex-direction: column;
+}
+
+h1.title {
+    margin: 2px;
+    font-family: 'Rubik', sans-serif;
+    text-align: center;
+    font-size: 60px;
+    color: #FFF;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    padding-bottom: 20px;
+}
+
+.sidebyside{
+    padding-top: 10%;
+}
+.sidebyside > div {
+    vertical-align: top;
+    display: inline-block;
+}
+
+div.wrapper {
+    color: #FFF;
+    margin-top: 5%;
+    width: 100%;
+    display: flex;
+}
+
+.sidebyside > div {
+    vertical-align: top;
+    display: inline-block;
+}
+
+
+.centerElement {
+    margin: auto;
+    text-align: center;
 }

@@ -4,6 +4,10 @@ body {
     font-family: 'Rubik', sans-serif;
 }
 
+input {
+    font-family: 'Rubik', sans-serif;
+}
+
 div.header {
     margin: auto;
     width: 100%;
@@ -180,4 +184,13 @@ div.orderlist a {
 
 .nodisplay{
     display:none;
+}
+
+.changeFont{
+    font-size: 12px;
+}
+
+header.order a.cancelButton {
+    background: #ab4035;
+    cursor: pointer;
 }
