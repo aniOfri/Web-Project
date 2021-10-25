@@ -37,11 +37,15 @@ namespace VR_Web_Project
                 // DECLARE A USER USING THE FORMER STRINGS
                 // PRICES ARRAY
                 int[] prices = new int[6] { 140, 120, 115, 110, 105, 100 };
-                int price = prices[(int)Session["Partic"]-1] * (int)Session["Partic"];
+                int price = prices[(int)Session["Partic"] - 1] * (int)Session["Partic"];
 
                 GiftCard giftCard = new GiftCard(giftCardCode);
+                int receiptId = -1;
                 if (!giftCard.IsExpired)
+                {
                     price = giftCard.ApplyGiftCard(price);
+                    receiptId = giftCard.ReceiptID;
+                }
 
                 // WEB SERVICE
                 CreditCardWS.CCServiceSoapClient service = new CreditCardWS.CCServiceSoapClient();
@@ -58,15 +62,33 @@ namespace VR_Web_Project
                     User user = (User)Session["User"];
 
                     // DECLARE AN APPOINTMENT FROM SESSION AND ASSIGN THE USERS PHONE NUMBER TO TO APPOINTMENT
-                    Appointment appointment = (Appointment)Session["RedirectOrder"];
-                    appointment.UserId = user.Id.ToString();
+                    Order order = (Order)Session["RedirectOrder"];
+                    if (order is Appointment)
+                    {
+                        Appointment appointment = (Appointment)order;
+                        appointment.UserId = user.Id.ToString();
 
-                    // CREATE RECEIPT
-                    Receipt receipt = new Receipt(DateTime.Now, user.Id, appointment.Id, price, creditCardNumber.Substring(12), firstName, lastName);
+                        // CREATE RECEIPT
+                        Receipt receipt = new Receipt(receiptId, DateTime.Now, user.Id, price, creditCardNumber.Substring(12), firstName, lastName);
+                        appointment.ReceiptId = receipt.Id;
 
-                    // INSERT DATA TO DB
-                    receipt.Insert();
-                    appointment.Order();
+                        // INSERT DATA TO DB
+                        receipt.Insert();
+                        appointment.Order();
+                    }
+                    else if (order is GiftCard)
+                    {
+                        GiftCard giftcard = (GiftCard)order;
+
+                        Receipt receipt = new Receipt(giftCard.ReceiptID, DateTime.Now, -1, giftcard.GetPrice(), creditCardNumber.Substring(12), firstName, lastName);
+
+                       // INSERT DATA TO DB
+                        receipt.Insert();
+                        GiftCard.Order(giftcard.GetPrice());
+                    }
+                        
+
+
 
                     // REDIRECT PROFILE.ASPX
                     Session["RedirectOrder"] = null;

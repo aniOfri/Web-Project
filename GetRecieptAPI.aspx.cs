@@ -8,8 +8,8 @@ namespace VR_Web_Project
     {
         protected void Page_Init(object sender, EventArgs e)
         {
-            string appointmentId = Request.Form["AppointmentId"];
-            Dictionary<string, string> dic = Receipt.BuildReceiptDictionary(appointmentId);
+            string receiptId = Request.Form["ReceiptID"];
+            Dictionary<string, string> dic = Receipt.BuildReceiptDictionary(receiptId);
 
             string json = JsonConvert.SerializeObject(dic);
             Response.Write(json);

@@ -10,18 +10,16 @@ namespace VR_Web_Project
         public int Id { get; set; }
         public DateTime OrderDate { get; set; }
         public int UserID { get; set; }
-        public int AppointmentID { get; set; }
         public int Price { get; set; }
         public string CreditCard { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
 
-        public Receipt(DateTime orderDate, int userId, int appointmentId, int price, string creditCard, string fn, string ln)
+        public Receipt(int Id, DateTime orderDate, int userId, int price, string creditCard, string fn, string ln)
         {
-            this.Id = CountForId();
+            this.Id = Id != -1 ? Id : CountForId();
             this.OrderDate = orderDate;
             this.UserID = userId;
-            this.AppointmentID = appointmentId;
             this.Price = price;
             this.CreditCard = creditCard;
             this.FirstName = fn;
@@ -44,8 +42,8 @@ namespace VR_Web_Project
         public bool Insert()
         {
             // BUILD STRING AS AN SQL COMMAND
-            string sql = "INSERT INTO Receipt (Id, Orderdate, UserId, AppointmentId, Price, CreditCard, FirstName, LastName) VALUES (\'";
-            sql += Id + "\', \'" + OrderDate + "\', \'" + UserID + "\', \'" + AppointmentID + "\', \'" + Price + "\', \'" + CreditCard + "\', \'" + FirstName + "\', \'" + LastName + "\')";
+            string sql = "INSERT INTO Receipt (Id, Orderdate, UserId, Price, CreditCard, FirstName, LastName) VALUES (\'";
+            sql += Id + "\', \'" + OrderDate + "\', \'" + UserID + "\', \'" + Price + "\', \'" + CreditCard + "\', \'" + FirstName + "\', \'" + LastName + "\')";
 
             // EXECUTE COMMAND AND RETURN TRUE IF SUCESS AND FAIL OTHERWISE
             try
@@ -61,10 +59,10 @@ namespace VR_Web_Project
         // A static function which creates a receipt dictionary
         // INPUT: string as appointment id
         // OUTPUT Dictionary<string, string> as receipt
-        public static Dictionary<string, string> BuildReceiptDictionary(string appointmentId)
+        public static Dictionary<string, string> BuildReceiptDictionary(string receiptID)
         {
             string sql = "SELECT * FROM Receipt";
-            sql += " WHERE AppointmentId='" + appointmentId + "'";
+            sql += " WHERE Id='" + receiptID + "'";
             
             DataTable dt = DAL.ExecuteDataTable(sql);
 

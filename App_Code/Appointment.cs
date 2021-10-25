@@ -5,14 +5,15 @@ using System.Data.SqlClient;
 
 namespace VR_Web_Project
 {
-    public class Appointment
+    public class Appointment : Order
     {
         public int Id {get;set;}
         public string UserId {get;set;}
         public DateTime Date {get;set;}
         public int Participants {get;set;}
+        public int ReceiptId {get;set;}
 
-        public Appointment(string userId, DateTime date, int participants)
+        public Appointment(string userId, DateTime date, int participants, int price = 0) :base(price)
         {
             this.Id = CountForId();
             this.UserId = userId;
@@ -35,8 +36,8 @@ namespace VR_Web_Project
         public bool Order()
         {
             // BUILD STRING AS AN SQL COMMAND
-            string sql = "INSERT INTO Appointment (Id, UserId, DateTime, Participants) VALUES (\'";
-            sql += Id + "\', \'" + UserId + "\', \'" + Date + "\', \'" + Participants + "\')";
+            string sql = "INSERT INTO Appointment (Id, UserId, DateTime, Participants, ReceiptID) VALUES (\'";
+            sql += Id + "\', \'" + UserId + "\', \'" + Date + "\', \'" + Participants + "\', \'" + ReceiptId + "\')";
             
             // EXECUTE COMMAND AND RETURN TRUE IF SUCESS AND FAIL OTHERWISE
             try
@@ -114,7 +115,7 @@ namespace VR_Web_Project
 
                 // BUILD STRING TO THE APPOINTMENT SLOT
                 string str = $"{username}" +
-                    $" ({(int)reader["Participants"]}/6) {(int)reader["Id"]}" ;
+                    $" ({(int)reader["Participants"]}/6) {(int)reader["ReceiptId"]}" ;
                 
                 // CHECK IF VALID
                 if (days > dayOffset && hours >= 0 && days < 8 + dayOffset)

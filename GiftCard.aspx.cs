@@ -11,7 +11,16 @@ namespace VR_Web_Project
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Request["giftCard"] != null)
+            {
+                string giftCardPrice = Request["giftCard"].ToString().Replace("₪", "");
+                GiftCard giftCard = new GiftCard(giftCardPrice);
 
+                // REDIRECT HOME.ASPX
+                Session["RedirectOrder"] = giftCard;
+                Response.Redirect("Payment.aspx");
+                Response.End();
+            }
         }
     }
 }
