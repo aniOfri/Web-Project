@@ -68,6 +68,7 @@ namespace VR_Web_Project
         {
             // DECLARE from AS TODAY
             DateTime from = DateTime.Today;
+            from.AddDays(-(int)from.DayOfWeek);
 
             // CHECKS IF from IS NOT THE GIVEN PARAMETER
             if (from.DayOfWeek != dayOfWeek)
@@ -76,9 +77,9 @@ namespace VR_Web_Project
                 int start = (int)from.DayOfWeek;
                 int target = (int)dayOfWeek;
 
-                // IF THE targets DAY HAPPENS BEFORE TODAY IN THE WEEK ADD 7 TO THE target
+                /*// IF THE targets DAY HAPPENS BEFORE TODAY IN THE WEEK ADD 7 TO THE target
                 if (target <= start)
-                    target += 7;
+                    target += 7;*/
 
                 // ADD TO form THE DIFFERENCE BETWEEN target AND start
                 from = from.AddDays(target - start);

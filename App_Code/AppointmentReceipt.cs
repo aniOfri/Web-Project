@@ -76,10 +76,10 @@ namespace VR_Web_Project
 
             dic.Add("date", date);
             dic.Add("time", time);
-            dic.Add("price", ((int)dr[4]).ToString());
-            dic.Add("ccn", ((string)dr[5]));
-            dic.Add("firstname", ((string)dr[6]));
-            dic.Add("lastname", ((string)dr[7]));
+            dic.Add("price", ((int)dr[3]).ToString());
+            dic.Add("ccn", ((string)dr[4]));
+            dic.Add("firstname", ((string)dr[5]));
+            dic.Add("lastname", ((string)dr[6]));
 
             return dic;
         }

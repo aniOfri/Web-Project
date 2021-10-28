@@ -10,7 +10,7 @@ namespace VR_Web_Project
         // THE FOLLOWING CODE RUNS BEFORE THE PAGE EVEN LOADS
         protected void Page_Init(object sender, EventArgs e)
         {
-            // CHECKS IF USER IS LOGGED IN
+            /*// CHECKS IF USER IS LOGGED IN
             if (Session["User"] != null)
             {
                 // IF SO, CHECKS IF THE USER IS NOT A MANAGER
@@ -26,7 +26,7 @@ namespace VR_Web_Project
                 // REDIRECTS THE USER TO HOME
                 Response.Redirect("Home.aspx");
                 Response.End();
-            }
+            }*/
         }
 
         protected void Page_Load(object sender, EventArgs e)

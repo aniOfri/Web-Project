@@ -90,15 +90,7 @@ namespace VR_Web_Project
                 today = today.AddMinutes(date.Minute);
 
                 int days = (date.Date - today.Date).Days;
-                days += (int)DateTime.Now.DayOfWeek + 1; // +offset, -week
-
-                // CHECK IF DAY IS MOD 7 AND NON ZERO
-                if (days % 7 == 0 && days != 0)
-                {
-                    // IF SO, RE-ALIGN THE DAY
-                    if (days >= 0) days -= 1;
-                    else days += 1;
-                }
+                days += (int)today.DayOfWeek + 1; // +offset, -week
 
                 // RESET today TO TODAY (WITHOUT THE HOURS/MINUTES)
                 today = DateTime.Today;
