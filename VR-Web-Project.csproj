@@ -84,6 +84,7 @@
     <Content Include="Javascripts\AppointmentScript.js" />
     <Content Include="Javascripts\GiftCardScript.js" />
     <Content Include="Javascripts\ManagerScript.js" />
+    <Content Include="Javascripts\PaymentScript.js" />
     <Content Include="Payment.aspx" />
     <Content Include="Stylesheets\GiftCardStyle.css" />
     <Content Include="Stylesheets\PaymentStyle.css" />

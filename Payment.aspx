@@ -20,7 +20,7 @@
                 <div><h1 class="title">תשלום</h1></div>
              </div>
 
-            <label for="textLogin">מספר כרטיס אשראי:</label><br />
+            <label for="CCN">מספר כרטיס אשראי:</label><br />
             <input id="CCN" type="text" name="CCN" /><br />
             <a class="errorMsgs" id="ccnError"></a><br /> <!--- Error msg -->
 
