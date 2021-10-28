@@ -164,6 +164,7 @@ namespace VR_Web_Project
                 ($"{(string)Session["Day"]} {(string)Session["Time"]}");
             int participants = (int)Session["Partic"];
 
+
             Appointment appointment = new Appointment
                 ("", dateTime, participants);
 

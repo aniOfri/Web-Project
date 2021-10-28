@@ -14,10 +14,15 @@ namespace VR_Web_Project
             if (Session["RedirectOrder"] != null)
             {
                 // IF SO, SET THE GLOBAL VARS AS THE APPOINTMENT VALUES
-                Appointment appointment = (Appointment)Session["RedirectOrder"];
-                participants = "שחקנים: "+ appointment.Participants.ToString();
-                date = "תאריך: "+ appointment.Date.ToString("MM/dd/yyyy");
-                time = "זמן: "+ appointment.Date.ToString("HH:mm");
+                Order order = (Order)Session["RedirectOrder"];
+                if (order is Appointment) {
+                    Appointment appointment = (Appointment)order;
+                    participants = "שחקנים: " + appointment.Participants.ToString();
+                    date = "תאריך: " + appointment.Date.ToString("MM/dd/yyyy");
+                    time = "זמן: " + appointment.Date.ToString("HH:mm");
+                }
+                else
+                    currentOrder.Attributes["class"] = "nodisplay";
             }
             else
                 // IF NOT, DONT DISPLAY THE "CURRENT ORDER"

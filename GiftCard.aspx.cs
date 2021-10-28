@@ -11,10 +11,18 @@ namespace VR_Web_Project
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["GiftCardCode"] != null)
+            {
+                System.Diagnostics.Debug.WriteLine("IN");
+                string code = (string)Session["GiftCardCode"];
+                popupInfo.Text = code;
+                myModal.Attributes["class"] = "modal visible";
+                Session["GiftCardCode"] = null;
+            }
             if (Request["giftCard"] != null)
             {
-                string giftCardPrice = Request["giftCard"].ToString().Replace("₪", "");
-                GiftCard giftCard = new GiftCard(giftCardPrice);
+                int giftCardPrice = int.Parse(Request["giftCard"].ToString().Replace("₪", ""));
+                GiftCard giftCard = new GiftCard(price2: giftCardPrice);
 
                 // REDIRECT HOME.ASPX
                 Session["RedirectOrder"] = giftCard;

@@ -115,7 +115,7 @@ namespace VR_Web_Project
 
                 // BUILD STRING TO THE APPOINTMENT SLOT
                 string str = $"{username}" +
-                    $" ({(int)reader["Participants"]}/6) {(int)reader["ReceiptId"]}" ;
+                    $" ({(int)reader["Participants"]}/6) {(int)reader["ReceiptID"]}" ;
                 
                 // CHECK IF VALID
                 if (days > dayOffset && hours >= 0 && days < 8 + dayOffset)

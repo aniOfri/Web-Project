@@ -9,7 +9,7 @@ namespace VR_Web_Project
         protected void Page_Init(object sender, EventArgs e)
         {
             string receiptId = Request.Form["ReceiptID"];
-            Dictionary<string, string> dic = Receipt.BuildReceiptDictionary(receiptId);
+            Dictionary<string, string> dic = AppointmentReceipt.BuildReceiptDictionary(receiptId);
 
             string json = JsonConvert.SerializeObject(dic);
             Response.Write(json);

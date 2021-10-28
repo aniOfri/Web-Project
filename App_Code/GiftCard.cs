@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Data;
 using System.Data.SqlClient;
 using System.Security.Cryptography;
 using System.Text;
@@ -15,8 +14,9 @@ namespace VR_Web_Project
         public string Code { get; set; }
         public bool IsExpired { get; set; }
 
-        public GiftCard(int price) : base(price)
+        public GiftCard(int price2) : base(price2)
         {
+            Id = CountForId();
         }
         public GiftCard(string code, int price = 0) : base(price)
         {
@@ -106,31 +106,21 @@ namespace VR_Web_Project
         // A private function which returns the next Id
         // INPUT: none
         // OUTPUT: int as the Id
-        private static int CountForId()
+        private int CountForId()
         {
             string sql = "SELECT COUNT(*) FROM GiftCard";
             return DAL.ExecuteCounting(sql);
         }
-
-        // A private function which returns the next Id of Receipt
+        // A private function which returns a unique Gift Card code
         // INPUT: none
-        // OUTPUT: int as the Id
-        private static int CountForReceiptId()
-        {
-            string sql = "SELECT COUNT(*) FROM Receipt";
-            return DAL.ExecuteCounting(sql);
-        }
-
-
-        private static string GenCode()
+        // OUTPUT: string as code
+        private string GenCode()
         {
             Random rnd = new Random();
             SHA1Managed sha1 = new SHA1Managed();
-            string toHash = "";
-            
-            for (int i = 0; i < 10; i++)
-                toHash += rnd.Next(0, 9).ToString();
-            
+            string toHash;
+            toHash = rnd.Next(11111111, 99999999).ToString();
+
             byte[] raw = Encoding.Default.GetBytes(toHash);
             var hash = sha1.ComputeHash(raw);
             
@@ -138,18 +128,16 @@ namespace VR_Web_Project
             foreach (byte b in hash)
                 sb.Append(b.ToString("X2"));
 
-            string Code = sb.ToString().Substring(5, 10);
+            string Code = sb.ToString().Substring(0, 7);
             return Code;
         }
-        public static bool Order(int Worth)
+        public bool Insert()
         {
-            int Id = CountForId();
-            string Code = GenCode();
-            int receiptId = CountForReceiptId();
+            Code = GenCode();
 
             // BUILD STRING AS AN SQL COMMAND
             string sql = "INSERT INTO GiftCard (Id, Worth, Code, IsExpired, ReceiptID) VALUES (\'";
-            sql += Id + "\', \'" + Worth + "\', \'" + Code + "\', \'" + false + "\', \'" + receiptId + "\')";
+            sql += Id + "\', \'" + GetPrice() + "\', \'" + Code + "\', \'" + false + "\', \'" + ReceiptID + "\')";
 
             // EXECUTE COMMAND AND RETURN TRUE IF SUCESS AND FAIL OTHERWISE
             try
@@ -161,7 +149,6 @@ namespace VR_Web_Project
             {
                 return false;
             }
-
         }
 
     }

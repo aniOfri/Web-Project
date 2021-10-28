@@ -82,6 +82,7 @@
     <Content Include="GetRecieptAPI.aspx" />
     <Content Include="GiftCard.aspx" />
     <Content Include="Javascripts\AppointmentScript.js" />
+    <Content Include="Javascripts\GiftCardScript.js" />
     <Content Include="Javascripts\ManagerScript.js" />
     <Content Include="Payment.aspx" />
     <Content Include="Stylesheets\GiftCardStyle.css" />
@@ -120,6 +121,7 @@
     </Compile>
     <Compile Include="App_Code\GiftCard.cs" />
     <Compile Include="App_Code\Order.cs" />
+    <Compile Include="App_Code\AppointmentReceipt.cs" />
     <Compile Include="Connected Services\CreditCardWS\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -192,7 +194,7 @@
     <Compile Include="masterpage.Master.designer.cs">
       <DependentUpon>masterpage.Master</DependentUpon>
     </Compile>
-    <Compile Include="App_Code\Receipt.cs" />
+    <Compile Include="App_Code\GiftCardReceipt.cs" />
     <Compile Include="Register.aspx.cs">
       <DependentUpon>Register.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

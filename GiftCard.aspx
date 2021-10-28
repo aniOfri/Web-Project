@@ -15,6 +15,18 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="TitlePlaceHolder" runat="server">
     <img src="stars.png" class="stars"/>
+    
+    <div id="myModal" class="modal invisible" runat="server">
+      <div class="modal-content">
+        <div class="modal-header">
+            <span class="close"></span>
+            <h2 class="popupTitle">קוד כרטיס המתנה (חד פעמי):</h2>
+        </div>
+            <asp:Label id="popupInfo" runat="server"/>
+            <h2 class="info">מומלץ לצלם!</h2>
+      </div>
+    </div>
+    
     <br />
     <div class="formDiv">
             <div class="sidebyside">
@@ -67,4 +79,5 @@
     </div>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="ScriptPlaceHolder" runat="server">
+    <script src="Javascripts/GiftCardScript.js"></script>
 </asp:Content>
