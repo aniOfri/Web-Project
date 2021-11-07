@@ -5,15 +5,8 @@ using DALLib;
 
 namespace VR_Web_Project
 {
-    public class GiftCardReceipt
+    public class GiftCardReceipt : Receipt
     {
-        public int Id { get; set; }
-        public DateTime OrderDate { get; set; }
-        public int Price { get; set; }
-        public string CreditCard { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-
         public GiftCardReceipt(int Id, DateTime orderDate, int price, string creditCard, string fn, string ln)
         {
             this.Id = Id != -1 ? Id : CountForId();
@@ -24,13 +17,9 @@ namespace VR_Web_Project
             this.LastName = ln;
         }
 
-        // A private function which returns the next Id
-        // INPUT: none
-        // OUTPUT: int as the Id
-        private int CountForId()
+        public override string tableName()
         {
-            string sql = "SELECT COUNT(*) FROM GiftCardReceipt";
-            return DAL.ExecuteCounting(sql);
+            return "GiftCardReceipt";
         }
 
         // A public function which inserts the data of the class to the database
@@ -39,7 +28,7 @@ namespace VR_Web_Project
         public bool Insert()
         {
             // BUILD STRING AS AN SQL COMMAND
-            string sql = "INSERT INTO GiftCardReceipt (Id, Orderdate, Price, CreditCard, FirstName, LastName) VALUES (\'";
+            string sql = "INSERT INTO "+tableName()+" (Id, Orderdate, Price, CreditCard, FirstName, LastName) VALUES (\'";
             sql += Id + "\', \'" + OrderDate + "\', \'" + Price + "\', \'" + CreditCard + "\', \'" + FirstName + "\', \'" + LastName + "\')";
 
             // EXECUTE COMMAND AND RETURN TRUE IF SUCESS AND FAIL OTHERWISE

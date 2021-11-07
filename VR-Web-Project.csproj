@@ -123,6 +123,7 @@
     <Compile Include="App_Code\GiftCard.cs" />
     <Compile Include="App_Code\Order.cs" />
     <Compile Include="App_Code\AppointmentReceipt.cs" />
+    <Compile Include="App_Code\Receipt.cs" />
     <Compile Include="Connected Services\CreditCardWS\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

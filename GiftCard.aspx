@@ -32,43 +32,49 @@
             <div class="sidebyside">
                 <div><h1 class="title">קניית כרטיס מתנה</h1></div>
                 <div><a href="Appointments.aspx"><h2>או הזמנה רגילה</h2></a></div>
-             </div>
+             </div><br />
             <div id="choices">
                 <div id="giftCard1" class="radio-inline">
-                <img class="game" src="Sources/agario.png"/><br />
+                <label>משתתף אחד</label><br />
+                <img class="game" src=""/><br />
                     <input type="radio" id="radioGiftCard1"
                         name="giftCard" value="140₪">
                     <label for="radioGiftCard1">140₪</label>
                 </div>
                 <div id="giftCard2" class="radio-inline">
-                <img class="game" src="Sources/agario.png"/><br />
+                <label>שני משתתפים</label><br />
+                <img class="game" src=""/><br />
                     <input type="radio" id="radioGiftCard2"
-                        name="giftCard" value="120₪">
-                    <label for="radioGiftCard2">120₪</label>
+                        name="giftCard" value="240₪">
+                    <label for="radioGiftCard2">240₪</label>
                 </div>
                     <div id="giftCard3" class="radio-inline">
-                <img class="game" src="Sources/agario.png"/><br />
+                <label>שלושה משתתפים</label><br />
+                <img class="game" src=""/><br />
                     <input type="radio" id="radioGiftCard3"
-                        name="giftCard" value="115₪">
-                    <label for="radioGiftCard3">115₪</label>
+                        name="giftCard" value="345₪">
+                    <label for="radioGiftCard3">345₪</label>
                 </div>
                 <div id="giftCard4" class="radio-inline">
-                <img class="game" src="Sources/agario.png"/><br />
+                <label>ארבעה משתתפים</label><br />
+                <img class="game" src=""/><br />
                     <input type="radio" id="radioGiftCard4"
-                        name="giftCard" value="110₪">
-                    <label for="radioGiftCard4">110₪</label>
+                        name="giftCard" value="440₪">
+                    <label for="radioGiftCard4">440₪</label>
                 </div>
                 <div id="giftCard5" class="radio-inline">
-                <img class="game" src="Sources/agario.png"/><br />
+                <label>חמישה משתתפים</label><br />
+                <img class="game" src=""/><br />
                     <input type="radio" id="radioGiftCard5"
-                        name="giftCard" value="105₪">
-                    <label for="radioGiftCard5">105₪</label>
+                        name="giftCard" value="525₪">
+                    <label for="radioGiftCard5">525₪</label>
                 </div>
                 <div id="giftCard6" class="radio-inline">
-                <img class="game" src="Sources/agario.png"/><br />
+                <label>שישה משתתפים</label><br />
+                <img class="game" src=""/><br />
                     <input type="radio" id="radioGiftCard6"
-                        name="giftCard" value="100₪">
-                    <label for="radioGiftCard6">100₪</label>
+                        name="giftCard" value="600₪">
+                    <label for="radioGiftCard6">600₪</label>
                 </div>
             </div>
 

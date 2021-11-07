@@ -77,10 +77,6 @@ namespace VR_Web_Project
                 int start = (int)from.DayOfWeek;
                 int target = (int)dayOfWeek;
 
-                /*// IF THE targets DAY HAPPENS BEFORE TODAY IN THE WEEK ADD 7 TO THE target
-                if (target <= start)
-                    target += 7;*/
-
                 // ADD TO form THE DIFFERENCE BETWEEN target AND start
                 from = from.AddDays(target - start);
             }

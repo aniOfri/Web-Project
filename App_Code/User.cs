@@ -72,12 +72,12 @@ namespace VR_Web_Project
         private void SetId()
         {
             // BUILD STRING AS AN SQL COMMAND
-            string selectQuery = "SELECT Id FROM Member";
-            selectQuery += " WHERE Username ='" + Username + "'";
-            selectQuery += " AND Password ='" + Password + "'";
+            string sql = "SELECT Id FROM Member";
+            sql += " WHERE Username ='" + Username + "'";
+            sql += " AND Password ='" + Password + "'";
 
             // GET READER USING DAL
-            var readerAndConnection = DAL.GetReader(selectQuery);
+            var readerAndConnection = DAL.GetReader(sql);
             SqlDataReader reader = readerAndConnection.Item1;
 
             // ASSIGN NEW DATA TO Id OF this
@@ -95,11 +95,11 @@ namespace VR_Web_Project
         public static bool GetManager(string id)
         {
             // BUILD STRING AS AN SQL COMMAND
-            string selectQuery = "SELECT IsManager FROM Member";
-            selectQuery += " WHERE Id ='" + id + "'";
+            string sql = "SELECT IsManager FROM Member";
+            sql += " WHERE Id ='" + id + "'";
 
             // GET READER USING DAL
-            var readerAndConnection = DAL.GetReader(selectQuery);
+            var readerAndConnection = DAL.GetReader(sql);
             SqlDataReader reader = readerAndConnection.Item1;
 
             // ASSIGN NEW DATA TO IsManager OF this
@@ -120,11 +120,11 @@ namespace VR_Web_Project
         public static string GetPhoneNumber(string id)
         {
             // BUILD STRING AS AN SQL COMMAND
-            string selectQuery = "SELECT PhoneNumber FROM Member";
-            selectQuery += " WHERE Id ='" + id + "'";
+            string sql = "SELECT PhoneNumber FROM Member";
+            sql += " WHERE Id ='" + id + "'";
 
             // GET READER USING DAL
-            var readerAndConnection = DAL.GetReader(selectQuery);
+            var readerAndConnection = DAL.GetReader(sql);
             SqlDataReader reader = readerAndConnection.Item1;
 
             // ASSIGN NEW DATA TO PhoneNumber OF this
@@ -144,15 +144,15 @@ namespace VR_Web_Project
         public bool Login()
         {
             // BUILD STRING AS AN SQL COMMAND
-            string selectQuery = "SELECT Password FROM Member";
-            selectQuery += " WHERE ";
-            selectQuery += "Username ='" + Username + "'";
+            string sql = "SELECT Password FROM Member";
+            sql += " WHERE ";
+            sql += "Username ='" + Username + "'";
 
             // CHECKS IF USERNAME EXISTS INSIDE THE DB
-            if (DAL.IsExist(selectQuery))
+            if (DAL.IsExist(sql))
             {
                 // GET DATATABLE OF THE USER WHO ATTEMPTS TO LOG
-                DataTable dt = DAL.ExecuteDataTable(selectQuery);
+                DataTable dt = DAL.ExecuteDataTable(sql);
 
                 // FORMAT AND CHECK THE PASSWORD
                 string pass = dt.Rows[0]["password"].ToString().Replace(" ", "");
@@ -255,11 +255,11 @@ namespace VR_Web_Project
         public static string GetUsername(string id)
         {
             // BUILD STRING AS AN SQL COMMAND
-            string selectQuery = "SELECT Username FROM Member";
-            selectQuery += " WHERE Id ='" + id + "'";
+            string sql = "SELECT Username FROM Member";
+            sql += " WHERE Id ='" + id + "'";
 
             // GET READER USING DAL
-            var readerAndConnection = DAL.GetReader(selectQuery);
+            var readerAndConnection = DAL.GetReader(sql);
             SqlDataReader reader = readerAndConnection.Item1;
 
             // READ VALUE NEEDED
