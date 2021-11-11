@@ -69,6 +69,8 @@ namespace VR_Web_Project
                             appointment.UserId = user.Id.ToString();
 
                             // REDIRECT PAYMENT.ASPX
+                            Session["User"] = user;
+                            Session["Manager"] = user.IsManager;
                             Session["RedirectOrder"] = appointment;
                             Response.Redirect("Payment.aspx");
                         }
