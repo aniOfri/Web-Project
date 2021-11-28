@@ -38,13 +38,20 @@ namespace VR_Web_Project
                     Session["DayOffset"] = 0;
                 if (Session["UserOffset"] == null)
                     Session["UserOffset"] = 0;
+                if (Session["GiftCardOffset"] == null)
+                    Session["GiftCardOffset"] = 0;
+                if (Session["AppointmentOffset"] == null)
+                    Session["AppointmentOffset"] = 0;
             }
 
             // CREATE SCHEDULE
             updateSchedule();
 
             // SET USERS ON PANEL
-            SetOnPanel();
+            UsersSetOnPanel();
+
+
+            ReceiptsSetOnPanel();
         }
 
         private void updateSchedule(int increment = 0)
@@ -102,7 +109,7 @@ namespace VR_Web_Project
         // INPUT: none
         // OUTPUT: void
 
-        private void SetOnPanel()
+        private void UsersSetOnPanel()
         {
             // CLEAR THE PANEL
             usersArea.Controls.Clear();
@@ -129,7 +136,7 @@ namespace VR_Web_Project
                 text = " ID: " + userid;
                 text += " | שם משתמש: " + (string)dr[1];
                 text += " | מספר טלפון: " + (string)dr[3];
-                text += " | מנהל?: " + ((bool)dr[4]).ToString();
+                text += " | מנהל?: " + ((bool)dr[4] == false ? "לא" :"כן")  ;
 
                 // CREATE TEXT ELEMENT USING THE FORMER STRING
                 var a = new HtmlGenericControl("a") { InnerText = text };
@@ -171,6 +178,87 @@ namespace VR_Web_Project
                 // ADD DIV TO PAGE
                 usersArea.Controls.Add(userDiv);
             }
+        }
+
+        private void ReceiptsSetOnPanel()
+        {
+            // CLEAR THE PANEL
+            giftCardArea.Controls.Clear();
+            appointmentsArea.Controls.Clear();
+
+            // GET THE OFFSET FROM SESSION
+            int giftCardOffset = (int)Session["GiftCardOffset"];
+            int appointmentOffset = (int)Session["AppointmentOffset"];
+
+            // CHECK IF OFFSET IS LARGER THEN THE NUMBER OF GIFTCARDS IN DB
+            if (Receipt.CountForId("GiftCardReceipt") < giftCardOffset)
+                giftCardOffset = 0;
+
+            // CHECK IF OFFSET IS LARGER THEN THE NUMBER OF GIFTCARDS IN DB
+            if (Receipt.CountForId("AppointmentReceipt") < appointmentOffset)
+                appointmentOffset = 0;
+
+            // DECLARE DATATABLE Appointments
+            DataTable dt = Receipt.GetReceipts(giftCardOffset, "GiftCardReceipt");
+
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                DataRow dr = dt.Rows[i];
+
+                // DECLARE userid AS THE USER ID FROM DB
+                string userid = ((int)dr[0]).ToString();
+
+                // BUILD A STRING AS INNERTEXT FOR TEXT ELEMENT
+                string text;
+                text = " ID: " + userid;
+                text += " | תאריך: " + (DateTime)dr[1];
+                text += " | מחיר: " + (int)dr[2];
+                text += " | מס' כרטיס: " + (string)dr[3];
+
+                // CREATE TEXT ELEMENT USING THE FORMER STRING
+                var a = new HtmlGenericControl("a") { InnerText = text };
+
+                // CREATE WRAPPER
+                var userDiv = new HtmlGenericControl("div");
+                userDiv.Attributes.Add("class", "userWrapper");
+
+                // ADD ELEMENTS TO DIV
+                userDiv.Controls.Add(a);
+
+                // ADD DIV TO PAGE
+                giftCardArea.Controls.Add(userDiv);
+            }
+
+            dt = Receipt.GetReceipts(appointmentOffset, "AppointmentReceipt");
+
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                DataRow dr = dt.Rows[i];
+
+                // DECLARE userid AS THE USER ID FROM DB
+                string userid = ((int)dr[0]).ToString();
+
+                // BUILD A STRING AS INNERTEXT FOR TEXT ELEMENT
+                string text;
+                text = " ID: " + userid;
+                text += " | תאריך: " + (DateTime)dr[1];
+                text += " | מחיר: " + (int)dr[3];
+                text += " | מס' כרטיס: " + (string)dr[4];
+
+                // CREATE TEXT ELEMENT USING THE FORMER STRING
+                var a = new HtmlGenericControl("a") { InnerText = text };
+
+                // CREATE WRAPPER
+                var userDiv = new HtmlGenericControl("div");
+                userDiv.Attributes.Add("class", "userWrapper");
+
+                // ADD ELEMENTS TO DIV
+                userDiv.Controls.Add(a);
+
+                // ADD DIV TO PAGE
+                appointmentsArea.Controls.Add(userDiv);
+            }
+
         }
 
         protected void TogglePerms_Click(object sender, EventArgs e)
@@ -251,6 +339,36 @@ namespace VR_Web_Project
 
             // SET SESSION AS NEW OFFSET
             Session["UserOffset"] = offset;
+
+            // REDIRECT
+            Response.Redirect("Manager.aspx");
+            Response.End();
+        }
+
+        protected void GiftCard_Click(object sender, EventArgs e)
+        {
+            // GET BUTTON AS OBJECT
+            Button btn = sender as Button;
+
+            // DECLARE PARAMETER FROM THE BUTTON CUSTOM PARAMETER
+            int parameter = int.Parse(btn.Attributes["CustomParameter"].ToString());
+
+            // GET OFFSET FROM SESSION
+            int offset = (int)Session["GiftCardOffset"];
+
+            if (parameter == -1)
+            {
+                if (offset >= 10)
+                    offset -= 10;
+            }
+            else
+            {
+                if (Receipt.CountForId("GiftCardReceipt") > offset + 10)
+                    offset += 10;
+            }
+
+            // SET SESSION AS NEW OFFSET
+            Session["GiftCardOffset"] = offset;
 
             // REDIRECT
             Response.Redirect("Manager.aspx");

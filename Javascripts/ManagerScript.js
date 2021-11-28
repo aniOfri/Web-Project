@@ -20,7 +20,7 @@ window.onclick = function (event) {
 
 $("td").click(function () {
     if (this.innerText.includes("(")) {
-        $.post("GetRecieptAPI.aspx",
+        $.post("GetRecieptAPI.aspx" ,
             {
                 ReceiptID: this.innerText.split(" ")[2]
             }, function (data, status) {

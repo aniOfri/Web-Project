@@ -15,6 +15,7 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="TitlePlaceHolder" runat="server">
     <img src="stars.png" class="stars"/>
+    <img src="stars.png" class="stars2"/>
             <!-- The Modal -->
     <div id="myModal" class="modal">
 
@@ -39,7 +40,7 @@
             </div>
             <asp:DataGrid ID="grid" runat="server" AutoGenerateColumns="true"></asp:DataGrid>
         </div>
-        <div class="userManagement">
+        <div class="management">
             <h1>משתמשים:</h1>
             <div class="buttons">
                 <asp:Button runat="server" CustomParameter="-1" Text="<" OnClick="Users_Click"/>
@@ -48,6 +49,25 @@
             <asp:Panel CssClass="users" ID="usersArea" runat="server"></asp:Panel>
         </div>
     </div>
+    <div class="wrapper wrapper2">
+        <div class="management">
+            <h1>קבלות של כרטיסי מתנה:</h1>
+            <div class="buttons">
+                <asp:Button runat="server" CustomParameter="-1" Text="<" OnClick="GiftCard_Click"/>
+                <asp:Button runat="server" CustomParameter="1" Text=">" OnClick="GiftCard_Click"/>
+            </div>
+            <asp:Panel CssClass="users" ID="giftCardArea" runat="server"></asp:Panel>
+        </div>
+        <div class="management">
+            <h1>קבלות של הזמנות:</h1>
+            <div class="buttons">
+                <asp:Button runat="server" CustomParameter="-1" Text="<" OnClick="Users_Click"/>
+                <asp:Button runat="server" CustomParameter="1" Text=">" OnClick="Users_Click"/>
+            </div>
+            <asp:Panel CssClass="users" ID="appointmentsArea" runat="server"></asp:Panel>
+        </div>
+    </div>
+
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="ScriptPlaceHolder" runat="server">
     <script src="Javascripts/ManagerScript.js"></script>

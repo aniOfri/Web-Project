@@ -87,13 +87,40 @@ namespace VR_Web_Project
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl currentOrder;
 
         /// <summary>
-        /// cancel control.
+        /// particLbl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button cancel;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor particLbl;
+
+        /// <summary>
+        /// dateLbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor dateLbl;
+
+        /// <summary>
+        /// timeLbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor timeLbl;
+
+        /// <summary>
+        /// worthLbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor worthLbl;
 
         /// <summary>
         /// TitlePlaceHolder control.

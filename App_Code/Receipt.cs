@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using DALLib;
@@ -20,10 +21,20 @@ namespace VR_Web_Project
         // A private function which returns the next Id
         // INPUT: none
         // OUTPUT: int as the Id
-        public int CountForId()
+        public static int CountForId(string tableName)
         {
-            string sql = "SELECT COUNT(*) FROM " + tableName();
+            string sql = "SELECT COUNT(*) FROM " + tableName;
             return DAL.ExecuteCounting(sql);
+        }
+
+        public static DataTable GetReceipts(int receiptOffset, string tableName)
+        {
+            string sql = "SELECT * FROM "+tableName;
+            sql += " WHERE Id BETWEEN " + receiptOffset + " AND " + (receiptOffset + 10);
+
+            DataTable dt = DAL.ExecuteDataTable(sql);
+
+            return dt;
         }
     }
 }

@@ -79,6 +79,7 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <Content Include="CancelOrder.aspx" />
     <Content Include="GetRecieptAPI.aspx" />
     <Content Include="GiftCard.aspx" />
     <Content Include="Javascripts\AppointmentScript.js" />
@@ -124,6 +125,13 @@
     <Compile Include="App_Code\Order.cs" />
     <Compile Include="App_Code\AppointmentReceipt.cs" />
     <Compile Include="App_Code\Receipt.cs" />
+    <Compile Include="CancelOrder.aspx.cs">
+      <DependentUpon>CancelOrder.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CancelOrder.aspx.designer.cs">
+      <DependentUpon>CancelOrder.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Connected Services\CreditCardWS\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

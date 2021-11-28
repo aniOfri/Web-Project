@@ -7,7 +7,6 @@
     <nav>
         <ul class="links">
             <li><a href="GiftCard.aspx">כרטיס מתנה</a></li>
-            <!--<li><a href="#information">מידע</a></li>-->
         </ul>
     </nav>
     <a class="cta" href="Home.aspx">בית</a>

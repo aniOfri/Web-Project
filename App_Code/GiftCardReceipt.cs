@@ -9,7 +9,7 @@ namespace VR_Web_Project
     {
         public GiftCardReceipt(int Id, DateTime orderDate, int price, string creditCard, string fn, string ln)
         {
-            this.Id = Id != -1 ? Id : CountForId();
+            this.Id = Id != -1 ? Id : CountForId(tableName());
             this.OrderDate = orderDate;
             this.Price = price;
             this.CreditCard = creditCard;

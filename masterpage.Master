@@ -25,10 +25,12 @@
         <header runat="server" id="currentOrder" class="order">
                 <a>[הזמנה נוכחית]</a>
                 <div class="orderlist">
-                    <a><%=participants %></a>
-                    <a><%=date %></a>
-                    <a><%=time %></a>
-                    <a class="cancelButton"><asp:Button ID="cancel" runat="server" Text="בטל הזמנה" CssClass="transparentButton changeFont" OnClick="cancel_Click" /></a>
+                    <a><%=type %></a>
+                    <a ID="particLbl" runat="server"><%=participants %></a>
+                    <a ID="dateLbl" runat="server"><%=date %></a>
+                    <a ID="timeLbl" runat="server"><%=time %></a>
+                    <a ID="worthLbl" runat="server"><%=worth %></a>
+                    <a class="cancelButton" href="CancelOrder.aspx">בטל הזמנה</a>
                 </div>
             </header>
 

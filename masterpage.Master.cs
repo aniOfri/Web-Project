@@ -5,9 +5,11 @@ namespace VR_Web_Project
 {
     public partial class Site1 : System.Web.UI.MasterPage
     {
+        public string type = "";
         public string participants = "";
         public string date = "";
         public string time = "";
+        public string worth = "";
         protected void Page_Load(object sender, EventArgs e)
         {
             // CHECK IF AN ORDER EXISTS IN SESSION
@@ -17,9 +19,25 @@ namespace VR_Web_Project
                 Order order = (Order)Session["RedirectOrder"];
                 if (order is Appointment) {
                     Appointment appointment = (Appointment)order;
+                    type = "הזמנת מקום:";
                     participants = "שחקנים: " + appointment.Participants.ToString();
                     date = "תאריך: " + appointment.Date.ToString("MM/dd/yyyy");
                     time = "זמן: " + appointment.Date.ToString("HH:mm");
+                    
+                    particLbl.Visible = true;
+                    timeLbl.Visible = true;
+                    dateLbl.Visible = true;
+                    worthLbl.Visible = false;
+                }
+                else if (order is GiftCard)
+                {
+                    type = "כרטיס מתנה:";
+                    worth = "מחיר: " + order.GetPrice().ToString();
+
+                    particLbl.Visible = false;
+                    timeLbl.Visible = false;
+                    dateLbl.Visible = false;
+                    worthLbl.Visible = true;
                 }
                 else
                     currentOrder.Attributes["class"] = "nodisplay";
@@ -79,13 +97,6 @@ namespace VR_Web_Project
                         managerNav.Style["display"] = "inline";
                 }
             }
-        }
-
-        protected void cancel_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("Logout.aspx");
-            Response.Redirect("Home.aspx");
-            Response.End();
         }
     }
 }
