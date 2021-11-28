@@ -51,6 +51,7 @@ namespace VR_Web_Project
 
             if (currentUrl.EndsWith("Login.aspx"))
             {
+                loginNav.Style["display"] = "none";
                 form.Attributes["onsubmit"] = "return LogValid();";
                 form.Method = "get";
             }

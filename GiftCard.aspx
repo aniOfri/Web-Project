@@ -35,42 +35,42 @@
             <div id="choices">
                 <div id="giftCard1" class="radio-inline">
                 <label>משתתף אחד</label><br />
-                <img class="game" src=""/><br />
+                <img class="game" src="Sources/giftcard140.png"/><br />
                     <input type="radio" id="radioGiftCard1"
                         name="giftCard" value="140₪">
                     <label for="radioGiftCard1">140₪</label>
                 </div>
                 <div id="giftCard2" class="radio-inline">
                 <label>שני משתתפים</label><br />
-                <img class="game" src=""/><br />
+                <img class="game" src="Sources/giftcard240.png"/><br />
                     <input type="radio" id="radioGiftCard2"
                         name="giftCard" value="240₪">
                     <label for="radioGiftCard2">240₪</label>
                 </div>
                     <div id="giftCard3" class="radio-inline">
                 <label>שלושה משתתפים</label><br />
-                <img class="game" src=""/><br />
+                <img class="game" src="Sources/giftcard345.png"/><br />
                     <input type="radio" id="radioGiftCard3"
                         name="giftCard" value="345₪">
                     <label for="radioGiftCard3">345₪</label>
                 </div>
                 <div id="giftCard4" class="radio-inline">
                 <label>ארבעה משתתפים</label><br />
-                <img class="game" src=""/><br />
+                <img class="game" src="Sources/giftcard440.png"/><br />
                     <input type="radio" id="radioGiftCard4"
                         name="giftCard" value="440₪">
                     <label for="radioGiftCard4">440₪</label>
                 </div>
                 <div id="giftCard5" class="radio-inline">
                 <label>חמישה משתתפים</label><br />
-                <img class="game" src=""/><br />
+                <img class="game" src="Sources/giftcard525.png"/><br />
                     <input type="radio" id="radioGiftCard5"
                         name="giftCard" value="525₪">
                     <label for="radioGiftCard5">525₪</label>
                 </div>
                 <div id="giftCard6" class="radio-inline">
                 <label>שישה משתתפים</label><br />
-                <img class="game" src=""/><br />
+                <img class="game" src="Sources/giftcard600.png"/><br />
                     <input type="radio" id="radioGiftCard6"
                         name="giftCard" value="600₪">
                     <label for="radioGiftCard6">600₪</label>
