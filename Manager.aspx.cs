@@ -174,7 +174,7 @@ namespace VR_Web_Project
                 // ADD ELEMENTS TO DIV
                 userDiv.Controls.Add(a);
                 userDiv.Controls.Add(div);
-
+                    
                 // ADD DIV TO PAGE
                 usersArea.Controls.Add(userDiv);
             }

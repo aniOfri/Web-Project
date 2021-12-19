@@ -8,6 +8,10 @@ namespace VR_Web_Project
         {
             if (Session["RedirectOrder"] == null)
                 Response.Redirect("Home.aspx");
+            else if (Session["RedirectOrder"] is GiftCard)
+            {
+                giftcard.Disabled = true;
+            }
         }
         public string PayStatus = "";
         protected void Page_Load(object sender, EventArgs e)
@@ -86,6 +90,7 @@ namespace VR_Web_Project
                         GiftCardReceipt receipt = new GiftCardReceipt(-1, DateTime.Now, giftcard.GetPrice(), creditCardNumber.Substring(12), firstName, lastName);
                         // SET RECEIPTID OF GIFTCARD AS THE ID OF THE RECEIPT CREATED
                         giftCard.ReceiptID = receipt.Id;
+                        giftCard.Worth = price;
 
                        // INSERT DATA TO DB
                         receipt.Insert();

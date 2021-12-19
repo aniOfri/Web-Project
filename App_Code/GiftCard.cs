@@ -106,7 +106,7 @@ namespace VR_Web_Project
         // A private function which returns the next Id
         // INPUT: none
         // OUTPUT: int as the Id
-        private int CountForId()
+        public int CountForId()
         {
             string sql = "SELECT COUNT(*) FROM GiftCard";
             return DAL.ExecuteCounting(sql);
@@ -137,7 +137,7 @@ namespace VR_Web_Project
 
             // BUILD STRING AS AN SQL COMMAND
             string sql = "INSERT INTO GiftCard (Id, Worth, Code, IsExpired, ReceiptID) VALUES (\'";
-            sql += Id + "\', \'" + GetPrice() + "\', \'" + Code + "\', \'" + false + "\', \'" + ReceiptID + "\')";
+            sql += CountForId() + "\', \'" + Worth + "\', \'" + Code + "\', \'" + false + "\', \'" + ReceiptID + "\')";
 
             // EXECUTE COMMAND AND RETURN TRUE IF SUCESS AND FAIL OTHERWISE
             try

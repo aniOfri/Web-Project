@@ -7,14 +7,13 @@
         <nav>
         <ul class="links">
             <li><a href="Login.aspx">התחברות</a></li>
-            <!--<li><a href="#information">מידע</a></li>-->
         </ul>
     </nav>
     <a class="cta" href="Home.aspx">בית</a>
     <a class="cta" href="Appointments.aspx">הזמנות</a>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="TitlePlaceHolder" runat="server">
-    <img src="stars.png" class="stars"/>
+    <img src="Sources/stars.png" class="stars"/>
     <div class="formDiv">
             <div class="sidebyside">
                 <div><h1 class="title">התחברות</h1></div>

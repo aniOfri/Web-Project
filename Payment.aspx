@@ -14,7 +14,7 @@
     <a class="cta" href="Appointments.aspx">הזמנות</a>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="TitlePlaceHolder" runat="server">
-    <img src="stars.png" class="stars"/>
+    <img src="Sources/stars.png" class="stars"/>
     <div class="formDiv">
             <div class="sidebyside">
                 <div><h1 class="title">תשלום</h1></div>
@@ -45,7 +45,7 @@
             <a class="errorMsgs" id="cvvError"></a><br /> <!--- Error msg -->
            
             <label for="giftcard">כרטיס מתנה:</label> <br />
-            <input id="giftcard" type="text" name="giftcard"/><br />
+            <input id="giftcard" type="text" name="giftcard" runat="server"/><br />
             <label id="giftCardInfo">(ימומש אם תקין)</label> <br />
            
             <label><%=PayStatus%></label><br /><br />

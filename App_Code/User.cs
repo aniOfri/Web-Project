@@ -287,7 +287,7 @@ namespace VR_Web_Project
         {
             // BUILD STRING AS AN SQL COMMAND
             string sql = "DELETE FROM Member";
-            sql += "WHERE Id='" + userId + "'";
+            sql += " WHERE Id='" + userId + "'";
 
             // TRY TO EXECUTE COMMAND
             try

@@ -13,7 +13,7 @@
     <a class="cta" href="Appointments.aspx">הזמנות</a>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="TitlePlaceHolder" runat="server">
-    <img src="stars.png" class="stars"/>
+    <img src="Sources/stars.png" class="stars"/>
     
     <div id="myModal" class="modal invisible" runat="server">
       <div class="modal-content">

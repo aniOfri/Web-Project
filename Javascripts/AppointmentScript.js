@@ -4,3 +4,4 @@
             $(this).prop('disabled', true);
         }
 });
+

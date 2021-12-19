@@ -14,18 +14,18 @@
 </asp:Content>
 <asp:Content ID="titleContent" ContentPlaceHolderID="TitlePlaceHolder" runat="server">
     <section>
-        <img src="stars.png"/>
+        <img src="Sources/stars.png"/>
             <div id="title">
                 <div class="text">
                     <h1 class="title">הזמנה לעולם אחר</h1>
                     <a class="title">מתחם מציאות מדומה לא מהעולם הזה</a>
                 </div>
             </div>
-        <img src="person.png" id="person"/>
+        <img src="Sources/person.png" id="person"/>
      </section>
 
     <div class="sec">
-        <img src="stars.png"/>
+        <img src="Sources/stars.png"/>
         <div class="secContent">
             <br /><br /><br />  
             <h1 id="information">מידע על מציאות מדומה</h1>
