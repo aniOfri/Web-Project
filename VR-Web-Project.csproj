@@ -80,6 +80,7 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <Content Include="CancelOrder.aspx" />
+    <Content Include="Feedbacks.aspx" />
     <Content Include="GetRecieptAPI.aspx" />
     <Content Include="GiftCard.aspx" />
     <Content Include="Javascripts\AppointmentScript.js" />
@@ -87,6 +88,8 @@
     <Content Include="Javascripts\ManagerScript.js" />
     <Content Include="Javascripts\PaymentScript.js" />
     <Content Include="Payment.aspx" />
+    <Content Include="SendEmailAPI.aspx" />
+    <Content Include="Stylesheets\FeedbackStyle.css" />
     <Content Include="Stylesheets\GiftCardStyle.css" />
     <Content Include="Stylesheets\PaymentStyle.css" />
     <Content Include="Stylesheets\ProfileStyle.css" />
@@ -121,6 +124,7 @@
     <Compile Include="Appointments.aspx.designer.cs">
       <DependentUpon>Appointments.aspx</DependentUpon>
     </Compile>
+    <Compile Include="App_Code\Feedback.cs" />
     <Compile Include="App_Code\GiftCard.cs" />
     <Compile Include="App_Code\Order.cs" />
     <Compile Include="App_Code\AppointmentReceipt.cs" />
@@ -136,6 +140,13 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Feedbacks.aspx.cs">
+      <DependentUpon>Feedbacks.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Feedbacks.aspx.designer.cs">
+      <DependentUpon>Feedbacks.aspx</DependentUpon>
     </Compile>
     <Compile Include="GetRecieptAPI.aspx.cs">
       <DependentUpon>GetRecieptAPI.aspx</DependentUpon>
@@ -214,6 +225,13 @@
     </Compile>
     <Compile Include="App_Code\Time.cs" />
     <Compile Include="App_Code\User.cs" />
+    <Compile Include="SendEmailAPI.aspx.cs">
+      <DependentUpon>SendEmailAPI.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SendEmailAPI.aspx.designer.cs">
+      <DependentUpon>SendEmailAPI.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\CreditCardWS\ccservice.wsdl" />

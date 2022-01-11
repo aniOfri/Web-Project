@@ -21,8 +21,11 @@
             <span class="close"></span>
             <h2 class="popupTitle">קוד כרטיס המתנה (חד פעמי):</h2>
         </div>
-            <asp:Label id="popupInfo" runat="server"/>
-            <h2 class="info">מומלץ לצלם!</h2>
+            <asp:Label id="popupInfo" runat="server"></asp:Label>
+            <h2 class="info">מומלץ לצלם!</h2><br/>
+            <h2 class="info">..אפשרי גם לקבל הודעה במייל:</h2>
+            <input type="email" id="emailText">
+            <h5 id="emailButton"><span>לחץ כאן לשליחה!</span></h5>
       </div>
     </div>
     

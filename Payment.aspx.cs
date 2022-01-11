@@ -29,11 +29,10 @@ namespace VR_Web_Project
             // CHECKS IF THE SITE HAS BEEN RELOADED DUE TO A SUBMIT PRESS
             if (Request["CCN"] != null)
             {
-                // DECLARE TWO STRINGS AS USERNAME AND PASSWORD USING THE SUBMIT DATA
                 string creditCardNumber = Request["CCN"].Replace(" ", ""),
                         expirationMonth = Request["month"].Replace(" ", ""),
                          expirationYear = Request["year"].Replace(" ", ""),
-                           giftCardCode = Request["giftcard"].Replace(" ", ""),
+                           giftCardCode = Request["ctl00$TitlePlaceHolder$giftcard"] == null ? "" : Request["ctl00$TitlePlaceHolder$giftcard"].Replace(" ", ""),
                               firstName = Request["fn"].Replace(" ", ""),
                                lastName = Request["ln"].Replace(" ", ""),
                                     cvv = Request["cvv"].Replace(" ", "");

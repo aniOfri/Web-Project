@@ -1,0 +1,1 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/masterpage.Master" AutoEventWireup="true" CodeBehind="SendEmailAPI.aspx.cs" Inherits="VR_Web_Project.SendEmailAPI" %>

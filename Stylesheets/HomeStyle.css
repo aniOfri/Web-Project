@@ -23,6 +23,23 @@ div.text {
     transform: translateX(-50px) translateY(-150px);
 }
 
+
+div.text {
+    color: #FFF;
+    white-space: nowrap;
+    z-index: 4;
+    transform: translateX(-50px) translateY(-150px);
+}
+
+div.text a.feedbacks{
+    font-size: 30px;
+}
+
+div.text a.feedbacks:hover {
+    cursor: pointer;
+}
+
+
 section {
     position: relative;
     width: 100%;
@@ -49,10 +66,6 @@ section img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-}
-
-section img#person {
-    z-index: 5;
 }
 
 .sec {
