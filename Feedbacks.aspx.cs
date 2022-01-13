@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
@@ -20,25 +17,35 @@ namespace VR_Web_Project
                     Session["FeedbackOffset"] = 0;
             }
 
+            // CHECK FOR A NEW FEEDBACK - THE USER MUST BE LOGGED IN AND STARS RADIO BUTTON MUST BE SELECTED
             if (Request["stars"] != null && Session["User"] != null)
             {
+                // GET RATING FROM STARS 
                 int stars = int.Parse(Request["stars"]);
+
+                // GET CONTENT FROM TEXTAREA
                 string content = Request["content"];
 
+                // GET THE USERS ID
                 User user = (User)Session["User"];
                 int userId = user.Id;
 
+                // GET CURRENT DATE
                 DateTime now = DateTime.Now;
 
+                // DECLARE A NEW FEEDBACK CLASS USING THE GATHERED DATA
                 Feedback feedback = new Feedback(now, userId, stars, content);
 
+                // IF HASNT USER ALREADY FEEDBACKED 
                 if (!feedback.Exist(userId))
                 {
+                    // INSERT THE FEEDBACK TO THE DB
                     if (feedback.Insert())
                         FeedbackStatus = "הפידבאק עבר בהצלחה";
                 }
                 else
                 {
+                    // ELSE, UPDATE THE FEEDBACK THE USER HAS ALREADY DONE.
                     if (feedback.Update())
                         FeedbackStatus = "הפידבאק התעדכן בהצלחה";
                 }
@@ -91,11 +98,13 @@ namespace VR_Web_Project
                         break;
                 }
 
+                // GET USERNAME OF THE FEEDBACKER
                 string userId = ((int)dr[2]).ToString();
                 string username = VR_Web_Project.User.GetUsername(userId);
 
                 text += " " + username;
 
+                // GET DATE OF THE FEEDBACK
                 DateTime date = (DateTime)(dr[1]);
                 string dateStr = date.ToString("MM/dd/yyyy");
 

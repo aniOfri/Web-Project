@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Mail;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace VR_Web_Project
 {
@@ -13,10 +8,12 @@ namespace VR_Web_Project
     {
         protected void Page_Init(object sender, EventArgs e)
         {
+            // GET ALL PARAMETERS FROM FORM
             string emailAddr = Request.Form["EmailAddr"];
             string subject = Request.Form["EmailSubject"];
             string code = Request.Form["Code"];
 
+            // DECLARE NEW SMTPCLIENT
             SmtpClient smtpClient = new SmtpClient()
             {
                 Host = "smtp.gmail.com",
@@ -31,9 +28,11 @@ namespace VR_Web_Project
                 }
             };
 
-            MailAddress fromEmail = new MailAddress("virtuariacorp@gmail.com", "Virturia Corp.");
+            // SET THE EMAIL DETAILS
+            MailAddress fromEmail = new MailAddress("virtuariacorp@gmail.com", "Virtuaria Corp.");
             MailAddress toEmail = new MailAddress(emailAddr, "Someone");
 
+            // BUILD THE EMAIL's BODY
             string body = "<p dir=RTL>" +
                      "תודה שקניתם בוירטואריה!<br>" +
                     " קוד כרטיס המתנה שלכם הינו:<br>" +
@@ -41,6 +40,7 @@ namespace VR_Web_Project
                     " מצפים לראותכם! <br>" +
                     "</p>";
 
+            // DECLARE MAIL
              MailMessage mail = new MailMessage()
             {
                 From = fromEmail,
@@ -48,9 +48,9 @@ namespace VR_Web_Project
                 Body = body
             };
             mail.IsBodyHtml = true;
-
             mail.To.Add(toEmail);
 
+            // SEND THE EMAIL
             smtpClient.Send(mail);
         }
     }

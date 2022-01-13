@@ -261,36 +261,53 @@ namespace VR_Web_Project
 
         }
 
+        // TOGGLE PERMS BUTTON CLICK
         protected void TogglePerms_Click(object sender, EventArgs e)
         {
+            // GET BUTTON AS VARIABLE
             Button button = (Button)sender;
+            // EXTRACT THE ARGUMENT FROM THE BUTTON AND SET IT AS userid
             string userid = button.CommandArgument;
 
+            // CHECK WHETHER THE USER IS MANAGER OR NOT
             bool newValue = !VR_Web_Project.User.GetManager(userid);
+            // AND SET IT'S NEW "MANAGER VALUE" AS THE OPPOSITE
             VR_Web_Project.User.SetManager(userid, newValue);
             
+            // REDIRECT BACK TO MANAGER
             Response.Redirect("Manager.aspx");
             Response.End();
         }
+
+        // RESET PASS BUTTON CLICK
         protected void ResetPass_Click(object sender, EventArgs e)
         {
+            // GET BUTTON AS VARIABLE
             Button button = (Button)sender;
+            // EXTRACT THE ARGUMENT FROM THE BUTTON AND SET IT AS userid
             string userid = button.CommandArgument;
 
-            string newValue = VR_Web_Project.User.GetUsername(userid);
-            VR_Web_Project.User.ChangePassword(newValue, id: userid);
+            // GET USERNAME USING THE ID
+            string username = VR_Web_Project.User.GetUsername(userid);
+            // RESET THE USER's PASSWORD
+            VR_Web_Project.User.ChangePassword(username, id: userid);
 
+            // REDIRECT TO MANAGER
             Response.Redirect("Manager.aspx");
             Response.End();
         }
 
         protected void Delete_Click(object sender, EventArgs e)
         {
+            // GET BUTTON AS VARIABLE
             Button button = (Button)sender;
+            // EXTRACT THE ARGUMENT FROM THE BUTTON AND SET IT AS userid
             string userid = button.CommandArgument;
 
+            // DELETE THE USER USING THE ID
             VR_Web_Project.User.Delete(int.Parse(userid));
 
+            // REDIRECT TO MANAGER
             Response.Redirect("Manager.aspx");
             Response.End();
         }
@@ -370,7 +387,7 @@ namespace VR_Web_Project
             // SET SESSION AS NEW OFFSET
             Session["GiftCardOffset"] = offset;
 
-            // REDIRECT
+            // REDIRECT TO MANAGER
             Response.Redirect("Manager.aspx");
             Response.End();
         }

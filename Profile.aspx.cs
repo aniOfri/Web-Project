@@ -67,22 +67,29 @@ namespace VR_Web_Project
                 Response.End();
             }
         }
+
+        // SET ALKL APPOINTMENT ON GRID
         private void SetOnGrid(User user)
         {
-            // DECLARE DATATABLE Appointments
+            // DECLARE DATATABLE dt WHICH HAS ALL APPOINTMENTS FROM THE CHOSEN USERS
             DataTable dt = Appointment.GetAppointments(user);
 
+            // LOOP OVER THE DATATABLE
             for (int i = 0; i < dt.Rows.Count; i++)
             {
+                // GET ROW
                 DataRow dr = dt.Rows[i];
 
+                // GET TIME
                 DateTime dateTime = (DateTime)dr[2];
 
+                // BUILD A STRING USING THE DATAROW
                 string text;
                 text = " תאריך: "+ dateTime.ToString("MM/dd/yyyy");
                 text += " זמן: " + dateTime.ToString("HH:mm");
                 text += " מספר משתתפים: " + dr[3];
 
+                // DISPLAY THE STRING ONLY IF DATETIME IS AFTER TODAY
                 if (dateTime > DateTime.Today)
                 {
                     var a = new HtmlGenericControl("a") { InnerText = text };

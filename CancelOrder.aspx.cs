@@ -6,6 +6,7 @@ namespace VR_Web_Project
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            // CLEAR THE CURRENT ORDER SESSION
             Session["RedirectOrder"] = null;
 
             Response.Redirect("Home.aspx");

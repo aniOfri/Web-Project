@@ -6,6 +6,7 @@ namespace VR_Web_Project
     {
         protected void Page_Init(object sender, EventArgs e)
         {
+            // CHECK IF AN ORDER EXISTS
             if (Session["RedirectOrder"] == null)
                 Response.Redirect("Home.aspx");
             else if (Session["RedirectOrder"] is GiftCard)
@@ -42,11 +43,16 @@ namespace VR_Web_Project
                 int[] prices = new int[6] { 140, 120, 115, 110, 105, 100 };
                 int price = Session["RedirectOrder"] is GiftCard ? ((GiftCard)Session["RedirectOrder"]).GetPrice() : prices[(int)Session["Partic"] - 1] * (int)Session["Partic"];
 
+                // GET giftCard USING THE GIFTCARD CODE
                 GiftCard giftCard = new GiftCard(giftCardCode);
                 int receiptId = -1;
+
+                // CHECK IF IT HAS BEEN EXPIRED
                 if (!giftCard.IsExpired)
                 {
+                    // APPLY THE GIFTCARD
                     price = giftCard.ApplyGiftCard(price);
+                    // SET THE RECEIPT ID AS THE GIFTCARD ID
                     receiptId = giftCard.ReceiptID;
                 }
 
