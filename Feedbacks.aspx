@@ -6,7 +6,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="headerPlaceHolder" runat="server">
         <nav>
         <ul class="links">
-            <li><a href="Manager.aspx">לוח זמנים</a></li>
+            <li><a href="Feedback.aspx">ביקורות</a></li>
             <!--<li><a href="#information">מידע</a></li>-->
         </ul>
     </nav>

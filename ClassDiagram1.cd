@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="VR_Web_Project.Appointment">
+    <Position X="4.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAFCAAIAAAAAAAAAAAAAQAgAAAAAAAABACAAAAAAAAA=</HashCode>
+      <FileName>App_Code\Appointment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VR_Web_Project.AppointmentReceipt">
+    <Position X="2.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAABAAAAAAAgAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>App_Code\AppointmentReceipt.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VR_Web_Project.Feedback">
+    <Position X="10.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQCAEIAAgAAAAAAAAAAAQIAAAAAAAEBAAAAAAEAAAA=</HashCode>
+      <FileName>App_Code\Feedback.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VR_Web_Project.GiftCard">
+    <Position X="6.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>SAADAEIIAAAAAAAAAAAgAAEAAAAAAAAAAAAAAADAAAA=</HashCode>
+      <FileName>App_Code\GiftCard.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VR_Web_Project.GiftCardReceipt">
+    <Position X="0.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAABAAAAAAAAAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>App_Code\GiftCardReceipt.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VR_Web_Project.Order">
+    <Position X="6.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Code\Order.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VR_Web_Project.Receipt">
+    <Position X="1.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAACAEIAAQAQAAAAAQAAAAAAAAAAAAABAAAAAAAAAAg=</HashCode>
+      <FileName>App_Code\Receipt.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VR_Web_Project.Time">
+    <Position X="3.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CwAAAAAAAAAAAAAAQAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Code\Time.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VR_Web_Project.User">
+    <Position X="8.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IQACBEIAAAAkoAAAAQACQkAAAAEBAAACAAAQAAAAAAA=</HashCode>
+      <FileName>App_Code\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

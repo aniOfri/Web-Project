@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Data;
-using System.Web.UI.HtmlControls;
 
 namespace VR_Web_Project
 {

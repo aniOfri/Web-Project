@@ -73,7 +73,7 @@ namespace VR_Web_Project
         {
             // BUILD STRING AS AN SQL COMMAND
             string sql = "SELECT Id FROM Member";
-            sql += " WHERE Username ='" + Username + "'";
+            sql += " WHERE Username = N'" + Username + "'";
             sql += " AND Password ='" + Password + "'";
 
             // GET READER USING DAL
@@ -146,7 +146,7 @@ namespace VR_Web_Project
             // BUILD STRING AS AN SQL COMMAND
             string sql = "SELECT Password FROM Member";
             sql += " WHERE ";
-            sql += "Username ='" + Username + "'";
+            sql += "Username = N'" + Username + "'";
 
             // CHECKS IF USERNAME EXISTS INSIDE THE DB
             if (DAL.IsExist(sql))
@@ -180,7 +180,7 @@ namespace VR_Web_Project
         {
             // BUILD STRING AS AN SQL COMMAND
             string sql = "INSERT INTO Member (Id, Username, PhoneNumber, Password, isManager) VALUES (\'";
-            sql += Id + "\', \'" + Username + "\', \'" + PhoneNumber + "\', \'" + HashPassword(Password) + "\', \'" + false + "\')";
+            sql += Id + "\', N\'" + Username + "\', \'" + PhoneNumber + "\', \'" + HashPassword(Password) + "\', \'" + false + "\')";
             
             // TRY TO EXECUTE COMMAND
             try {

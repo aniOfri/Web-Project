@@ -24,7 +24,7 @@ namespace VR_Web_Project
                 Credentials = new NetworkCredential()
                 {
                     UserName = "virtuariacorp@gmail.com",
-                    Password = "dngMqAMW464X"
+                    Password = "afgafdlttlabmxsy"
                 }
             };
 

@@ -25,6 +25,7 @@ namespace VR_Web_Project
                 if (status == "200")
                     PayStatus = "";
                 else if (status == "450") PayStatus = "העסקה נדחתה";
+                Session["paystatus"] = null;
             }
 
             // CHECKS IF THE SITE HAS BEEN RELOADED DUE TO A SUBMIT PRESS

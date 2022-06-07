@@ -49,7 +49,7 @@ namespace VR_Web_Project
                     if (feedback.Update())
                         FeedbackStatus = "הפידבאק התעדכן בהצלחה";
                 }
-            }
+            } 
 
             FeedbacksSetOnPanel();
         }

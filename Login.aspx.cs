@@ -16,6 +16,7 @@ namespace VR_Web_Project
                 if (status == "200")
                     LogStatus = "התחברת בהצלחה";
                 else if (status == "450") LogStatus = "שם משתמש או סיסמה אינם נכונים";
+                Session["logstatus"] = null;
             }
 
             // CHECKS IF THE SITE HAS BEEN RELOADED DUE TO A SUBMIT PRESS

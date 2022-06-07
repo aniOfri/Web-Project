@@ -18,6 +18,7 @@ namespace VR_Web_Project
                     RegStatus = "נרשמת בהצלחה";
                 else
                     RegStatus = "מספר טלפון או שם משתמש נמצאים בשימוש";
+                Session["regstatus"] = null;
             }
 
             // CHECKS IF THE SITE HAS BEEN RELOADED DUE TO A SUBMIT PRESS
@@ -40,7 +41,7 @@ namespace VR_Web_Project
                 string selectQuery = "SELECT * FROM Member";
                 selectQuery += " WHERE ";
                 string selectQueryPhone = selectQuery + " PhoneNumber ='" + phone + "'";
-                string selectQueryUsername = selectQuery + " Username ='" + username + "'";
+                string selectQueryUsername = selectQuery + " Username = N'" + username + "'";
                 
                 // CHECK IF EITHER THE PHONENUMBER OR USERNAME ALREADY IN USE
                 if (DAL.IsExist(selectQueryPhone) || DAL.IsExist(selectQueryUsername))

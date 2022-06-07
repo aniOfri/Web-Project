@@ -72,6 +72,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Appointments.aspx" />
+    <Content Include="ClassDiagram1.cd" />
     <None Include="Connected Services\CreditCardWS\ccservice.disco" />
     <None Include="Connected Services\CreditCardWS\configuration91.svcinfo" />
     <None Include="Connected Services\CreditCardWS\configuration.svcinfo" />

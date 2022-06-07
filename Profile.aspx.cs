@@ -39,6 +39,7 @@ namespace VR_Web_Project
                 else if (status == "450") PasswordChangeLog = "קרתה תקלה במערכת";
                 // EXTERNAL ERROR SUCH AS WRONG PASSWORD
                 else PasswordChangeLog = "הסיסמה הישנה אינה נכונה";
+                Session["passstatus"] = null;
             }
 
             // CHECKS IF THE SITE HAS BEEN RELOADED DUE TO A SUBMIT PRESS
